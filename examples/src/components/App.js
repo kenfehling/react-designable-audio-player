@@ -1,3 +1,6 @@
-/**
- * Created by ken on 9/30/16.
- */
+import React from 'react';
+import Simple from './Simple';
+
+export default () => (
+    <Simple />
+);

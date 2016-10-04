@@ -8,7 +8,7 @@
   "dependencies": {
     "react": "^15.3.0",
     "react-dom": "^15.3.0",
-    "react-audio-player": "^0.0.1"
+    "react-designable-audio-player": "github:kenfehling/react-designable-audio-player"
   },
   "scripts": {
     "start": "react-scripts start",
