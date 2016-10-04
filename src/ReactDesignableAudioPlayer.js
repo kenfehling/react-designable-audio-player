@@ -1,4 +1,4 @@
-import { Component, PropTypes, createElement } from 'react';
+import React, { Component, PropTypes, createElement } from 'react';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import { play, stop, next, prev, seek, addTracks, turnOnAutoplay, addListener, UpdateTypes } from './audioPlayerCore';

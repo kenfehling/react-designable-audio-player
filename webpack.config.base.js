@@ -1,5 +1,12 @@
 var webpack = require('webpack');
 
+var reactExternal = {
+  root: 'React',
+  commonjs2: 'react',
+  commonjs: 'react',
+  amd: 'react'
+}
+
 module.exports = {
   output: {
     libraryTarget: 'umd',
@@ -21,15 +28,13 @@ module.exports = {
   resolve: {
     extensions: ['', '.js', '.jsx'],
   },
-  externals: [
-    {
-      react: {
-        root: 'React',
-        commonjs2: 'react',
-        commonjs: 'react',
-        amd: 'react',
-      }
+  externals: {
+    react: {
+      root: 'React',
+      commonjs2: 'react',
+      commonjs: 'react',
+      amd: 'react',
     }
-  ],
+  },
   node: { Buffer: false },
 };

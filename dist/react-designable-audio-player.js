@@ -86,6 +86,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react = __webpack_require__(2);
 
+	var _react2 = _interopRequireDefault(_react);
+
 	var _rcSlider = __webpack_require__(3);
 
 	var _rcSlider2 = _interopRequireDefault(_rcSlider);
@@ -235,10 +237,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	            var artist = _state$currentTrack.artist;
 	            var title = _state$currentTrack.title;
 
-	            return React.createElement(
+	            return _react2.default.createElement(
 	                'div',
 	                { style: { overflow: 'hidden', whiteSpace: 'nowrap' } },
-	                React.createElement(
+	                _react2.default.createElement(
 	                    'div',
 	                    { style: this.state.on ? getMarqueeStyle(duration || 10) : baseStyle },
 	                    text || number + '. ' + artist + ' - ' + title
@@ -260,7 +262,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	/* TimeSlider component */
 
 	var DefaultSliderHandle = function DefaultSliderHandle() {
-	    return React.createElement('div', null);
+	    return _react2.default.createElement('div', null);
 	};
 
 	var TimeSlider = exports.TimeSlider = function (_Component3) {
@@ -294,8 +296,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	            var secondsElapsed = _state.secondsElapsed;
 	            var secondsRemaining = _state.secondsRemaining;
 
-	            return React.createElement(_rcSlider2.default, _extends({ onChange: _audioPlayerCore.seek, value: secondsElapsed, min: 0, max: secondsElapsed + secondsRemaining,
-	                handle: this.props.handle || React.createElement(DefaultSliderHandle, null) }, this.props));
+	            return _react2.default.createElement(_rcSlider2.default, _extends({ onChange: _audioPlayerCore.seek, value: secondsElapsed, min: 0, max: secondsElapsed + secondsRemaining,
+	                handle: this.props.handle || _react2.default.createElement(DefaultSliderHandle, null) }, this.props));
 	        }
 	    }]);
 
