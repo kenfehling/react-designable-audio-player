@@ -2,13 +2,14 @@
   "name": "react-designable-audio-player",
   "version": "0.0.1",
   "description": "An audio player library for React that lets you use your own UI component",
-  "main": "src/index.js",
+  "main": "lib/index.js",
   "scripts": {
     "clean": "rimraf lib",
     "lint": "eslint src test",
+    "build:lib": "babel src --out-dir lib",
     "build:umd": "webpack src/index.js dist/react-designable-audio-player.js --config webpack.config.development.js",
     "build:umd:min": "webpack src/index.js dist/designable-audio-player.min.js --config webpack.config.production.js",
-    "build": "npm run build:umd && npm run build:umd:min",
+    "build": "npm run build:lib && npm run build:umd && npm run build:umd:min",
     "prepublish": "npm run clean && npm run build",
     "test": "jest",
     "test:watch": "jest --watch"
@@ -22,6 +23,7 @@
   "bugs": "https://github.com/kenfehling/react-designable-audio-player/issues",
   "files": [
     "dist",
+    "lib",
     "src"
   ],
   "keywords": [
