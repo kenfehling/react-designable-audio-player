@@ -1,7 +1,7 @@
 import React, { Component, PropTypes, createElement } from 'react';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
-import { play, stop, next, prev, seek, gotoTrack, addTracks, turnOnAutoplay, addListener, UpdateTypes } from './audioPlayerCore';
+import { play, stop, next, prev, seek, goto, addTracks, turnOnAutoplay, addListener, UpdateTypes } from './audioPlayerCore';
 import _ from 'lodash';
 
 export function connectAudioPlayer(WrappedComponent, tracks, options={autoplay:false}) {
@@ -33,7 +33,7 @@ export function connectAudioPlayer(WrappedComponent, tracks, options={autoplay:f
                 next,
                 prev,
                 seek,
-                gotoTrack,
+                goto,
                 isPlaying: this.state.isPlaying,
                 currentTrack: this.state.currentTrack,
                 secondsElapsed: this.state.secondsElapsed,

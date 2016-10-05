@@ -112,7 +112,7 @@ export function seek(seconds) {
     updateListeners(UpdateTypes.SEEK);
 }
 
-export function gotoTrack(number) {
+export function goto(number) {
     currentTrackIndex = number - 1;
     switchTrack();
 }
