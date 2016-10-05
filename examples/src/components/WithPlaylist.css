@@ -3,7 +3,7 @@
     font-size: 14px;
     margin: auto;
     color: #ed141c;
-    background-color: #51060a;
+    background-color: #3e0408;
     padding: 20px;
     border-radius: 4px;
     border: 8px solid #870b10;
@@ -65,6 +65,7 @@
 
 .wp .playlist-item {
     padding: 3px 10px;
+    cursor: pointer;
 }
 
 .wp .current.playlist-item {

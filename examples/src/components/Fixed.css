@@ -1,5 +1,5 @@
 .fixed.container {
-    font-family: Arial, sans-serif;
+    font-family: "Andale Mono", monospace;
     font-size: 14px;
     width: 100%;
     color: #EEE;
@@ -48,6 +48,7 @@
     background-color: #EEE;
 }
 .fixed .time {
+    width: 50px;
     margin: 10px;
     text-align: center;
 }
