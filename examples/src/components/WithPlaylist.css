@@ -1,0 +1,73 @@
+.wp.container {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    margin: auto;
+    color: #ed141c;
+    background-color: #5d070b;
+    padding: 20px;
+    border-radius: 4px;
+    border: 8px solid #450508;
+    display: flex;
+    height: 180px;
+    width: 480px;
+}
+
+.wp .player {
+    width: 200px;
+}
+
+.wp .playlist {
+    width: 280px;
+    padding-left: 20px;
+}
+
+.wp .controls {
+    width: 96%;
+    margin: 20px auto;
+    text-align: center;
+    display: flex;
+}
+
+.wp i.fa {
+    display: block;
+    flex: 1;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.wp i.fa:active {
+    opacity: 0.5;
+}
+
+.wp .current-track {
+    width: 90%;
+    margin: 10px auto;
+}
+
+.wp .time-slider {
+    padding: 5%;
+    width: 90%;
+}
+
+.wp .rc-slider {
+    background-color: #ed141c;
+    cursor: pointer;
+}
+
+.wp .rc-slider-track {
+    background-color: #870b10;
+}
+
+.wp .time {
+    margin: 10px auto;
+    text-align: center;
+}
+
+.wp .playlist-item {
+    padding: 3px 10px;
+}
+
+.wp .current.playlist-item {
+    color: #5d070b;
+    background-color: #ed141c;
+}

@@ -1,10 +1,10 @@
 import React from 'react';
 import {connectAudioPlayer, TitleMarquee, TimeSlider} from 'react-designable-audio-player';
-import './Simple.css';
+import './Fixed.css';
 import tracks from '../tracks';
 
 const AudioPlayer = ({play, stop, next, prev, isPlaying, timeElapsed}) => (
-    <div className="simple container">
+    <div className="fixed container">
         <div className="controls">
             <i className="fa fa-step-backward" onClick={prev} />
             <i className={`fa fa-${isPlaying ? 'pause' : 'play'}`} onClick={play} />

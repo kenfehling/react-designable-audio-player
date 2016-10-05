@@ -1,6 +1,12 @@
 import React from 'react';
 import Simple from './Simple';
+import WithPlaylist from './WithPlaylist';
+import Fixed from './Fixed';
 
 export default () => (
-    <Simple />
+    <div style={{display: 'flex', marginTop: '20px'}}>
+        <Simple />
+        <WithPlaylist />
+        <Fixed />
+    </div>
 );

@@ -1,0 +1,52 @@
+.fixed.container {
+    font-family: Monaco, monospace;
+    font-size: 14px;
+    width: 100%;
+    color: #FFF;
+    background-color: #000;
+    position: fixed;
+    bottom: 0;
+    display: flex;
+}
+
+.fixed .controls {
+    margin: 10px auto;
+    text-align: center;
+    display: flex;
+}
+
+.fixed i.fa {
+    display: block;
+    flex: 1;
+    margin: 0 10px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.fixed i.fa:active {
+    opacity: 0.5;
+}
+
+.fixed .current-track {
+    width: 50%;
+    margin: 10px auto;
+}
+
+.fixed .time-slider {
+    width: 25%;
+    margin: 10px auto;
+}
+
+.fixed .rc-slider {
+    background-color: #3a3a3a;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+.fixed .rc-slider-track {
+    background-color: #919191;
+}
+.fixed .time {
+    margin: 10px auto;
+    text-align: center;
+}
