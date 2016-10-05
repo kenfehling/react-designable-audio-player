@@ -112,6 +112,11 @@ export function seek(seconds) {
     updateListeners(UpdateTypes.SEEK);
 }
 
+export function gotoTrack(number) {
+    currentTrackIndex = number - 1;
+    switchTrack();
+}
+
 export function turnOnAutoplay() {
     audio.autoplay = true;
 }

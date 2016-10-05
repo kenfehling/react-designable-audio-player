@@ -110,6 +110,11 @@ A number of props are provided for your component to use.
           <td>number</td>
           <td>Seek to a point in the current track (in seconds)</td>
         </tr>
+        <tr>
+          <td>gotoTrack</td>
+          <td>number</td>
+          <td>Go to a certain track number (starting with 1)</td>
+        </tr>
     </tbody>
 </table>
 

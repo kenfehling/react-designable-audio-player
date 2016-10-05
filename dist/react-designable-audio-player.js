@@ -152,6 +152,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                    next: _audioPlayerCore.next,
 	                    prev: _audioPlayerCore.prev,
 	                    seek: _audioPlayerCore.seek,
+	                    gotoTrack: _audioPlayerCore.gotoTrack,
 	                    isPlaying: this.state.isPlaying,
 	                    currentTrack: this.state.currentTrack,
 	                    secondsElapsed: this.state.secondsElapsed,
@@ -28450,6 +28451,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.next = next;
 	exports.prev = prev;
 	exports.seek = seek;
+	exports.gotoTrack = gotoTrack;
 	exports.turnOnAutoplay = turnOnAutoplay;
 	exports.addListener = addListener;
 	exports.removeListener = removeListener;
@@ -28569,6 +28571,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	function seek(seconds) {
 	    audio.currentTime = seconds;
 	    updateListeners(UpdateTypes.SEEK);
+	}
+
+	function gotoTrack(number) {
+	    currentTrackIndex = number - 1;
+	    switchTrack();
 	}
 
 	function turnOnAutoplay() {
