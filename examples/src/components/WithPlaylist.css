@@ -50,12 +50,12 @@
 }
 
 .wp .rc-slider {
-    background-color: #ed141c;
+    background-color: #870b10;
     cursor: pointer;
 }
 
 .wp .rc-slider-track {
-    background-color: #870b10;
+    background-color: #ed141c;
 }
 
 .wp .time {
@@ -70,5 +70,5 @@
 .wp .current.playlist-item {
     color: #51060a;
     background-color: #ed141c;
-    border-radius: 4px;
+    border-radius: 3px;
 }

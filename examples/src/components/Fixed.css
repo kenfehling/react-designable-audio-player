@@ -1,11 +1,12 @@
 .fixed.container {
-    font-family: Monaco, monospace;
+    font-family: Arial, sans-serif;
     font-size: 14px;
     width: 100%;
-    color: #FFF;
+    color: #EEE;
     background-color: #000;
     position: fixed;
     bottom: 0;
+    padding-bottom: 1px;
     display: flex;
 }
 
@@ -38,15 +39,15 @@
 }
 
 .fixed .rc-slider {
-    background-color: #3a3a3a;
+    background-color: #999;
     cursor: pointer;
-    margin-top: 5px;
+    margin-top: 6px;
 }
 
 .fixed .rc-slider-track {
-    background-color: #919191;
+    background-color: #EEE;
 }
 .fixed .time {
-    margin: 10px auto;
+    margin: 10px;
     text-align: center;
 }

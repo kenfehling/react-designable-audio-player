@@ -40,12 +40,12 @@
 }
 
 .simple .rc-slider {
-    background-color: #36F;
     cursor: pointer;
+    background-color: #03C;
 }
 
 .simple .rc-slider-track {
-    background-color: #03C;
+    background-color: #36F;
 }
 .simple .time {
     margin: 10px auto;
