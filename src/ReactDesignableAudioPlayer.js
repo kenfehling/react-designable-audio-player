@@ -179,10 +179,10 @@ class PL extends Component {
         const {number} = currentTrack;
         return <div className={className}>
             {tracks.map((track, i) =>
-                itemComponent ? itemComponent(currentTrack) :
                 <div className={number === i + 1 ? itemClassName + ' ' + currentItemClassName : itemClassName}
                      onClick={() => number === i + 1 ? gotoAndPlay(i + 1) : goto(i + 1)} key={i}>
-                    {text || `${i + 1}. ${track.artist} - ${track.title}`}
+                    {itemComponent ? itemComponent(currentTrack) :
+                        text || `${i + 1}. ${track.artist} - ${track.title}`}
                 </div>)}
         </div>;
     }
