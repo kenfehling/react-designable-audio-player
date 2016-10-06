@@ -145,7 +145,8 @@ class TS extends Component {
         const {secondsElapsed, secondsRemaining} = this.state;
         return <div className={className}>
             <Slider onChange={seek} value={secondsElapsed} min={0} max={secondsElapsed + secondsRemaining}
-                       handle={this.props.handle || <DefaultSliderHandle />} {...this.props} />
+                    handle={this.props.handle || <DefaultSliderHandle />}
+                    {...(_.omit(this.props, 'className'))} />
         </div>;
     }
 }

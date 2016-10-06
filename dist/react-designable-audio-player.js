@@ -310,7 +310,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	                'div',
 	                { className: className },
 	                _react2.default.createElement(_rcSlider2.default, _extends({ onChange: _audioPlayerCore.seek, value: secondsElapsed, min: 0, max: secondsElapsed + secondsRemaining,
-	                    handle: this.props.handle || _react2.default.createElement(DefaultSliderHandle, null) }, this.props))
+	                    handle: this.props.handle || _react2.default.createElement(DefaultSliderHandle, null)
+	                }, _lodash2.default.omit(this.props, 'className')))
 	            );
 	        }
 	    }]);
