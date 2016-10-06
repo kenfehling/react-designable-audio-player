@@ -22,20 +22,20 @@ The library [provides many props](#provided-props) for your component to use, as
 
 ```js
 import React from 'react';
-import {connectAudioPlayer, TitleMarquee, TimeSlider} from 'react-designable-audio-player';
-import './Simple.css';
+import {connectAudioPlayer} from 'react-designable-audio-player';
 
-const AudioPlayer = ({play, stop, next, prev, isPlaying, timeElapsed}) => (
-    <div className="simple container">
-        <div className="controls">
-            <i className="fa fa-step-backward" onClick={prev} />
-            <i className={`fa fa-${isPlaying ? 'pause' : 'play'}`} onClick={play} />
-            <i className="fa fa-stop" onClick={stop} />
-            <i className="fa fa-step-forward" onClick={next} />
-        </div>
-        <TitleMarquee className="marquee" />
-        <TimeSlider className="time-slider" />
-        <div className="time">{timeElapsed}</div>
+const AudioPlayer = ({play, stop, next, prev, isPlaying, timeElapsed, timeRemaining, currentTrack:{artist, title}}) => (
+    <div>
+        <ul>
+            <li><a href="#" onClick={play}>{isPlaying ? 'Pause' : 'Play'}</a></li>
+            <li><a href="#" onClick={stop}>Stop</a></li>
+            <li><a href="#" onClick={next}>Next</a></li>
+            <li><a href="#" onClick={prev}>Prev</a></li>
+        </ul>
+        <div>{artist} - {title}</div>
+        <br />
+        <div>Time elapsed: {timeElapsed}</div>
+        <div>Time remaining: {timeRemaining}</div>
     </div>
 );
 ```
