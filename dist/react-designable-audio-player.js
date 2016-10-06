@@ -233,6 +233,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        key: 'render',
 	        value: function render() {
 	            var _props = this.props;
+	            var className = _props.className;
 	            var text = _props.text;
 	            var duration = _props.duration;
 	            var _state$currentTrack = this.state.currentTrack;
@@ -242,11 +243,15 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	            return _react2.default.createElement(
 	                'div',
-	                { style: { overflow: 'hidden', whiteSpace: 'nowrap' } },
+	                { className: className },
 	                _react2.default.createElement(
 	                    'div',
-	                    { style: this.state.on ? getMarqueeStyle(duration || 10) : baseStyle },
-	                    text || number + '. ' + artist + ' - ' + title
+	                    { style: { overflow: 'hidden', whiteSpace: 'nowrap' } },
+	                    _react2.default.createElement(
+	                        'div',
+	                        { style: this.state.on ? getMarqueeStyle(duration || 10) : baseStyle },
+	                        text || number + '. ' + artist + ' - ' + title
+	                    )
 	                )
 	            );
 	        }
@@ -256,6 +261,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}(_react.Component);
 
 	TM.propTypes = {
+	    className: _react.PropTypes.string,
 	    text: _react.PropTypes.string,
 	    duration: _react.PropTypes.number
 	};
@@ -268,13 +274,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return _react2.default.createElement('div', null);
 	};
 
-	var TimeSlider = exports.TimeSlider = function (_Component3) {
-	    _inherits(TimeSlider, _Component3);
+	var TS = function (_Component3) {
+	    _inherits(TS, _Component3);
 
-	    function TimeSlider(props) {
-	        _classCallCheck(this, TimeSlider);
+	    function TS(props) {
+	        _classCallCheck(this, TS);
 
-	        var _this5 = _possibleConstructorReturn(this, (TimeSlider.__proto__ || Object.getPrototypeOf(TimeSlider)).call(this, props));
+	        var _this5 = _possibleConstructorReturn(this, (TS.__proto__ || Object.getPrototypeOf(TS)).call(this, props));
 
 	        _this5.state = {
 	            secondsElapsed: 0,
@@ -283,7 +289,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        return _this5;
 	    }
 
-	    _createClass(TimeSlider, [{
+	    _createClass(TS, [{
 	        key: 'componentDidMount',
 	        value: function componentDidMount() {
 	            var _this6 = this;
@@ -295,17 +301,28 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }, {
 	        key: 'render',
 	        value: function render() {
+	            var className = this.props.className;
 	            var _state = this.state;
 	            var secondsElapsed = _state.secondsElapsed;
 	            var secondsRemaining = _state.secondsRemaining;
 
-	            return _react2.default.createElement(_rcSlider2.default, _extends({ onChange: _audioPlayerCore.seek, value: secondsElapsed, min: 0, max: secondsElapsed + secondsRemaining,
-	                handle: this.props.handle || _react2.default.createElement(DefaultSliderHandle, null) }, this.props));
+	            return _react2.default.createElement(
+	                'div',
+	                { className: className },
+	                _react2.default.createElement(_rcSlider2.default, _extends({ onChange: _audioPlayerCore.seek, value: secondsElapsed, min: 0, max: secondsElapsed + secondsRemaining,
+	                    handle: this.props.handle || _react2.default.createElement(DefaultSliderHandle, null) }, this.props))
+	            );
 	        }
 	    }]);
 
-	    return TimeSlider;
+	    return TS;
 	}(_react.Component);
+
+	TS.propTypes = {
+	    className: _react.PropTypes.string
+	};
+
+	var TimeSlider = exports.TimeSlider = TS;
 
 	/* Playlist component */
 

@@ -100,17 +100,20 @@ class TM extends Component {
     }
 
     render() {
-        const {text, duration} = this.props;
+        const {className, text, duration} = this.props;
         const {number, artist, title} = this.state.currentTrack;
-        return <div style={{overflow: 'hidden', whiteSpace: 'nowrap'}}>
-            <div style={this.state.on ? getMarqueeStyle(duration || 10) : baseStyle}>
-                {text || `${number}. ${artist} - ${title}`}
+        return <div className={className}>
+            <div style={{overflow: 'hidden', whiteSpace: 'nowrap'}}>
+                <div style={this.state.on ? getMarqueeStyle(duration || 10) : baseStyle}>
+                    {text || `${number}. ${artist} - ${title}`}
+                </div>
             </div>
         </div>
     }
 }
 
 TM.propTypes = {
+    className: PropTypes.string,
     text: PropTypes.string,
     duration: PropTypes.number
 };
@@ -124,7 +127,7 @@ const DefaultSliderHandle = () => (
     <div></div>
 );
 
-export class TimeSlider extends Component {
+class TS extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -138,11 +141,20 @@ export class TimeSlider extends Component {
     }
 
     render() {
+        const {className} = this.props;
         const {secondsElapsed, secondsRemaining} = this.state;
-        return <Slider onChange={seek} value={secondsElapsed} min={0} max={secondsElapsed + secondsRemaining}
-                       handle={this.props.handle || <DefaultSliderHandle />} {...this.props} />;
+        return <div className={className}>
+            <Slider onChange={seek} value={secondsElapsed} min={0} max={secondsElapsed + secondsRemaining}
+                       handle={this.props.handle || <DefaultSliderHandle />} {...this.props} />
+        </div>;
     }
 }
+
+TS.propTypes = {
+    className: PropTypes.string,
+};
+
+export const TimeSlider = TS;
 
 
 /* Playlist component */

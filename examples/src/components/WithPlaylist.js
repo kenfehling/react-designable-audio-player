@@ -12,12 +12,8 @@ const AudioPlayer = ({play, stop, next, prev, goto, gotoAndPlay, isPlaying, time
                 <i className="fa fa-stop-circle" onClick={stop} />
                 <i className="fa fa-chevron-circle-right" onClick={next} />
             </div>
-            <div className="current-track">
-                <TitleMarquee />
-            </div>
-            <div className="time-slider">
-                <TimeSlider />
-            </div>
+            <TitleMarquee className="current-track" />
+            <TimeSlider className="time-slider" />
             <div className="time">{timeElapsed}</div>
         </div>
         <Playlist className="playlist" itemClassName='playlist-item' currentItemClassName='current playlist-item' />

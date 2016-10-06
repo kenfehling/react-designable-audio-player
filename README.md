@@ -45,6 +45,7 @@ Exports:
 - `connectAudioPlayer`
 - `TitleMarquee`
 - `TimeSlider`
+- `Playlist`
 
 ### connectAudioPlayer
 This is all you need to connect your custom UI component to the player library.
@@ -201,6 +202,12 @@ Use the `TitleMarquee` component to show the current tracking playing.
     </thead>
     <tbody>
         <tr>
+          <td>className</td>
+          <td>String</td>
+          <td></td>
+          <td>CSS class name(s) of the title marquee container</td>
+        </tr>
+        <tr>
           <td>text</td>
           <td>String</td>
           <td>#. artist - title</td>
@@ -217,4 +224,59 @@ Use the `TitleMarquee` component to show the current tracking playing.
 
 #### TimeSlider
 The `TimeSlider` component shows the current progress and allows seeking within the playing track.
-The component is based on [rc-slider](https://github.com/react-component/slider#rc-slider) and all customizations for that library are available.
+The component is based on [rc-slider](https://github.com/react-component/slider#rc-slider) and all props and other customizations for that library are available.
+
+##### Props
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>name</th>
+            <th>type</th>
+            <th>default</th>
+            <th>description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td>className</td>
+          <td>String</td>
+          <td></td>
+          <td>CSS class name(s) of the time slider container</td>
+        </tr>
+    </tbody>
+</table>
+
+#### Playlist
+The `Playlist` shows all of the tracks, indicates the current track, and handles select and click events appropriately.
+
+##### Props
+<table class="table table-bordered table-striped">
+    <thead>
+    <tr>
+        <th>name</th>
+        <th>type</th>
+        <th>default</th>
+        <th>description</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td>className</td>
+          <td>String</td>
+          <td></td>
+          <td>CSS class name(s) of the playlist container</td>
+        </tr>
+        <tr>
+          <td>itemClassName</td>
+          <td>String</td>
+          <td></td>
+          <td>CSS class name(s) of all of the playlist items</td>
+        </tr>
+        <tr>
+          <td>currentItemClassName</td>
+          <td>String</td>
+          <td></td>
+          <td>CSS class name(s) of the current selected playlist item</td>
+        </tr>
+    </tbody>
+</table>
