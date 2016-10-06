@@ -5,6 +5,9 @@ An audio player library for [React](https://facebook.github.io/react) that lets 
 Control functions and state are provided to your UI component as props from an HOC ([Higher Level Component](https://medium.com/@franleplant/react-higher-order-components-in-depth-cf9032ee6c3e#.d40k7bfb3)).
 Built on top of the HTML5 &lt;audio&gt; element.
 
+## Online demo
+[kenfehling.github.io/react-designable-audio-player](https://kenfehling.github.io/react-designable-audio-player/)
+
 ## Installation
 ```
 npm install --save kenfehling/react-designable-audio-player
