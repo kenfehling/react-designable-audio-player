@@ -14,32 +14,43 @@ npm install --save kenfehling/react-designable-audio-player
 ```
 
 ##Usage
+
+You can create whatever React component you like for the player view, the library [provides many props](https://github.com/kenfehling/react-designable-audio-player#provided-props) for you to use.
 ```js
+import React from 'react';
 import {connectAudioPlayer, TitleMarquee, TimeSlider} from 'react-designable-audio-player';
+import './Simple.css';
 
 const AudioPlayer = ({play, stop, next, prev, isPlaying, timeElapsed}) => (
-    <div className={styles.container}>
+    <div className="simple container">
         <div className="controls">
             <i className="fa fa-step-backward" onClick={prev} />
             <i className={`fa fa-${isPlaying ? 'pause' : 'play'}`} onClick={play} />
             <i className="fa fa-stop" onClick={stop} />
             <i className="fa fa-step-forward" onClick={next} />
         </div>
-        <div className="current-track">
-            <TitleMarquee />
-        </div>
-        <div className="time-slider">
-            <TimeSlider />
-        </div>
+        <TitleMarquee className="marquee" />
+        <TimeSlider className="time-slider" />
         <div className="time">{timeElapsed}</div>
     </div>
 );
+```
 
-const tracks = [
-    { artist: '8BIT-SOLDIER', title: 'Close Your Eyes', file: 'https://ia601209.us.archive.org/20/items/Chiptune_Songs_Archive/8BIT-SOLDIER/06%20Close%20Your%20Eyes.mp3' },
-    { artist: 'Doobie Brothers', title: 'Taking it to the Streets', file: '/public/song2.mp3' },
-];
+Create an array of objects to hold all of your tracks. Each object must have an `artist`, `title`, and `file`.
+```js
+const tracks = [{
+    artist: '8BIT-SOLDIER',
+    title: 'Close Your Eyes',
+    file: 'https://ia601209.us.archive.org/20/items/Chiptune_Songs_Archive/8BIT-SOLDIER/06%20Close%20Your%20Eyes.mp3'
+}, {
+    artist: 'Hidden Fortress',
+    title: 'I Need a Quarter',
+    file: 'https://ia802605.us.archive.org/14/items/upupdowndownleftrightleftrightbaslectremix/01INeedAQuartrer.mp3'
+}];
+```
 
+Call `connectAudioPlayer` with your component and tracks.
+```js
 export default connectAudioPlayer(AudioPlayer, tracks);
 ```
 
