@@ -174,13 +174,15 @@ class PL extends Component {
     }
 
     render() {
-        const {className, itemClassName, currentItemClassName} = this.props;
-        const {tracks, currentTrack: {number}} = this.state;
+        const {className, itemClassName, currentItemClassName, text, itemComponent} = this.props;
+        const {tracks, currentTrack} = this.state;
+        const {number} = currentTrack;
         return <div className={className}>
             {tracks.map((track, i) =>
-                <div className={number === i + 1 ? currentItemClassName : itemClassName}
+                itemComponent ? itemComponent(currentTrack) :
+                <div className={number === i + 1 ? itemClassName + ' ' + currentItemClassName : itemClassName}
                      onClick={() => number === i + 1 ? gotoAndPlay(i + 1) : goto(i + 1)} key={i}>
-                    {`${i + 1}. ${track.artist} - ${track.title}`}
+                    {text || `${i + 1}. ${track.artist} - ${track.title}`}
                 </div>)}
         </div>;
     }
@@ -189,7 +191,9 @@ class PL extends Component {
 PL.propTypes = {
     className: PropTypes.string,
     itemClassName: PropTypes.string,
-    currentItemClassName: PropTypes.string
+    currentItemClassName: PropTypes.string,
+    text: PropTypes.string,
+    itemComponent: PropTypes.func
 };
 
 export const Playlist = PL;

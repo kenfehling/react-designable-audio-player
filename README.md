@@ -297,7 +297,19 @@ The `Playlist` shows all of the tracks, indicates the current track, and handles
           <td>currentItemClassName</td>
           <td>String</td>
           <td></td>
-          <td>CSS class name(s) of the current selected playlist item</td>
+          <td>CSS class name(s) of the current playlist item</td>
+        </tr>
+        <tr>
+          <td>text</td>
+          <td>String</td>
+          <td>#. artist - title</td>
+          <td>Playlist item text</td>
+        </tr>
+        <tr>
+          <td>itemComponent</td>
+          <td>Component</td>
+          <td>/td>
+          <td>Custom component for a playlist item</td>
         </tr>
     </tbody>
 </table>

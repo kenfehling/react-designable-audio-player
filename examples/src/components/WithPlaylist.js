@@ -16,7 +16,7 @@ const AudioPlayer = ({play, stop, next, prev, goto, gotoAndPlay, isPlaying, time
             <TimeSlider className="time-slider" />
             <div className="time">{timeElapsed}</div>
         </div>
-        <Playlist className="playlist" itemClassName='playlist-item' currentItemClassName='current playlist-item' />
+        <Playlist className="playlist" itemClassName='playlist-item' currentItemClassName='current' />
     </div>
 );
 

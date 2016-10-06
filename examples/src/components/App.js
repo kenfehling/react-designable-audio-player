@@ -10,7 +10,7 @@ export default () => (
             <Simple />
             <WithPlaylist />
         </div>
-        <div style={{width: '320px', margin: '50px auto'}}>
+        <div style={{width: '360px', margin: '50px auto'}}>
             <Unstyled />
         </div>
         <Fixed />
