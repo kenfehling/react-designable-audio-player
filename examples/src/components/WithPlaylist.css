@@ -39,7 +39,7 @@
     opacity: 0.5;
 }
 
-.wp .current-track {
+.wp .marquee {
     width: 90%;
     margin: 10px auto;
 }
@@ -64,12 +64,12 @@
 }
 
 .wp .playlist-item {
-    padding: 3px 10px;
+    padding: 3px 9px;
     cursor: pointer;
 }
 
 .wp .current.playlist-item {
     color: #51060a;
     background-color: #ed141c;
-    border-radius: 3px;
+    border-radius: 2px;
 }

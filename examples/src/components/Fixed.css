@@ -28,7 +28,7 @@
     opacity: 0.5;
 }
 
-.fixed .current-track {
+.fixed .marquee {
     width: 50%;
     margin: 10px auto;
 }
