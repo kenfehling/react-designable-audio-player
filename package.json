@@ -7,7 +7,7 @@
     "clean": "rimraf lib",
     "lint": "eslint src test",
     "build:lib": "babel src --out-dir lib",
-    "build:examples": "cd examples; npm build",
+    "build:examples": "cd examples; npm run build",
     "build:umd": "webpack src/index.js dist/react-designable-audio-player.js --config webpack.config.development.js",
     "build:umd:min": "webpack src/index.js dist/designable-audio-player.min.js --config webpack.config.production.js",
     "build": "npm run build:lib && npm run build:examples && npm run build:umd && npm run build:umd:min",

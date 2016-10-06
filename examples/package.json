@@ -2,6 +2,7 @@
   "name": "examples",
   "version": "0.0.1",
   "private": true,
+  "homepage": "https://kenfehling.github.io/react-designable-audio-player/",
   "devDependencies": {
     "react-scripts": "^0.6.0"
   },
