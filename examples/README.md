@@ -13,4 +13,4 @@ npm start
 ```
 
 The examples use [Font Awesome](http://fontawesome.io/) for the player buttons.
-The `index.html` has link to a CDN.
+The `index.html` file has link to a CDN.

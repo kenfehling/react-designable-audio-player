@@ -2,7 +2,9 @@ react-designable-audio-player
 ==================
 
 An audio player library for [React](https://facebook.github.io/react) that lets you use your own UI component.
+
 Control functions and state are provided to your UI component as props from an HOC ([Higher Level Component](https://medium.com/@franleplant/react-higher-order-components-in-depth-cf9032ee6c3e#.d40k7bfb3)).
+
 Built on top of the HTML5 &lt;audio&gt; element.
 
 ## Online demo
@@ -15,7 +17,9 @@ npm install --save kenfehling/react-designable-audio-player
 
 ##Usage
 
-You can create whatever React component you like for the player view, the library [provides many props](https://github.com/kenfehling/react-designable-audio-player#provided-props) for you to use.
+You can create whatever React component you like for the player view.
+The library [provides many props](#provided-props) for your component to use, as well as some [prebuilt components](#prebuilt-components) for common player elements.
+
 ```js
 import React from 'react';
 import {connectAudioPlayer, TitleMarquee, TimeSlider} from 'react-designable-audio-player';
@@ -200,6 +204,9 @@ A number of props are provided for your component to use.
         </tr>
     </tbody>
 </table>
+
+### Prebuilt components
+`TitleMarquee`, `TimeSlider`, and `Playlist` are stylable components for common playlist elements.
 
 #### TitleMarquee
 Use the `TitleMarquee` component to show the current tracking playing.
