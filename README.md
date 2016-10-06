@@ -96,6 +96,11 @@ A number of props are provided for your component to use.
           <td>Stop the playback</td>
         </tr>
         <tr>
+          <td>seek</td>
+          <td>number</td>
+          <td>Seek to a point in the current track (in seconds)</td>
+        </tr>
+        <tr>
           <td>next</td>
           <td></td>
           <td>Go to the next track in the playlist</td>
@@ -106,14 +111,14 @@ A number of props are provided for your component to use.
           <td>Go to the previous track in the playlist</td>
         </tr>
         <tr>
-          <td>seek</td>
-          <td>number</td>
-          <td>Seek to a point in the current track (in seconds)</td>
-        </tr>
-        <tr>
           <td>goto</td>
           <td>number</td>
           <td>Go to a certain track number (starting with 1)</td>
+        </tr>
+        <tr>
+          <td>gotoAndPlay</td>
+          <td>number</td>
+          <td>Go to a certain track number (starting with 1) and start playing</td>
         </tr>
     </tbody>
 </table>

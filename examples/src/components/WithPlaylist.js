@@ -3,7 +3,7 @@ import {connectAudioPlayer, TitleMarquee, TimeSlider} from 'react-designable-aud
 import './WithPlaylist.css';
 import tracks from '../tracks';
 
-const AudioPlayer = ({play, stop, next, prev, goto, isPlaying, timeElapsed, currentTrack:{number}}) => (
+const AudioPlayer = ({play, stop, next, prev, goto, gotoAndPlay, isPlaying, timeElapsed, currentTrack:{number}}) => (
     <div className="wp container">
         <div className="player">
             <div className="controls">
@@ -23,7 +23,7 @@ const AudioPlayer = ({play, stop, next, prev, goto, isPlaying, timeElapsed, curr
         <div className="playlist">
             {tracks.map((track, i) =>
                 <div className={number === i + 1 ? 'current playlist-item' : 'playlist-item'}
-                     onClick={() => goto(i + 1)} key={i}>
+                     onClick={() => number === i + 1 ? gotoAndPlay(i + 1) : goto(i + 1)} key={i}>
                     {`${i + 1}. ${track.artist} - ${track.title}`}
                 </div>)}
         </div>

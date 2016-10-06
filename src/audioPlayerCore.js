@@ -97,6 +97,11 @@ export function stop() {
     updateListeners(UpdateTypes.STOP);
 }
 
+export function seek(seconds) {
+    audio.currentTime = seconds;
+    updateListeners(UpdateTypes.SEEK);
+}
+
 export function next() {
     currentTrackIndex = currentTrackIndex + 1 >= _.size(tracks) ? 0 : currentTrackIndex + 1;
     switchTrack();
@@ -107,14 +112,16 @@ export function prev() {
     switchTrack();
 }
 
-export function seek(seconds) {
-    audio.currentTime = seconds;
-    updateListeners(UpdateTypes.SEEK);
-}
-
 export function goto(number) {
     currentTrackIndex = number - 1;
     switchTrack();
+}
+
+export function gotoAndPlay(number) {
+    goto(number);
+    if (!isPlaying()) {
+        play();
+    }
 }
 
 export function turnOnAutoplay() {
