@@ -83,7 +83,7 @@ const getMarqueeStyle = duration => ({
     animation: `${animationName} ${duration}s infinite linear`
 });
 
-class Marquee extends Component {
+class TM extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -110,12 +110,12 @@ class Marquee extends Component {
     }
 }
 
-Marquee.propTypes = {
+TM.propTypes = {
     text: PropTypes.string,
     duration: PropTypes.number
 };
 
-export const TitleMarquee = Marquee;
+export const TitleMarquee = TM;
 
 
 /* TimeSlider component */

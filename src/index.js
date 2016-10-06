@@ -1,7 +1,8 @@
-import {connectAudioPlayer, TitleMarquee, TimeSlider} from './ReactDesignableAudioPlayer';
+import {connectAudioPlayer, TitleMarquee, TimeSlider, Playlist} from './ReactDesignableAudioPlayer';
 
 export {
-  connectAudioPlayer,
-  TitleMarquee,
-  TimeSlider
+    connectAudioPlayer,
+    TitleMarquee,
+    TimeSlider,
+    Playlist
 };

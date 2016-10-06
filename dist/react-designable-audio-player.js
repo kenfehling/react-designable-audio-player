@@ -57,15 +57,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
+	    value: true
 	});
-	exports.TimeSlider = exports.TitleMarquee = exports.connectAudioPlayer = undefined;
+	exports.Playlist = exports.TimeSlider = exports.TitleMarquee = exports.connectAudioPlayer = undefined;
 
 	var _ReactDesignableAudioPlayer = __webpack_require__(1);
 
 	exports.connectAudioPlayer = _ReactDesignableAudioPlayer.connectAudioPlayer;
 	exports.TitleMarquee = _ReactDesignableAudioPlayer.TitleMarquee;
 	exports.TimeSlider = _ReactDesignableAudioPlayer.TimeSlider;
+	exports.Playlist = _ReactDesignableAudioPlayer.Playlist;
 
 /***/ },
 /* 1 */
@@ -201,13 +202,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	    });
 	};
 
-	var Marquee = function (_Component2) {
-	    _inherits(Marquee, _Component2);
+	var TM = function (_Component2) {
+	    _inherits(TM, _Component2);
 
-	    function Marquee(props) {
-	        _classCallCheck(this, Marquee);
+	    function TM(props) {
+	        _classCallCheck(this, TM);
 
-	        var _this3 = _possibleConstructorReturn(this, (Marquee.__proto__ || Object.getPrototypeOf(Marquee)).call(this, props));
+	        var _this3 = _possibleConstructorReturn(this, (TM.__proto__ || Object.getPrototypeOf(TM)).call(this, props));
 
 	        _this3.state = {
 	            on: true,
@@ -216,7 +217,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        return _this3;
 	    }
 
-	    _createClass(Marquee, [{
+	    _createClass(TM, [{
 	        key: 'componentDidMount',
 	        value: function componentDidMount() {
 	            var _this4 = this;
@@ -251,15 +252,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 	    }]);
 
-	    return Marquee;
+	    return TM;
 	}(_react.Component);
 
-	Marquee.propTypes = {
+	TM.propTypes = {
 	    text: _react.PropTypes.string,
 	    duration: _react.PropTypes.number
 	};
 
-	var TitleMarquee = exports.TitleMarquee = Marquee;
+	var TitleMarquee = exports.TitleMarquee = TM;
 
 	/* TimeSlider component */
 
