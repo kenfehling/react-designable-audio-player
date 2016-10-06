@@ -149,10 +149,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	                var props = {
 	                    play: _audioPlayerCore.play,
 	                    stop: _audioPlayerCore.stop,
+	                    seek: _audioPlayerCore.seek,
 	                    next: _audioPlayerCore.next,
 	                    prev: _audioPlayerCore.prev,
-	                    seek: _audioPlayerCore.seek,
 	                    goto: _audioPlayerCore.goto,
+	                    gotoAndPlay: _audioPlayerCore.gotoAndPlay,
 	                    isPlaying: this.state.isPlaying,
 	                    currentTrack: this.state.currentTrack,
 	                    secondsElapsed: this.state.secondsElapsed,
@@ -28448,10 +28449,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.addTracks = addTracks;
 	exports.play = play;
 	exports.stop = stop;
+	exports.seek = seek;
 	exports.next = next;
 	exports.prev = prev;
-	exports.seek = seek;
 	exports.goto = goto;
+	exports.gotoAndPlay = gotoAndPlay;
 	exports.turnOnAutoplay = turnOnAutoplay;
 	exports.addListener = addListener;
 	exports.removeListener = removeListener;
@@ -28558,6 +28560,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	    updateListeners(UpdateTypes.STOP);
 	}
 
+	function seek(seconds) {
+	    audio.currentTime = seconds;
+	    updateListeners(UpdateTypes.SEEK);
+	}
+
 	function next() {
 	    currentTrackIndex = currentTrackIndex + 1 >= _lodash2.default.size(tracks) ? 0 : currentTrackIndex + 1;
 	    switchTrack();
@@ -28568,14 +28575,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	    switchTrack();
 	}
 
-	function seek(seconds) {
-	    audio.currentTime = seconds;
-	    updateListeners(UpdateTypes.SEEK);
-	}
-
 	function goto(number) {
 	    currentTrackIndex = number - 1;
 	    switchTrack();
+	}
+
+	function gotoAndPlay(number) {
+	    goto(number);
+	    if (!isPlaying()) {
+	        play();
+	    }
 	}
 
 	function turnOnAutoplay() {
