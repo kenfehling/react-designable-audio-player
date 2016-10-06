@@ -1,5 +1,5 @@
 import React from 'react';
-import {connectAudioPlayer, TitleMarquee, TimeSlider} from 'react-designable-audio-player';
+import {connectAudioPlayer, TitleMarquee, TimeSlider, Playlist} from 'react-designable-audio-player';
 import './WithPlaylist.css';
 import tracks from '../tracks';
 
@@ -20,13 +20,7 @@ const AudioPlayer = ({play, stop, next, prev, goto, gotoAndPlay, isPlaying, time
             </div>
             <div className="time">{timeElapsed}</div>
         </div>
-        <div className="playlist">
-            {tracks.map((track, i) =>
-                <div className={number === i + 1 ? 'current playlist-item' : 'playlist-item'}
-                     onClick={() => number === i + 1 ? gotoAndPlay(i + 1) : goto(i + 1)} key={i}>
-                    {`${i + 1}. ${track.artist} - ${track.title}`}
-                </div>)}
-        </div>
+        <Playlist className="playlist" itemClassName='playlist-item' currentItemClassName='current playlist-item' />
     </div>
 );
 

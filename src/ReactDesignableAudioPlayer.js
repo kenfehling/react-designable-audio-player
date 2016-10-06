@@ -143,3 +143,40 @@ export class TimeSlider extends Component {
                        handle={this.props.handle || <DefaultSliderHandle />} {...this.props} />;
     }
 }
+
+
+/* Playlist component */
+
+class PL extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            tracks: [],
+            currentTrack: {}
+        };
+    }
+
+    componentDidMount() {
+        addListener(update => this.setState(_.pick(update, ['tracks', 'currentTrack'])));
+    }
+
+    render() {
+        const {className, itemClassName, currentItemClassName} = this.props;
+        const {tracks, currentTrack: {number}} = this.state;
+        return <div className={className}>
+            {tracks.map((track, i) =>
+                <div className={number === i + 1 ? currentItemClassName : itemClassName}
+                     onClick={() => number === i + 1 ? gotoAndPlay(i + 1) : goto(i + 1)} key={i}>
+                    {`${i + 1}. ${track.artist} - ${track.title}`}
+                </div>)}
+        </div>;
+    }
+}
+
+PL.propTypes = {
+    className: PropTypes.string,
+    itemClassName: PropTypes.string,
+    currentItemClassName: PropTypes.string
+};
+
+export const Playlist = PL;

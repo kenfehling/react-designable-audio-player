@@ -76,7 +76,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-	exports.TimeSlider = exports.TitleMarquee = undefined;
+	exports.Playlist = exports.TimeSlider = exports.TitleMarquee = undefined;
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -305,6 +305,71 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    return TimeSlider;
 	}(_react.Component);
+
+	/* Playlist component */
+
+	var PL = function (_Component4) {
+	    _inherits(PL, _Component4);
+
+	    function PL(props) {
+	        _classCallCheck(this, PL);
+
+	        var _this7 = _possibleConstructorReturn(this, (PL.__proto__ || Object.getPrototypeOf(PL)).call(this, props));
+
+	        _this7.state = {
+	            tracks: [],
+	            currentTrack: {}
+	        };
+	        return _this7;
+	    }
+
+	    _createClass(PL, [{
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {
+	            var _this8 = this;
+
+	            (0, _audioPlayerCore.addListener)(function (update) {
+	                return _this8.setState(_lodash2.default.pick(update, ['tracks', 'currentTrack']));
+	            });
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            var _props2 = this.props;
+	            var className = _props2.className;
+	            var itemClassName = _props2.itemClassName;
+	            var currentItemClassName = _props2.currentItemClassName;
+	            var _state2 = this.state;
+	            var tracks = _state2.tracks;
+	            var number = _state2.currentTrack.number;
+
+	            return _react2.default.createElement(
+	                'div',
+	                { className: className },
+	                tracks.map(function (track, i) {
+	                    return _react2.default.createElement(
+	                        'div',
+	                        { className: number === i + 1 ? currentItemClassName : itemClassName,
+	                            onClick: function onClick() {
+	                                return number === i + 1 ? (0, _audioPlayerCore.gotoAndPlay)(i + 1) : (0, _audioPlayerCore.goto)(i + 1);
+	                            }, key: i },
+	                        i + 1 + '. ' + track.artist + ' - ' + track.title
+	                    );
+	                })
+	            );
+	        }
+	    }]);
+
+	    return PL;
+	}(_react.Component);
+
+	PL.propTypes = {
+	    className: _react.PropTypes.string,
+	    itemClassName: _react.PropTypes.string,
+	    currentItemClassName: _react.PropTypes.string
+	};
+
+	var Playlist = exports.Playlist = PL;
 
 /***/ },
 /* 2 */
@@ -28502,16 +28567,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	    _lodash2.default.each(_lodash2.default.values(listeners), function (listener) {
 	        return listener({
 	            type: type,
-	            currentTrack: _extends({}, tracks[currentTrackIndex], {
-	                number: currentTrackIndex + 1,
-	                durationSeconds: audio.duration,
-	                durationString: formatTime(audio.duration)
-	            }),
+	            tracks: tracks,
 	            isPlaying: isPlaying(),
 	            secondsElapsed: audio.currentTime,
 	            secondsRemaining: audio.duration - audio.currentTime,
 	            timeElapsed: formatTime(audio.currentTime),
-	            timeRemaining: formatTime(audio.duration - audio.currentTime)
+	            timeRemaining: formatTime(audio.duration - audio.currentTime),
+	            currentTrack: _extends({}, tracks[currentTrackIndex], {
+	                number: currentTrackIndex + 1,
+	                durationSeconds: audio.duration,
+	                durationString: formatTime(audio.duration)
+	            })
 	        });
 	    });
 	}
