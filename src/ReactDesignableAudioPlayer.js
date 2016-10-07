@@ -36,7 +36,7 @@ export function connectAudioPlayer(WrappedComponent, tracks, {autoplay=false}={}
                 goto,
                 gotoAndPlay,
                 isPlaying: this.state.isPlaying,
-                currentTrack: this.state.currentTrack,
+                currentTrack: this.state.currentTrack || {},
                 secondsElapsed: this.state.secondsElapsed,
                 secondsRemaining: this.state.secondsRemaining,
                 timeElapsed: this.state.timeElapsed,

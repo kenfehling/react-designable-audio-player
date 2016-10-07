@@ -159,7 +159,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                    goto: _audioPlayerCore.goto,
 	                    gotoAndPlay: _audioPlayerCore.gotoAndPlay,
 	                    isPlaying: this.state.isPlaying,
-	                    currentTrack: this.state.currentTrack,
+	                    currentTrack: this.state.currentTrack || {},
 	                    secondsElapsed: this.state.secondsElapsed,
 	                    secondsRemaining: this.state.secondsRemaining,
 	                    timeElapsed: this.state.timeElapsed,
