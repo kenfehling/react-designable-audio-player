@@ -101,12 +101,11 @@ class TM extends Component {
 
     render() {
         const {className, textFn, duration} = this.props;
-        const currentTrack = this.state;
-        const {number, artist, title} = currentTrack;
+        const {number, artist, title} = this.state.currentTrack;
         return <div className={className}>
             <div style={{overflow: 'hidden', whiteSpace: 'nowrap'}}>
                 <div style={this.state.on ? getMarqueeStyle(duration || 10) : baseStyle}>
-                    {textFn ? textFn(currentTrack) : `${number}. ${artist} - ${title}`}
+                    {textFn ? textFn(this.state.currentTrack) : `${number}. ${artist} - ${title}`}
                 </div>
             </div>
         </div>

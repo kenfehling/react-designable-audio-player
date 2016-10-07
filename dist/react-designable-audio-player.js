@@ -236,11 +236,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	            var className = _props.className;
 	            var textFn = _props.textFn;
 	            var duration = _props.duration;
-
-	            var currentTrack = this.state;
-	            var number = currentTrack.number;
-	            var artist = currentTrack.artist;
-	            var title = currentTrack.title;
+	            var _state$currentTrack = this.state.currentTrack;
+	            var number = _state$currentTrack.number;
+	            var artist = _state$currentTrack.artist;
+	            var title = _state$currentTrack.title;
 
 	            return _react2.default.createElement(
 	                'div',
@@ -251,7 +250,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                    _react2.default.createElement(
 	                        'div',
 	                        { style: this.state.on ? getMarqueeStyle(duration || 10) : baseStyle },
-	                        textFn ? textFn(currentTrack) : number + '. ' + artist + ' - ' + title
+	                        textFn ? textFn(this.state.currentTrack) : number + '. ' + artist + ' - ' + title
 	                    )
 	                )
 	            );
