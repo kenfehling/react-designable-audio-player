@@ -28562,6 +28562,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var lastListenerId = 0;
 
 	var UpdateTypes = exports.UpdateTypes = {
+	    LOAD: 'LOAD',
 	    PLAY: 'PLAY',
 	    PAUSE: 'PAUSE',
 	    STOP: 'STOP',
@@ -28585,7 +28586,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 	function formatTime(seconds) {
-	    if (typeof seconds === 'number') {
+	    if (typeof seconds === 'number' && seconds >= 0) {
 	        var m = Math.round(seconds / 60);
 	        var s = Math.round(seconds) % 60;
 	        return zeroPadNumber(m) + ':' + zeroPadNumber(s);
@@ -28643,7 +28644,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	        updateListeners(UpdateTypes.PAUSE);
 	    } else {
 	        audio.play();
-	        updateListeners(UpdateTypes.PLAY);
 	        timer = setInterval(function () {
 	            return updateListeners(UpdateTypes.TICK);
 	        }, 1000);
@@ -28697,7 +28697,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	    delete listeners[String(id)];
 	}
 
-	audio.addEventListener('durationchange', updateListeners);
+	audio.addEventListener('play', function () {
+	    return updateListeners(UpdateTypes.PLAY);
+	});
+	audio.addEventListener('durationchange', function () {
+	    return updateListeners(UpdateTypes.LOAD);
+	});
 
 	audio.addEventListener('ended', function () {
 	    next();

@@ -7,4 +7,5 @@ test('formats time', () => {
     expect(core.formatTime(0)).toBe('00:00');
     expect(core.formatTime(1)).toBe('00:01');
     expect(core.formatTime(61)).toBe('01:01');
+    expect(core.formatTime(-1)).toBe('--:--');
 });

@@ -10,6 +10,7 @@ let listeners = {};
 let lastListenerId = 0;
 
 export const UpdateTypes = {
+    LOAD: 'LOAD',
     PLAY: 'PLAY',
     PAUSE: 'PAUSE',
     STOP: 'STOP',
@@ -33,7 +34,7 @@ function zeroPadNumber(number) {
 }
 
 export function formatTime(seconds) {
-    if (typeof seconds === 'number') {
+    if (typeof seconds === 'number' && seconds >= 0) {
         const m = Math.round(seconds / 60);
         const s = Math.round(seconds) % 60;
         return zeroPadNumber(m) + ':' + zeroPadNumber(s);
@@ -92,7 +93,6 @@ export function play() {
     }
     else {
         audio.play();
-        updateListeners(UpdateTypes.PLAY);
         timer = setInterval(() => updateListeners(UpdateTypes.TICK), 1000);
     }
 }
@@ -144,7 +144,8 @@ export function removeListener(id) {
     delete listeners[String(id)];
 }
 
-audio.addEventListener('durationchange', updateListeners);
+audio.addEventListener('play', () => updateListeners(UpdateTypes.PLAY));
+audio.addEventListener('durationchange', () => updateListeners(UpdateTypes.LOAD));
 
 audio.addEventListener('ended', () => {
     next();
