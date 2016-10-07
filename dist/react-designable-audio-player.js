@@ -110,7 +110,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	function connectAudioPlayer(WrappedComponent, tracks) {
-	    var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : { autoplay: false };
+	    var _ref = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+
+	    var _ref$autoplay = _ref.autoplay;
+	    var autoplay = _ref$autoplay === undefined ? false : _ref$autoplay;
 
 	    var Connect = function (_Component) {
 	        _inherits(Connect, _Component);
@@ -122,7 +125,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	            _this.state = {
 	                isPlaying: false,
-	                currentTrack: {},
+	                currentTrack: null,
 	                secondsElapsed: 0,
 	                secondsRemaining: 0,
 	                timeElapsed: null,
@@ -139,7 +142,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                (0, _audioPlayerCore.addListener)(function (update) {
 	                    return _this2.setState(_lodash2.default.omit(update, 'type'));
 	                });
-	                if (options.autoplay) {
+	                if (autoplay) {
 	                    (0, _audioPlayerCore.turnOnAutoplay)();
 	                }
 	                (0, _audioPlayerCore.addTracks)(tracks);
@@ -212,7 +215,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        _this3.state = {
 	            on: true,
-	            currentTrack: {}
+	            currentTrack: null
 	        };
 	        return _this3;
 	    }
@@ -236,10 +239,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	            var className = _props.className;
 	            var textFn = _props.textFn;
 	            var duration = _props.duration;
-	            var _state$currentTrack = this.state.currentTrack;
-	            var number = _state$currentTrack.number;
-	            var artist = _state$currentTrack.artist;
-	            var title = _state$currentTrack.title;
+	            var currentTrack = this.state.currentTrack;
+
+	            var _ref2 = currentTrack || {};
+
+	            var number = _ref2.number;
+	            var artist = _ref2.artist;
+	            var title = _ref2.title;
 
 	            return _react2.default.createElement(
 	                'div',
@@ -250,7 +256,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                    _react2.default.createElement(
 	                        'div',
 	                        { style: this.state.on ? getMarqueeStyle(duration || 10) : baseStyle },
-	                        textFn ? textFn(this.state.currentTrack) : number + '. ' + artist + ' - ' + title
+	                        currentTrack ? textFn ? textFn(currentTrack) : number + '. ' + artist + ' - ' + title : ''
 	                    )
 	                )
 	            );
@@ -337,7 +343,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        _this7.state = {
 	            tracks: [],
-	            currentTrack: {}
+	            currentTrack: null
 	        };
 	        return _this7;
 	    }
@@ -362,7 +368,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	            var _state2 = this.state;
 	            var tracks = _state2.tracks;
 	            var currentTrack = _state2.currentTrack;
-	            var number = currentTrack.number;
+
+	            var _ref3 = currentTrack || {};
+
+	            var number = _ref3.number;
 
 	            return _react2.default.createElement(
 	                'div',
@@ -28560,6 +28569,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var lastListenerId = 0;
 
 	var UpdateTypes = exports.UpdateTypes = {
+	    TRACKS_ADDED: 'TRACKS_ADDED',
 	    LOAD: 'LOAD',
 	    PLAY: 'PLAY',
 	    PAUSE: 'PAUSE',
@@ -28633,6 +28643,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        audio.src = newTracks[0].file;
 	    }
 	    tracks = newTracks;
+	    updateListeners(UpdateTypes.TRACKS_ADDED);
 	}
 
 	function play() {

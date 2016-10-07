@@ -10,6 +10,7 @@ let listeners = {};
 let lastListenerId = 0;
 
 export const UpdateTypes = {
+    TRACKS_ADDED: 'TRACKS_ADDED',
     LOAD: 'LOAD',
     PLAY: 'PLAY',
     PAUSE: 'PAUSE',
@@ -83,6 +84,7 @@ export function addTracks(newTracks) {
         audio.src = newTracks[0].file;
     }
     tracks = newTracks;
+    updateListeners(UpdateTypes.TRACKS_ADDED);
 }
 
 export function play() {

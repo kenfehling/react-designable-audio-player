@@ -4,13 +4,13 @@ import 'rc-slider/assets/index.css';
 import { play, stop, seek, next, prev, goto, gotoAndPlay, addTracks, turnOnAutoplay, addListener, UpdateTypes } from './audioPlayerCore';
 import _ from 'lodash';
 
-export function connectAudioPlayer(WrappedComponent, tracks, options={autoplay:false}) {
+export function connectAudioPlayer(WrappedComponent, tracks, {autoplay=false}={}) {
     class Connect extends Component {
         constructor(props) {
             super(props);
             this.state = {
                 isPlaying: false,
-                currentTrack: {},
+                currentTrack: null,
                 secondsElapsed: 0,
                 secondsRemaining: 0,
                 timeElapsed: null,
@@ -20,7 +20,7 @@ export function connectAudioPlayer(WrappedComponent, tracks, options={autoplay:f
 
         componentDidMount() {
             addListener(update => this.setState(_.omit(update, 'type')));
-            if (options.autoplay) {
+            if (autoplay) {
                 turnOnAutoplay();
             }
             addTracks(tracks);
@@ -88,7 +88,7 @@ class TM extends Component {
         super(props);
         this.state = {
             on: true,
-            currentTrack: {}
+            currentTrack: null
         };
     }
 
@@ -101,11 +101,12 @@ class TM extends Component {
 
     render() {
         const {className, textFn, duration} = this.props;
-        const {number, artist, title} = this.state.currentTrack;
+        const {currentTrack} = this.state;
+        const {number, artist, title} = currentTrack || {};
         return <div className={className}>
             <div style={{overflow: 'hidden', whiteSpace: 'nowrap'}}>
                 <div style={this.state.on ? getMarqueeStyle(duration || 10) : baseStyle}>
-                    {textFn ? textFn(this.state.currentTrack) : `${number}. ${artist} - ${title}`}
+                    {currentTrack ? (textFn ? textFn(currentTrack) : `${number}. ${artist} - ${title}`) : ''}
                 </div>
             </div>
         </div>
@@ -165,7 +166,7 @@ class PL extends Component {
         super(props);
         this.state = {
             tracks: [],
-            currentTrack: {}
+            currentTrack: null
         };
     }
 
@@ -176,7 +177,7 @@ class PL extends Component {
     render() {
         const {className, itemClassName, currentItemClassName, itemComponent} = this.props;
         const {tracks, currentTrack} = this.state;
-        const {number} = currentTrack;
+        const {number} = currentTrack || {};
         return <div className={className}>
             {tracks.map((track, i) =>
                 <div className={number === i + 1 ? itemClassName + ' ' + currentItemClassName : itemClassName}
