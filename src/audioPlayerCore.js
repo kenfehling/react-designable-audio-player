@@ -18,8 +18,14 @@ export const UpdateTypes = {
     TICK: 'TICK'
 };
 
+export const DEFAULT_TIME_STRING = '--:--';
+
 function isPlaying() {
     return audio.duration > 0 && !audio.paused;
+}
+
+function isStopped() {
+    return !audio.currentTime;
 }
 
 function zeroPadNumber(number) {
@@ -33,7 +39,7 @@ export function formatTime(seconds) {
         return zeroPadNumber(m) + ':' + zeroPadNumber(s);
     }
     else {
-        return '--:--';
+        return DEFAULT_TIME_STRING;
     }
 }
 
@@ -44,7 +50,7 @@ function updateListeners(type) {
         isPlaying: isPlaying(),
         secondsElapsed: audio.currentTime,
         secondsRemaining: audio.duration - audio.currentTime,
-        timeElapsed: formatTime(audio.currentTime),
+        timeElapsed: isStopped() ? DEFAULT_TIME_STRING : formatTime(audio.currentTime),
         timeRemaining: formatTime(audio.duration - audio.currentTime),
         currentTrack: {
             ...tracks[currentTrackIndex],
@@ -56,7 +62,7 @@ function updateListeners(type) {
 }
 
 function switchTrack() {
-    const wasStopped = audio.currentTime === 0;
+    const wasStopped = isStopped();
     audio.src = tracks[currentTrackIndex].file;
     if (!wasStopped) {
         play();

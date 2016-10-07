@@ -28531,7 +28531,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-	exports.UpdateTypes = undefined;
+	exports.DEFAULT_TIME_STRING = exports.UpdateTypes = undefined;
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; /* global Audio */
 
@@ -28570,8 +28570,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	    TICK: 'TICK'
 	};
 
+	var DEFAULT_TIME_STRING = exports.DEFAULT_TIME_STRING = '--:--';
+
 	function isPlaying() {
 	    return audio.duration > 0 && !audio.paused;
+	}
+
+	function isStopped() {
+	    return !audio.currentTime;
 	}
 
 	function zeroPadNumber(number) {
@@ -28584,7 +28590,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        var s = Math.round(seconds) % 60;
 	        return zeroPadNumber(m) + ':' + zeroPadNumber(s);
 	    } else {
-	        return '--:--';
+	        return DEFAULT_TIME_STRING;
 	    }
 	}
 
@@ -28596,7 +28602,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            isPlaying: isPlaying(),
 	            secondsElapsed: audio.currentTime,
 	            secondsRemaining: audio.duration - audio.currentTime,
-	            timeElapsed: formatTime(audio.currentTime),
+	            timeElapsed: isStopped() ? DEFAULT_TIME_STRING : formatTime(audio.currentTime),
 	            timeRemaining: formatTime(audio.duration - audio.currentTime),
 	            currentTrack: _extends({}, tracks[currentTrackIndex], {
 	                number: currentTrackIndex + 1,
@@ -28608,7 +28614,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 	function switchTrack() {
-	    var wasStopped = audio.currentTime === 0;
+	    var wasStopped = isStopped();
 	    audio.src = tracks[currentTrackIndex].file;
 	    if (!wasStopped) {
 	        play();
