@@ -234,12 +234,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	        value: function render() {
 	            var _props = this.props;
 	            var className = _props.className;
-	            var text = _props.text;
+	            var textFn = _props.textFn;
 	            var duration = _props.duration;
-	            var _state$currentTrack = this.state.currentTrack;
-	            var number = _state$currentTrack.number;
-	            var artist = _state$currentTrack.artist;
-	            var title = _state$currentTrack.title;
+
+	            var currentTrack = this.state;
+	            var number = currentTrack.number;
+	            var artist = currentTrack.artist;
+	            var title = currentTrack.title;
 
 	            return _react2.default.createElement(
 	                'div',
@@ -250,7 +251,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                    _react2.default.createElement(
 	                        'div',
 	                        { style: this.state.on ? getMarqueeStyle(duration || 10) : baseStyle },
-	                        text || number + '. ' + artist + ' - ' + title
+	                        textFn ? textFn(currentTrack) : number + '. ' + artist + ' - ' + title
 	                    )
 	                )
 	            );
@@ -262,7 +263,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	TM.propTypes = {
 	    className: _react.PropTypes.string,
-	    text: _react.PropTypes.string,
+	    textFn: _react.PropTypes.func,
 	    duration: _react.PropTypes.number
 	};
 
@@ -358,7 +359,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	            var className = _props2.className;
 	            var itemClassName = _props2.itemClassName;
 	            var currentItemClassName = _props2.currentItemClassName;
-	            var text = _props2.text;
 	            var itemComponent = _props2.itemComponent;
 	            var _state2 = this.state;
 	            var tracks = _state2.tracks;
@@ -375,7 +375,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                            onClick: function onClick() {
 	                                return number === i + 1 ? (0, _audioPlayerCore.gotoAndPlay)(i + 1) : (0, _audioPlayerCore.goto)(i + 1);
 	                            }, key: i },
-	                        itemComponent ? itemComponent(currentTrack) : text || i + 1 + '. ' + track.artist + ' - ' + track.title
+	                        itemComponent ? itemComponent(currentTrack) : i + 1 + '. ' + track.artist + ' - ' + track.title
 	                    );
 	                })
 	            );
@@ -389,7 +389,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    className: _react.PropTypes.string,
 	    itemClassName: _react.PropTypes.string,
 	    currentItemClassName: _react.PropTypes.string,
-	    text: _react.PropTypes.string,
 	    itemComponent: _react.PropTypes.func
 	};
 

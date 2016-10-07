@@ -5,7 +5,7 @@ An audio player library for [React](https://facebook.github.io/react) that lets 
 
 Control functions and state are provided to your UI component as props from an HOC ([Higher Level Component](https://medium.com/@franleplant/react-higher-order-components-in-depth-cf9032ee6c3e#.d40k7bfb3)).
 
-Built on top of the HTML5 &lt;audio&gt; element.
+Built on top of the HTML5 [&lt;audio&gt;](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio) element.
 
 ## Online demo
 [kenfehling.github.io/react-designable-audio-player](https://kenfehling.github.io/react-designable-audio-player/)
@@ -229,10 +229,10 @@ Use the `TitleMarquee` component to show the current tracking playing.
           <td>CSS class name(s) of the title marquee container</td>
         </tr>
         <tr>
-          <td>text</td>
-          <td>String</td>
-          <td>#. artist - title</td>
-          <td>Text to show inside the marquee</td>
+          <td>textFn</td>
+          <td>function</td>
+          <td></td>
+          <td>Takes currentTrack, returns custom text to show inside the marquee</td>
         </tr>
         <tr>
           <td>duration</td>
@@ -298,12 +298,6 @@ The `Playlist` shows all of the tracks, indicates the current track, and handles
           <td>String</td>
           <td></td>
           <td>CSS class name(s) of the current playlist item</td>
-        </tr>
-        <tr>
-          <td>text</td>
-          <td>String</td>
-          <td>#. artist - title</td>
-          <td>Playlist item text</td>
         </tr>
         <tr>
           <td>itemComponent</td>

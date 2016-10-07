@@ -100,12 +100,13 @@ class TM extends Component {
     }
 
     render() {
-        const {className, text, duration} = this.props;
-        const {number, artist, title} = this.state.currentTrack;
+        const {className, textFn, duration} = this.props;
+        const currentTrack = this.state;
+        const {number, artist, title} = currentTrack;
         return <div className={className}>
             <div style={{overflow: 'hidden', whiteSpace: 'nowrap'}}>
                 <div style={this.state.on ? getMarqueeStyle(duration || 10) : baseStyle}>
-                    {text || `${number}. ${artist} - ${title}`}
+                    {textFn ? textFn(currentTrack) : `${number}. ${artist} - ${title}`}
                 </div>
             </div>
         </div>
@@ -114,7 +115,7 @@ class TM extends Component {
 
 TM.propTypes = {
     className: PropTypes.string,
-    text: PropTypes.string,
+    textFn: PropTypes.func,
     duration: PropTypes.number
 };
 
@@ -174,7 +175,7 @@ class PL extends Component {
     }
 
     render() {
-        const {className, itemClassName, currentItemClassName, text, itemComponent} = this.props;
+        const {className, itemClassName, currentItemClassName, itemComponent} = this.props;
         const {tracks, currentTrack} = this.state;
         const {number} = currentTrack;
         return <div className={className}>
@@ -182,7 +183,7 @@ class PL extends Component {
                 <div className={number === i + 1 ? itemClassName + ' ' + currentItemClassName : itemClassName}
                      onClick={() => number === i + 1 ? gotoAndPlay(i + 1) : goto(i + 1)} key={i}>
                         {itemComponent ? itemComponent(currentTrack) :
-                            text || `${i + 1}. ${track.artist} - ${track.title}`}
+                            `${i + 1}. ${track.artist} - ${track.title}`}
                 </div>)}
         </div>;
     }
@@ -192,7 +193,6 @@ PL.propTypes = {
     className: PropTypes.string,
     itemClassName: PropTypes.string,
     currentItemClassName: PropTypes.string,
-    text: PropTypes.string,
     itemComponent: PropTypes.func
 };
 
