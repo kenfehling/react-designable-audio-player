@@ -26,8 +26,8 @@ function zeroPadNumber(number) {
     return number < 10 ? '0' + number : number;
 }
 
-function formatTime(seconds) {
-    if (seconds) {
+export function formatTime(seconds) {
+    if (typeof seconds === 'number') {
         const m = Math.round(seconds / 60);
         const s = Math.round(seconds) % 60;
         return zeroPadNumber(m) + ':' + zeroPadNumber(s);

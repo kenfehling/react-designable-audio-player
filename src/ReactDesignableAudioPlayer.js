@@ -181,8 +181,8 @@ class PL extends Component {
             {tracks.map((track, i) =>
                 <div className={number === i + 1 ? itemClassName + ' ' + currentItemClassName : itemClassName}
                      onClick={() => number === i + 1 ? gotoAndPlay(i + 1) : goto(i + 1)} key={i}>
-                    {itemComponent ? itemComponent(currentTrack) :
-                        text || `${i + 1}. ${track.artist} - ${track.title}`}
+                        {itemComponent ? itemComponent(currentTrack) :
+                            text || `${i + 1}. ${track.artist} - ${track.title}`}
                 </div>)}
         </div>;
     }

@@ -28535,6 +28535,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; /* global Audio */
 
+	exports.formatTime = formatTime;
 	exports.addTracks = addTracks;
 	exports.play = play;
 	exports.stop = stop;
@@ -28578,7 +28579,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 	function formatTime(seconds) {
-	    if (seconds) {
+	    if (typeof seconds === 'number') {
 	        var m = Math.round(seconds / 60);
 	        var s = Math.round(seconds) % 60;
 	        return zeroPadNumber(m) + ':' + zeroPadNumber(s);

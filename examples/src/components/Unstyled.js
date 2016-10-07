@@ -4,14 +4,11 @@ import tracks from '../tracks';
 
 const AudioPlayer = ({play, stop, next, prev, isPlaying, timeElapsed, timeRemaining, currentTrack:{artist, title}}) => (
     <div>
-        <ul>
-            <li><a href="#" onClick={play}>{isPlaying ? 'Pause' : 'Play'}</a></li>
-            <li><a href="#" onClick={stop}>Stop</a></li>
-            <li><a href="#" onClick={next}>Next</a></li>
-            <li><a href="#" onClick={prev}>Prev</a></li>
-        </ul>
+        <button onClick={play}>{isPlaying ? 'Pause' : 'Play'}</button>
+        <button onClick={stop}>Stop</button>
+        <button onClick={prev}>Prev</button>
+        <button onClick={next}>Next</button>
         <div>{artist} - {title}</div>
-        <br />
         <div>Time elapsed: {timeElapsed}</div>
         <div>Time remaining: {timeRemaining}</div>
     </div>
