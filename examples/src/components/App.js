@@ -2,16 +2,21 @@ import React from 'react';
 import Simple from './Simple';
 import WithPlaylist from './WithPlaylist';
 import Unstyled from './Unstyled';
+import CustomPlaylist from './CustomPlaylist';
 import Fixed from './Fixed';
 
+const rowStyle = {display: 'flex', marginTop: '40px'};
+const playlistContainerStyle = {margin: 'auto'};
+
 export default () => (
-    <div style={{marginTop: '40px'}}>
-        <div style={{display: 'flex'}}>
-            <Simple />
-            <WithPlaylist />
+    <div>
+        <div style={rowStyle}>
+            <div style={playlistContainerStyle}><Simple /></div>
+            <div style={playlistContainerStyle}><WithPlaylist /></div>
         </div>
-        <div style={{width: '360px', margin: '50px auto'}}>
-            <Unstyled />
+        <div style={rowStyle}>
+            <div style={{...playlistContainerStyle, width: '250px'}}><Unstyled /></div>
+            <div style={playlistContainerStyle}><CustomPlaylist /></div>
         </div>
         <Fixed />
     </div>
