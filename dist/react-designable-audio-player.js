@@ -383,7 +383,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                            onClick: function onClick() {
 	                                return number === i + 1 ? (0, _audioPlayerCore.gotoAndPlay)(i + 1) : (0, _audioPlayerCore.goto)(i + 1);
 	                            }, key: i },
-	                        itemComponent ? itemComponent(currentTrack) : i + 1 + '. ' + track.artist + ' - ' + track.title
+	                        itemComponent ? itemComponent(track) : i + 1 + '. ' + track.artist + ' - ' + track.title
 	                    );
 	                })
 	            );
@@ -28614,7 +28614,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	            timeElapsed: isStopped() ? DEFAULT_TIME_STRING : formatTime(audio.currentTime),
 	            timeRemaining: formatTime(audio.duration - audio.currentTime),
 	            currentTrack: _extends({}, tracks[currentTrackIndex], {
-	                number: currentTrackIndex + 1,
 	                durationSeconds: audio.duration,
 	                durationString: formatTime(audio.duration)
 	            })
@@ -28642,7 +28641,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    if (_lodash2.default.isEmpty(tracks)) {
 	        audio.src = newTracks[0].file;
 	    }
-	    tracks = newTracks;
+	    tracks = _lodash2.default.map(newTracks, function (t, i) {
+	        return _extends({}, t, { number: i + 1 });
+	    });
 	    updateListeners(UpdateTypes.TRACKS_ADDED);
 	}
 

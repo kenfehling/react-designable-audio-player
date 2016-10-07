@@ -56,7 +56,6 @@ function updateListeners(type) {
         timeRemaining: formatTime(audio.duration - audio.currentTime),
         currentTrack: {
             ...tracks[currentTrackIndex],
-            number: currentTrackIndex + 1,
             durationSeconds: audio.duration,
             durationString: formatTime(audio.duration)
         },
@@ -83,7 +82,7 @@ export function addTracks(newTracks) {
     if (_.isEmpty(tracks)) {
         audio.src = newTracks[0].file;
     }
-    tracks = newTracks;
+    tracks = _.map(newTracks, (t, i) => ({...t, number: i + 1}));
     updateListeners(UpdateTypes.TRACKS_ADDED);
 }
 
