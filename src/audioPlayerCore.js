@@ -95,6 +95,7 @@ export function play() {
     }
     else {
         audio.play();
+        updateListeners(UpdateTypes.PLAY);
         timer = setInterval(() => updateListeners(UpdateTypes.TICK), 1000);
     }
 }

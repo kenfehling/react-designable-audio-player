@@ -28653,6 +28653,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        updateListeners(UpdateTypes.PAUSE);
 	    } else {
 	        audio.play();
+	        updateListeners(UpdateTypes.PLAY);
 	        timer = setInterval(function () {
 	            return updateListeners(UpdateTypes.TICK);
 	        }, 1000);
