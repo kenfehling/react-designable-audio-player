@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "scripts": {
     "clean": "rimraf lib",
-    "lint": "eslint src test",
+    "lint": "eslint src tests",
     "build:lib": "babel src --out-dir lib",
     "build:examples": "cd examples; npm run build",
     "build:umd": "webpack src/index.js dist/react-designable-audio-player.js --config webpack.config.development.js",
@@ -50,6 +50,8 @@
     "babel-preset-stage-1": "^6.3.13",
     "css-loader": "^0.25.0",
     "enzyme": "^2.4.1",
+    "eslint": "^3.7.1",
+    "eslint-plugin-react": "^6.3.0",
     "jest-cli": "^15.1.1",
     "react-addons-test-utils": "^15.3.2",
     "rimraf": "^2.3.4",
@@ -62,8 +64,14 @@
   },
   "jest": {
     "scriptPreprocessor": "node_modules/webpack-babel-jest",
-    "testPathDirs": ["tests"],
+    "testPathDirs": [
+      "tests"
+    ],
     "testRegex": "/*.js$",
-    "moduleFileExtensions": ["js", "jsx", "json"]
+    "moduleFileExtensions": [
+      "js",
+      "jsx",
+      "json"
+    ]
   }
 }

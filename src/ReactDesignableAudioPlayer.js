@@ -103,13 +103,13 @@ class TM extends Component {
         const {className, textFn, duration} = this.props;
         const {currentTrack} = this.state;
         const {number, artist, title} = currentTrack || {};
-        return <div className={className}>
+        return (<div className={className}>
             <div style={{overflow: 'hidden', whiteSpace: 'nowrap'}}>
                 <div style={this.state.on ? getMarqueeStyle(duration || 10) : baseStyle}>
                     {currentTrack ? (textFn ? textFn(currentTrack) : `${number}. ${artist} - ${title}`) : ''}
                 </div>
             </div>
-        </div>
+        </div>);
     }
 }
 
@@ -144,11 +144,11 @@ class TS extends Component {
     render() {
         const {className} = this.props;
         const {secondsElapsed, secondsRemaining} = this.state;
-        return <div className={className}>
+        return (<div className={className}>
             <Slider onChange={seek} value={secondsElapsed} min={0} max={secondsElapsed + secondsRemaining}
                     handle={this.props.handle || <DefaultSliderHandle />}
                     {...(_.omit(this.props, 'className'))} />
-        </div>;
+        </div>);
     }
 }
 
@@ -178,14 +178,14 @@ class PL extends Component {
         const {className, itemClassName, currentItemClassName, itemComponent} = this.props;
         const {tracks, currentTrack} = this.state;
         const {number} = currentTrack || {};
-        return <div className={className}>
+        return (<div className={className}>
             {tracks.map((track, i) =>
                 <div className={number === i + 1 ? itemClassName + ' ' + currentItemClassName : itemClassName}
                      onClick={() => number === i + 1 ? gotoAndPlay(i + 1) : goto(i + 1)} key={i}>
                         {itemComponent ? itemComponent(track) :
                             `${i + 1}. ${track.artist} - ${track.title}`}
                 </div>)}
-        </div>;
+        </div>);
     }
 }
 
