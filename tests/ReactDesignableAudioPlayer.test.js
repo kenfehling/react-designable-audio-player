@@ -1,6 +1,8 @@
 import React from 'react';
 import {shallow, mount, render} from 'enzyme';
 import {connectAudioPlayer, TitleMarquee, TimeSlider, Playlist} from '../src/ReactDesignableAudioPlayer';
+import * as core from '../src/audioPlayerCore';
+import _ from 'lodash';
 
 const tracks = [
     {artist: 'Radiohead', title: 'You', file: ''},
@@ -50,4 +52,14 @@ test("Playlist accepts a custom item component", () => {
     const playlist = mount(<Playlist itemComponent={ItemComponent} />);
     mount(<AudioPlayer />);
     expect(playlist.text()).toEqual('1ken2ken');
+});
+
+test('TimeSlider removes listener on unmount', () => {
+    const PlayerComponent = () => <div></div>;
+    const AudioPlayer = connectAudioPlayer(PlayerComponent, tracks);
+    const slider = mount(<TimeSlider />);
+    mount(<AudioPlayer />);
+    const numListeners = _.size(core.getAllListeners());
+    slider.unmount();
+    expect(_.size(core.getAllListeners())).toBe(numListeners - 1);
 });

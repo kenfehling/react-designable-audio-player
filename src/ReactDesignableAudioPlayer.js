@@ -20,11 +20,15 @@ export function connectAudioPlayer(WrappedComponent, tracks, {autoplay=false}={}
         }
 
         componentDidMount() {
-            addListener(update => this.setState(_.omit(update, 'type')));
+            this.listenerId = addListener(update => this.setState(_.omit(update, 'type')));
             if (autoplay) {
                 turnOnAutoplay();
             }
             addTracks(tracks);
+        }
+
+        componentWillUnmount() {
+            removeListener(this.listenerId);
         }
 
         render() {

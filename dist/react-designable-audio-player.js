@@ -139,13 +139,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	            value: function componentDidMount() {
 	                var _this2 = this;
 
-	                (0, _audioPlayerCore.addListener)(function (update) {
+	                this.listenerId = (0, _audioPlayerCore.addListener)(function (update) {
 	                    return _this2.setState(_lodash2.default.omit(update, 'type'));
 	                });
 	                if (autoplay) {
 	                    (0, _audioPlayerCore.turnOnAutoplay)();
 	                }
 	                (0, _audioPlayerCore.addTracks)(tracks);
+	            }
+	        }, {
+	            key: 'componentWillUnmount',
+	            value: function componentWillUnmount() {
+	                (0, _audioPlayerCore.removeListener)(this.listenerId);
 	            }
 	        }, {
 	            key: 'render',
@@ -28569,6 +28574,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.turnOnAutoplay = turnOnAutoplay;
 	exports.addListener = addListener;
 	exports.removeListener = removeListener;
+	exports.getAllListeners = getAllListeners;
 
 	var _lodash = __webpack_require__(315);
 
@@ -28721,6 +28727,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function removeListener(id) {
 	    delete listeners[String(id)];
+	}
+
+	function getAllListeners() {
+	    return listeners;
 	}
 
 	audio.addEventListener('play', function () {

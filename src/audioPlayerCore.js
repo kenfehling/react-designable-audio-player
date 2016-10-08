@@ -146,6 +146,10 @@ export function removeListener(id) {
     delete listeners[String(id)];
 }
 
+export function getAllListeners() {
+    return listeners;
+}
+
 audio.addEventListener('play', () => updateListeners(UpdateTypes.PLAY));
 audio.addEventListener('durationchange', () => updateListeners(UpdateTypes.LOAD));
 
