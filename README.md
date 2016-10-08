@@ -7,7 +7,7 @@ Control functions and state are provided to your UI component as props from an H
 
 Built on top of the HTML5 [&lt;audio&gt;](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio) element.
 
-[![build status](https://img.shields.io/travis/kenfehling/react-designable-audio-player/master.svg?style=flat-square)](https://travis-ci.org/kenfehling/react-designable-audio-player)
+[![build status](https://travis-ci.org/kenfehling/react-designable-audio-player.svg?branch=master)](https://travis-ci.org/kenfehling/react-designable-audio-player)
 
 ## Online demo
 [kenfehling.github.io/react-designable-audio-player](https://kenfehling.github.io/react-designable-audio-player/)
