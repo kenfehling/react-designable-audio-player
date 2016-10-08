@@ -225,12 +225,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	        value: function componentDidMount() {
 	            var _this4 = this;
 
-	            (0, _audioPlayerCore.addListener)(function (update) {
+	            this.listenerId = (0, _audioPlayerCore.addListener)(function (update) {
 	                return _this4.setState({
 	                    currentTrack: update.currentTrack,
 	                    on: update.type !== _audioPlayerCore.UpdateTypes.TRACK_SWITCH
 	                });
 	            });
+	        }
+	    }, {
+	        key: 'componentWillUnmount',
+	        value: function componentWillUnmount() {
+	            (0, _audioPlayerCore.removeListener)(this.listenerId);
 	        }
 	    }, {
 	        key: 'render',
@@ -300,9 +305,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	        value: function componentDidMount() {
 	            var _this6 = this;
 
-	            (0, _audioPlayerCore.addListener)(function (update) {
+	            this.listenerId = (0, _audioPlayerCore.addListener)(function (update) {
 	                return _this6.setState(_lodash2.default.pick(update, ['secondsElapsed', 'secondsRemaining']));
 	            });
+	        }
+	    }, {
+	        key: 'componentWillUnmount',
+	        value: function componentWillUnmount() {
+	            (0, _audioPlayerCore.removeListener)(this.listenerId);
 	        }
 	    }, {
 	        key: 'render',
@@ -353,9 +363,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	        value: function componentDidMount() {
 	            var _this8 = this;
 
-	            (0, _audioPlayerCore.addListener)(function (update) {
+	            this.listenerId = (0, _audioPlayerCore.addListener)(function (update) {
 	                return _this8.setState(_lodash2.default.pick(update, ['tracks', 'currentTrack']));
 	            });
+	        }
+	    }, {
+	        key: 'componentWillUnmount',
+	        value: function componentWillUnmount() {
+	            (0, _audioPlayerCore.removeListener)(this.listenerId);
 	        }
 	    }, {
 	        key: 'render',

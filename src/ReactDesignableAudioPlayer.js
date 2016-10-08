@@ -1,7 +1,8 @@
 import React, { Component, PropTypes, createElement } from 'react';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
-import { play, stop, seek, next, prev, goto, gotoAndPlay, addTracks, turnOnAutoplay, addListener, UpdateTypes } from './audioPlayerCore';
+import { play, stop, seek, next, prev, goto, gotoAndPlay, addTracks, turnOnAutoplay, addListener, removeListener,
+    UpdateTypes } from './audioPlayerCore';
 import _ from 'lodash';
 
 export function connectAudioPlayer(WrappedComponent, tracks, {autoplay=false}={}) {
@@ -93,10 +94,14 @@ class TM extends Component {
     }
 
     componentDidMount() {
-        addListener(update => this.setState({
+        this.listenerId = addListener(update => this.setState({
             currentTrack: update.currentTrack,
             on: update.type !== UpdateTypes.TRACK_SWITCH,
         }));
+    }
+
+    componentWillUnmount() {
+        removeListener(this.listenerId);
     }
 
     render() {
@@ -138,7 +143,11 @@ class TS extends Component {
     }
 
     componentDidMount() {
-        addListener(update => this.setState(_.pick(update, ['secondsElapsed', 'secondsRemaining'])));
+        this.listenerId = addListener(update => this.setState(_.pick(update, ['secondsElapsed', 'secondsRemaining'])));
+    }
+
+    componentWillUnmount() {
+        removeListener(this.listenerId);
     }
 
     render() {
@@ -171,7 +180,11 @@ class PL extends Component {
     }
 
     componentDidMount() {
-        addListener(update => this.setState(_.pick(update, ['tracks', 'currentTrack'])));
+        this.listenerId = addListener(update => this.setState(_.pick(update, ['tracks', 'currentTrack'])));
+    }
+
+    componentWillUnmount() {
+        removeListener(this.listenerId);
     }
 
     render() {
