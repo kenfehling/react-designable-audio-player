@@ -58,7 +58,7 @@ function updateListeners(type) {
             ...tracks[currentTrackIndex],
             durationSeconds: audio.duration,
             durationString: formatTime(audio.duration)
-        },
+        }
     }));
 }
 

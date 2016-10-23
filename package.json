@@ -68,7 +68,7 @@
     "testPathDirs": [
       "tests"
     ],
-    "testRegex": "/*.js$",
+    "testRegex": "/*.test.js$",
     "moduleFileExtensions": [
       "js",
       "jsx",
