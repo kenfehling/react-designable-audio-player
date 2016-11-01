@@ -133,9 +133,11 @@ export const TitleMarquee = TM;
 
 /* TimeSlider component */
 
-const DefaultSliderHandle = () => (
-    <div></div>
-);
+class DefaultSliderHandle extends Component {
+    render() {
+        return <div></div>;
+    }
+}
 
 class TS extends Component {
     constructor(props) {
