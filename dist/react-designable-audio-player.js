@@ -170,7 +170,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                    timeElapsed: this.state.timeElapsed,
 	                    timeRemaining: this.state.timeRemaining
 	                };
-	                return (0, _react.createElement)(WrappedComponent, props);
+	                return (0, _react.createElement)(WrappedComponent, _extends({}, this.props, props));
 	            }
 	        }]);
 

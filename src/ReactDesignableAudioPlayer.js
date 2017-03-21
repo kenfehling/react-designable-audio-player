@@ -47,7 +47,7 @@ export function connectAudioPlayer(WrappedComponent, tracks, {autoplay=false}={}
                 timeElapsed: this.state.timeElapsed,
                 timeRemaining: this.state.timeRemaining,
             };
-            return createElement(WrappedComponent, props);
+            return createElement(WrappedComponent, {...this.props, ...props});
         }
     }
     return Connect;
