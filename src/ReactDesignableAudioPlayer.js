@@ -1,4 +1,5 @@
 import React, { Component, PropTypes, createElement } from 'react'
+import {canUseDOM} from 'fbjs/lib/ExecutionEnvironment'
 import Slider from 'rc-slider'
 import 'rc-slider/assets/index.css'
 import {
@@ -72,13 +73,15 @@ function insertStyle(style) {
   }
 }
 
-const animationName = 'marquee_' + Math.round(Math.random() * 10000000)
-const keyframes =
-  `@keyframes ${animationName} {
+if (canUseDOM) {
+  const animationName = 'marquee_' + Math.round(Math.random() * 10000000)
+  const keyframes =
+    `@keyframes ${animationName} {
       0% {-webkit-transform:translate(0, 0)} 
       100% {-webkit-transform:translate(-100%, 0)}
    }`
-insertStyle(keyframes)
+  insertStyle(keyframes)
+}
 
 const baseStyle  = {
   paddingLeft: '100%',
