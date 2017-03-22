@@ -28631,7 +28631,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function formatTime(seconds) {
 	    if (typeof seconds === 'number' && seconds >= 0) {
-	        var m = Math.round(seconds / 60);
+	        var m = Math.floor(seconds / 60);
 	        var s = Math.round(seconds) % 60;
 	        return zeroPadNumber(m) + ':' + zeroPadNumber(s);
 	    } else {
