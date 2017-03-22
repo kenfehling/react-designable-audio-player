@@ -1,8 +1,10 @@
 /* global Audio */
 
-import _ from 'lodash';
+import {canUseDOM} from 'fbjs/lib/ExecutionEnvironment'
+import * as _ from 'lodash';
 
-const audio = new Audio();
+const noop = () => {};
+const audio = canUseDOM ? new Audio() : null;
 let tracks;
 let currentTrackIndex = 0;
 let timer;
@@ -78,15 +80,15 @@ function stopTimer() {
     }
 }
 
-export function addTracks(newTracks) {
+export const addTracks = canUseDOM ? (newTracks) => {
     if (_.isEmpty(tracks)) {
         audio.src = newTracks[0].file;
     }
     tracks = _.map(newTracks, (t, i) => ({...t, number: i + 1}));
     updateListeners(UpdateTypes.TRACKS_ADDED);
-}
+} : noop;
 
-export function play() {
+export const play = canUseDOM ? () => {
     if (isPlaying()) {
         audio.pause();
         stopTimer();
@@ -97,45 +99,45 @@ export function play() {
         updateListeners(UpdateTypes.PLAY);
         timer = setInterval(() => updateListeners(UpdateTypes.TICK), 1000);
     }
-}
+} : noop;
 
-export function stop() {
+export const stop = canUseDOM ? () => {
     audio.pause();
     audio.currentTime = 0;
     stopTimer();
     updateListeners(UpdateTypes.STOP);
-}
+} : noop;
 
-export function seek(seconds) {
+export const seek = canUseDOM ? (seconds) => {
     audio.currentTime = seconds;
     updateListeners(UpdateTypes.SEEK);
-}
+} : noop;
 
-export function next() {
+export const next = canUseDOM ? () => {
     currentTrackIndex = currentTrackIndex + 1 >= _.size(tracks) ? 0 : currentTrackIndex + 1;
     switchTrack();
-}
+} : noop;
 
-export function prev() {
+export const prev = canUseDOM ? () => {
     currentTrackIndex = currentTrackIndex - 1 < 0 ? _.size(tracks) - 1 : currentTrackIndex - 1;
     switchTrack();
-}
+} : noop;
 
-export function goto(number) {
+export const goto = canUseDOM ? (number) => {
     currentTrackIndex = number - 1;
     switchTrack();
-}
+} : noop;
 
-export function gotoAndPlay(number) {
+export const gotoAndPlay = canUseDOM ? (number) => {
     goto(number);
     if (!isPlaying()) {
         play();
     }
-}
+} : noop;
 
-export function turnOnAutoplay() {
+export const turnOnAutoplay = canUseDOM ? () => {
     audio.autoplay = true;
-}
+} : noop;
 
 export function addListener(callback) {
     listeners[String(++lastListenerId)] = callback;

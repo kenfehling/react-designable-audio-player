@@ -75,7 +75,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
 	exports.Playlist = exports.TimeSlider = exports.TitleMarquee = undefined;
 
@@ -103,6 +103,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -110,176 +112,176 @@ return /******/ (function(modules) { // webpackBootstrap
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	function connectAudioPlayer(WrappedComponent, tracks) {
-	    var _ref = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+	  var _ref = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
 
-	    var _ref$autoplay = _ref.autoplay;
-	    var autoplay = _ref$autoplay === undefined ? false : _ref$autoplay;
+	  var _ref$autoplay = _ref.autoplay;
+	  var autoplay = _ref$autoplay === undefined ? false : _ref$autoplay;
 
-	    var Connect = function (_Component) {
-	        _inherits(Connect, _Component);
+	  var Connect = function (_Component) {
+	    _inherits(Connect, _Component);
 
-	        function Connect(props) {
-	            _classCallCheck(this, Connect);
+	    function Connect(props) {
+	      _classCallCheck(this, Connect);
 
-	            var _this = _possibleConstructorReturn(this, (Connect.__proto__ || Object.getPrototypeOf(Connect)).call(this, props));
+	      var _this = _possibleConstructorReturn(this, (Connect.__proto__ || Object.getPrototypeOf(Connect)).call(this, props));
 
-	            _this.state = {
-	                isPlaying: false,
-	                currentTrack: null,
-	                secondsElapsed: 0,
-	                secondsRemaining: 0,
-	                timeElapsed: null,
-	                timeRemaining: null
-	            };
-	            return _this;
+	      _this.state = {
+	        isPlaying: false,
+	        currentTrack: null,
+	        secondsElapsed: 0,
+	        secondsRemaining: 0,
+	        timeElapsed: null,
+	        timeRemaining: null
+	      };
+	      return _this;
+	    }
+
+	    _createClass(Connect, [{
+	      key: 'componentDidMount',
+	      value: function componentDidMount() {
+	        var _this2 = this;
+
+	        this.listenerId = (0, _audioPlayerCore.addListener)(function (update) {
+	          return _this2.setState(_lodash2.default.omit(update, 'type'));
+	        });
+	        if (autoplay) {
+	          (0, _audioPlayerCore.turnOnAutoplay)();
 	        }
-
-	        _createClass(Connect, [{
-	            key: 'componentDidMount',
-	            value: function componentDidMount() {
-	                var _this2 = this;
-
-	                this.listenerId = (0, _audioPlayerCore.addListener)(function (update) {
-	                    return _this2.setState(_lodash2.default.omit(update, 'type'));
-	                });
-	                if (autoplay) {
-	                    (0, _audioPlayerCore.turnOnAutoplay)();
-	                }
-	                (0, _audioPlayerCore.addTracks)(tracks);
-	            }
-	        }, {
-	            key: 'componentWillUnmount',
-	            value: function componentWillUnmount() {
-	                (0, _audioPlayerCore.removeListener)(this.listenerId);
-	            }
-	        }, {
-	            key: 'render',
-	            value: function render() {
-	                var props = {
-	                    play: _audioPlayerCore.play,
-	                    stop: _audioPlayerCore.stop,
-	                    seek: _audioPlayerCore.seek,
-	                    next: _audioPlayerCore.next,
-	                    prev: _audioPlayerCore.prev,
-	                    goto: _audioPlayerCore.goto,
-	                    gotoAndPlay: _audioPlayerCore.gotoAndPlay,
-	                    isPlaying: this.state.isPlaying,
-	                    currentTrack: this.state.currentTrack || {},
-	                    secondsElapsed: this.state.secondsElapsed,
-	                    secondsRemaining: this.state.secondsRemaining,
-	                    timeElapsed: this.state.timeElapsed,
-	                    timeRemaining: this.state.timeRemaining
-	                };
-	                return (0, _react.createElement)(WrappedComponent, _extends({}, this.props, props));
-	            }
-	        }]);
-
-	        return Connect;
-	    }(_react.Component);
+	        (0, _audioPlayerCore.addTracks)(tracks);
+	      }
+	    }, {
+	      key: 'componentWillUnmount',
+	      value: function componentWillUnmount() {
+	        (0, _audioPlayerCore.removeListener)(this.listenerId);
+	      }
+	    }, {
+	      key: 'render',
+	      value: function render() {
+	        var props = {
+	          play: _audioPlayerCore.play,
+	          stop: _audioPlayerCore.stop,
+	          seek: _audioPlayerCore.seek,
+	          next: _audioPlayerCore.next,
+	          prev: _audioPlayerCore.prev,
+	          goto: _audioPlayerCore.goto,
+	          gotoAndPlay: _audioPlayerCore.gotoAndPlay,
+	          isPlaying: this.state.isPlaying,
+	          currentTrack: this.state.currentTrack || {},
+	          secondsElapsed: this.state.secondsElapsed,
+	          secondsRemaining: this.state.secondsRemaining,
+	          timeElapsed: this.state.timeElapsed,
+	          timeRemaining: this.state.timeRemaining
+	        };
+	        return (0, _react.createElement)(WrappedComponent, _extends({}, this.props, props));
+	      }
+	    }]);
 
 	    return Connect;
+	  }(_react.Component);
+
+	  return Connect;
 	}
 
 	/* TitleMarquee component */
 
 	function insertStyle(style) {
-	    for (var i = 0; i < document.styleSheets.length; i++) {
-	        try {
-	            document.styleSheets[i].insertRule(style, _lodash2.default.size(document.styleSheets[i].cssRules));
-	            break;
-	        } catch (e) {
-	            if (e.name !== "SecurityError" && e.name !== 'InvalidAccessError') {
-	                throw e;
-	            }
-	        }
+	  for (var i = 0; i < document.styleSheets.length; i++) {
+	    try {
+	      document.styleSheets[i].insertRule(style, _lodash2.default.size(document.styleSheets[i].cssRules));
+	      break;
+	    } catch (e) {
+	      if (e.name !== "SecurityError" && e.name !== 'InvalidAccessError') {
+	        throw e;
+	      }
 	    }
+	  }
 	}
 
 	var animationName = 'marquee_' + Math.round(Math.random() * 10000000);
-	var keyframes = '@keyframes ' + animationName + ' {\n        0% {-webkit-transform:translate(0, 0)} \n        100% {-webkit-transform:translate(-100%, 0)}\n     }';
+	var keyframes = '@keyframes ' + animationName + ' {\n      0% {-webkit-transform:translate(0, 0)} \n      100% {-webkit-transform:translate(-100%, 0)}\n   }';
 	insertStyle(keyframes);
 
 	var baseStyle = {
-	    paddingLeft: '100%',
-	    display: 'inline-block'
+	  paddingLeft: '100%',
+	  display: 'inline-block'
 	};
 
 	var getMarqueeStyle = function getMarqueeStyle(duration) {
-	    return _extends({}, baseStyle, {
-	        animation: animationName + ' ' + duration + 's infinite linear'
-	    });
+	  return _extends({}, baseStyle, {
+	    animation: animationName + ' ' + duration + 's infinite linear'
+	  });
 	};
 
 	var TM = function (_Component2) {
-	    _inherits(TM, _Component2);
+	  _inherits(TM, _Component2);
 
-	    function TM(props) {
-	        _classCallCheck(this, TM);
+	  function TM(props) {
+	    _classCallCheck(this, TM);
 
-	        var _this3 = _possibleConstructorReturn(this, (TM.__proto__ || Object.getPrototypeOf(TM)).call(this, props));
+	    var _this3 = _possibleConstructorReturn(this, (TM.__proto__ || Object.getPrototypeOf(TM)).call(this, props));
 
-	        _this3.state = {
-	            on: true,
-	            currentTrack: null
-	        };
-	        return _this3;
+	    _this3.state = {
+	      on: true,
+	      currentTrack: null
+	    };
+	    return _this3;
+	  }
+
+	  _createClass(TM, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      var _this4 = this;
+
+	      this.listenerId = (0, _audioPlayerCore.addListener)(function (update) {
+	        return _this4.setState({
+	          currentTrack: update.currentTrack,
+	          on: update.type !== _audioPlayerCore.UpdateTypes.TRACK_SWITCH
+	        });
+	      });
 	    }
+	  }, {
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount() {
+	      (0, _audioPlayerCore.removeListener)(this.listenerId);
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _props = this.props;
+	      var className = _props.className;
+	      var textFn = _props.textFn;
+	      var duration = _props.duration;
+	      var currentTrack = this.state.currentTrack;
 
-	    _createClass(TM, [{
-	        key: 'componentDidMount',
-	        value: function componentDidMount() {
-	            var _this4 = this;
+	      var _ref2 = currentTrack || {};
 
-	            this.listenerId = (0, _audioPlayerCore.addListener)(function (update) {
-	                return _this4.setState({
-	                    currentTrack: update.currentTrack,
-	                    on: update.type !== _audioPlayerCore.UpdateTypes.TRACK_SWITCH
-	                });
-	            });
-	        }
-	    }, {
-	        key: 'componentWillUnmount',
-	        value: function componentWillUnmount() {
-	            (0, _audioPlayerCore.removeListener)(this.listenerId);
-	        }
-	    }, {
-	        key: 'render',
-	        value: function render() {
-	            var _props = this.props;
-	            var className = _props.className;
-	            var textFn = _props.textFn;
-	            var duration = _props.duration;
-	            var currentTrack = this.state.currentTrack;
+	      var number = _ref2.number;
+	      var artist = _ref2.artist;
+	      var title = _ref2.title;
 
-	            var _ref2 = currentTrack || {};
+	      return _react2.default.createElement(
+	        'div',
+	        { className: className },
+	        _react2.default.createElement(
+	          'div',
+	          { style: { overflow: 'hidden', whiteSpace: 'nowrap' } },
+	          _react2.default.createElement(
+	            'div',
+	            { style: this.state.on ? getMarqueeStyle(duration || 10) : baseStyle },
+	            currentTrack ? textFn ? textFn(currentTrack) : number + '. ' + artist + ' - ' + title : ''
+	          )
+	        )
+	      );
+	    }
+	  }]);
 
-	            var number = _ref2.number;
-	            var artist = _ref2.artist;
-	            var title = _ref2.title;
-
-	            return _react2.default.createElement(
-	                'div',
-	                { className: className },
-	                _react2.default.createElement(
-	                    'div',
-	                    { style: { overflow: 'hidden', whiteSpace: 'nowrap' } },
-	                    _react2.default.createElement(
-	                        'div',
-	                        { style: this.state.on ? getMarqueeStyle(duration || 10) : baseStyle },
-	                        currentTrack ? textFn ? textFn(currentTrack) : number + '. ' + artist + ' - ' + title : ''
-	                    )
-	                )
-	            );
-	        }
-	    }]);
-
-	    return TM;
+	  return TM;
 	}(_react.Component);
 
 	TM.propTypes = {
-	    className: _react.PropTypes.string,
-	    textFn: _react.PropTypes.func,
-	    duration: _react.PropTypes.number
+	  className: _react.PropTypes.string,
+	  textFn: _react.PropTypes.func,
+	  duration: _react.PropTypes.number
 	};
 
 	var TitleMarquee = exports.TitleMarquee = TM;
@@ -287,76 +289,83 @@ return /******/ (function(modules) { // webpackBootstrap
 	/* TimeSlider component */
 
 	var DefaultSliderHandle = function (_Component3) {
-	    _inherits(DefaultSliderHandle, _Component3);
+	  _inherits(DefaultSliderHandle, _Component3);
 
-	    function DefaultSliderHandle() {
-	        _classCallCheck(this, DefaultSliderHandle);
+	  function DefaultSliderHandle() {
+	    _classCallCheck(this, DefaultSliderHandle);
 
-	        return _possibleConstructorReturn(this, (DefaultSliderHandle.__proto__ || Object.getPrototypeOf(DefaultSliderHandle)).apply(this, arguments));
+	    return _possibleConstructorReturn(this, (DefaultSliderHandle.__proto__ || Object.getPrototypeOf(DefaultSliderHandle)).apply(this, arguments));
+	  }
+
+	  _createClass(DefaultSliderHandle, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement('div', null);
 	    }
+	  }]);
 
-	    _createClass(DefaultSliderHandle, [{
-	        key: 'render',
-	        value: function render() {
-	            return _react2.default.createElement('div', null);
-	        }
-	    }]);
-
-	    return DefaultSliderHandle;
+	  return DefaultSliderHandle;
 	}(_react.Component);
 
 	var TS = function (_Component4) {
-	    _inherits(TS, _Component4);
+	  _inherits(TS, _Component4);
 
-	    function TS(props) {
-	        _classCallCheck(this, TS);
+	  function TS(props) {
+	    _classCallCheck(this, TS);
 
-	        var _this6 = _possibleConstructorReturn(this, (TS.__proto__ || Object.getPrototypeOf(TS)).call(this, props));
+	    var _this6 = _possibleConstructorReturn(this, (TS.__proto__ || Object.getPrototypeOf(TS)).call(this, props));
 
-	        _this6.state = {
-	            secondsElapsed: 0,
-	            secondsRemaining: 0
-	        };
-	        return _this6;
+	    _this6.state = {
+	      secondsElapsed: 0,
+	      secondsRemaining: 0
+	    };
+	    return _this6;
+	  }
+
+	  _createClass(TS, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      var _this7 = this;
+
+	      this.listenerId = (0, _audioPlayerCore.addListener)(function (update) {
+	        return _this7.setState(_lodash2.default.pick(update, ['secondsElapsed', 'secondsRemaining']));
+	      });
 	    }
+	  }, {
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount() {
+	      (0, _audioPlayerCore.removeListener)(this.listenerId);
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _props2 = this.props;
+	      var className = _props2.className;
 
-	    _createClass(TS, [{
-	        key: 'componentDidMount',
-	        value: function componentDidMount() {
-	            var _this7 = this;
+	      var props = _objectWithoutProperties(_props2, ['className']);
 
-	            this.listenerId = (0, _audioPlayerCore.addListener)(function (update) {
-	                return _this7.setState(_lodash2.default.pick(update, ['secondsElapsed', 'secondsRemaining']));
-	            });
-	        }
-	    }, {
-	        key: 'componentWillUnmount',
-	        value: function componentWillUnmount() {
-	            (0, _audioPlayerCore.removeListener)(this.listenerId);
-	        }
-	    }, {
-	        key: 'render',
-	        value: function render() {
-	            var className = this.props.className;
-	            var _state = this.state;
-	            var secondsElapsed = _state.secondsElapsed;
-	            var secondsRemaining = _state.secondsRemaining;
+	      var _state = this.state;
+	      var secondsElapsed = _state.secondsElapsed;
+	      var secondsRemaining = _state.secondsRemaining;
 
-	            return _react2.default.createElement(
-	                'div',
-	                { className: className },
-	                _react2.default.createElement(_rcSlider2.default, _extends({ onChange: _audioPlayerCore.seek, value: secondsElapsed, min: 0, max: secondsElapsed + secondsRemaining,
-	                    handle: this.props.handle || _react2.default.createElement(DefaultSliderHandle, null)
-	                }, _lodash2.default.omit(this.props, 'className')))
-	            );
-	        }
-	    }]);
+	      return _react2.default.createElement(
+	        'div',
+	        { className: className },
+	        _react2.default.createElement(_rcSlider2.default, _extends({ onChange: _audioPlayerCore.seek,
+	          value: secondsElapsed,
+	          min: 0,
+	          max: secondsElapsed + secondsRemaining,
+	          handle: this.props.handle || _react2.default.createElement(DefaultSliderHandle, null)
+	        }, props))
+	      );
+	    }
+	  }]);
 
-	    return TS;
+	  return TS;
 	}(_react.Component);
 
 	TS.propTypes = {
-	    className: _react.PropTypes.string
+	  className: _react.PropTypes.string
 	};
 
 	var TimeSlider = exports.TimeSlider = TS;
@@ -364,75 +373,75 @@ return /******/ (function(modules) { // webpackBootstrap
 	/* Playlist component */
 
 	var PL = function (_Component5) {
-	    _inherits(PL, _Component5);
+	  _inherits(PL, _Component5);
 
-	    function PL(props) {
-	        _classCallCheck(this, PL);
+	  function PL(props) {
+	    _classCallCheck(this, PL);
 
-	        var _this8 = _possibleConstructorReturn(this, (PL.__proto__ || Object.getPrototypeOf(PL)).call(this, props));
+	    var _this8 = _possibleConstructorReturn(this, (PL.__proto__ || Object.getPrototypeOf(PL)).call(this, props));
 
-	        _this8.state = {
-	            tracks: [],
-	            currentTrack: null
-	        };
-	        return _this8;
+	    _this8.state = {
+	      tracks: [],
+	      currentTrack: null
+	    };
+	    return _this8;
+	  }
+
+	  _createClass(PL, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      var _this9 = this;
+
+	      this.listenerId = (0, _audioPlayerCore.addListener)(function (update) {
+	        return _this9.setState(_lodash2.default.pick(update, ['tracks', 'currentTrack']));
+	      });
 	    }
+	  }, {
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount() {
+	      (0, _audioPlayerCore.removeListener)(this.listenerId);
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _props3 = this.props;
+	      var className = _props3.className;
+	      var itemClassName = _props3.itemClassName;
+	      var currentItemClassName = _props3.currentItemClassName;
+	      var itemComponent = _props3.itemComponent;
+	      var _state2 = this.state;
+	      var tracks = _state2.tracks;
+	      var currentTrack = _state2.currentTrack;
 
-	    _createClass(PL, [{
-	        key: 'componentDidMount',
-	        value: function componentDidMount() {
-	            var _this9 = this;
+	      var _ref3 = currentTrack || {};
 
-	            this.listenerId = (0, _audioPlayerCore.addListener)(function (update) {
-	                return _this9.setState(_lodash2.default.pick(update, ['tracks', 'currentTrack']));
-	            });
-	        }
-	    }, {
-	        key: 'componentWillUnmount',
-	        value: function componentWillUnmount() {
-	            (0, _audioPlayerCore.removeListener)(this.listenerId);
-	        }
-	    }, {
-	        key: 'render',
-	        value: function render() {
-	            var _props2 = this.props;
-	            var className = _props2.className;
-	            var itemClassName = _props2.itemClassName;
-	            var currentItemClassName = _props2.currentItemClassName;
-	            var itemComponent = _props2.itemComponent;
-	            var _state2 = this.state;
-	            var tracks = _state2.tracks;
-	            var currentTrack = _state2.currentTrack;
+	      var number = _ref3.number;
 
-	            var _ref3 = currentTrack || {};
+	      return _react2.default.createElement(
+	        'div',
+	        { className: className },
+	        tracks.map(function (track, i) {
+	          return _react2.default.createElement(
+	            'div',
+	            { className: number === i + 1 ? itemClassName + ' ' + currentItemClassName : itemClassName,
+	              onClick: function onClick() {
+	                return number === i + 1 ? (0, _audioPlayerCore.gotoAndPlay)(i + 1) : (0, _audioPlayerCore.goto)(i + 1);
+	              }, key: i },
+	            itemComponent ? itemComponent(track) : i + 1 + '. ' + track.artist + ' - ' + track.title
+	          );
+	        })
+	      );
+	    }
+	  }]);
 
-	            var number = _ref3.number;
-
-	            return _react2.default.createElement(
-	                'div',
-	                { className: className },
-	                tracks.map(function (track, i) {
-	                    return _react2.default.createElement(
-	                        'div',
-	                        { className: number === i + 1 ? itemClassName + ' ' + currentItemClassName : itemClassName,
-	                            onClick: function onClick() {
-	                                return number === i + 1 ? (0, _audioPlayerCore.gotoAndPlay)(i + 1) : (0, _audioPlayerCore.goto)(i + 1);
-	                            }, key: i },
-	                        itemComponent ? itemComponent(track) : i + 1 + '. ' + track.artist + ' - ' + track.title
-	                    );
-	                })
-	            );
-	        }
-	    }]);
-
-	    return PL;
+	  return PL;
 	}(_react.Component);
 
 	PL.propTypes = {
-	    className: _react.PropTypes.string,
-	    itemClassName: _react.PropTypes.string,
-	    currentItemClassName: _react.PropTypes.string,
-	    itemComponent: _react.PropTypes.func
+	  className: _react.PropTypes.string,
+	  itemClassName: _react.PropTypes.string,
+	  currentItemClassName: _react.PropTypes.string,
+	  itemComponent: _react.PropTypes.func
 	};
 
 	var Playlist = exports.Playlist = PL;
@@ -28573,31 +28582,25 @@ return /******/ (function(modules) { // webpackBootstrap
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-	exports.DEFAULT_TIME_STRING = exports.UpdateTypes = undefined;
+	exports.turnOnAutoplay = exports.gotoAndPlay = exports.goto = exports.prev = exports.next = exports.seek = exports.stop = exports.play = exports.addTracks = exports.DEFAULT_TIME_STRING = exports.UpdateTypes = undefined;
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; /* global Audio */
 
 	exports.formatTime = formatTime;
-	exports.addTracks = addTracks;
-	exports.play = play;
-	exports.stop = stop;
-	exports.seek = seek;
-	exports.next = next;
-	exports.prev = prev;
-	exports.goto = goto;
-	exports.gotoAndPlay = gotoAndPlay;
-	exports.turnOnAutoplay = turnOnAutoplay;
 	exports.addListener = addListener;
 	exports.removeListener = removeListener;
 	exports.getAllListeners = getAllListeners;
 
+	var _ExecutionEnvironment = __webpack_require__(127);
+
 	var _lodash = __webpack_require__(315);
 
-	var _lodash2 = _interopRequireDefault(_lodash);
+	var _ = _interopRequireWildcard(_lodash);
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
-	var audio = new Audio();
+	var noop = function noop() {};
+	var audio = _ExecutionEnvironment.canUseDOM ? new Audio() : null;
 	var tracks = void 0;
 	var currentTrackIndex = 0;
 	var timer = void 0;
@@ -28640,7 +28643,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 	function updateListeners(type) {
-	    _lodash2.default.each(_lodash2.default.values(listeners), function (listener) {
+	    _.each(_.values(listeners), function (listener) {
 	        return listener({
 	            type: type,
 	            tracks: tracks,
@@ -28673,17 +28676,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	}
 
-	function addTracks(newTracks) {
-	    if (_lodash2.default.isEmpty(tracks)) {
+	var addTracks = exports.addTracks = _ExecutionEnvironment.canUseDOM ? function (newTracks) {
+	    if (_.isEmpty(tracks)) {
 	        audio.src = newTracks[0].file;
 	    }
-	    tracks = _lodash2.default.map(newTracks, function (t, i) {
+	    tracks = _.map(newTracks, function (t, i) {
 	        return _extends({}, t, { number: i + 1 });
 	    });
 	    updateListeners(UpdateTypes.TRACKS_ADDED);
-	}
+	} : noop;
 
-	function play() {
+	var play = exports.play = _ExecutionEnvironment.canUseDOM ? function () {
 	    if (isPlaying()) {
 	        audio.pause();
 	        stopTimer();
@@ -28695,45 +28698,45 @@ return /******/ (function(modules) { // webpackBootstrap
 	            return updateListeners(UpdateTypes.TICK);
 	        }, 1000);
 	    }
-	}
+	} : noop;
 
-	function stop() {
+	var stop = exports.stop = _ExecutionEnvironment.canUseDOM ? function () {
 	    audio.pause();
 	    audio.currentTime = 0;
 	    stopTimer();
 	    updateListeners(UpdateTypes.STOP);
-	}
+	} : noop;
 
-	function seek(seconds) {
+	var seek = exports.seek = _ExecutionEnvironment.canUseDOM ? function (seconds) {
 	    audio.currentTime = seconds;
 	    updateListeners(UpdateTypes.SEEK);
-	}
+	} : noop;
 
-	function next() {
-	    currentTrackIndex = currentTrackIndex + 1 >= _lodash2.default.size(tracks) ? 0 : currentTrackIndex + 1;
+	var next = exports.next = _ExecutionEnvironment.canUseDOM ? function () {
+	    currentTrackIndex = currentTrackIndex + 1 >= _.size(tracks) ? 0 : currentTrackIndex + 1;
 	    switchTrack();
-	}
+	} : noop;
 
-	function prev() {
-	    currentTrackIndex = currentTrackIndex - 1 < 0 ? _lodash2.default.size(tracks) - 1 : currentTrackIndex - 1;
+	var prev = exports.prev = _ExecutionEnvironment.canUseDOM ? function () {
+	    currentTrackIndex = currentTrackIndex - 1 < 0 ? _.size(tracks) - 1 : currentTrackIndex - 1;
 	    switchTrack();
-	}
+	} : noop;
 
-	function goto(number) {
+	var goto = exports.goto = _ExecutionEnvironment.canUseDOM ? function (number) {
 	    currentTrackIndex = number - 1;
 	    switchTrack();
-	}
+	} : noop;
 
-	function gotoAndPlay(number) {
+	var gotoAndPlay = exports.gotoAndPlay = _ExecutionEnvironment.canUseDOM ? function (number) {
 	    goto(number);
 	    if (!isPlaying()) {
 	        play();
 	    }
-	}
+	} : noop;
 
-	function turnOnAutoplay() {
+	var turnOnAutoplay = exports.turnOnAutoplay = _ExecutionEnvironment.canUseDOM ? function () {
 	    audio.autoplay = true;
-	}
+	} : noop;
 
 	function addListener(callback) {
 	    listeners[String(++lastListenerId)] = callback;
