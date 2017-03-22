@@ -73,10 +73,11 @@ function insertStyle(style) {
   }
 }
 
+const marqueeAniationName = 'rdap_marquee'
+
 if (canUseDOM) {
-  const animationName = 'marquee_' + Math.round(Math.random() * 10000000)
   const keyframes =
-    `@keyframes ${animationName} {
+    `@keyframes ${marqueeAniationName} {
       0% {-webkit-transform:translate(0, 0)} 
       100% {-webkit-transform:translate(-100%, 0)}
    }`
@@ -90,7 +91,7 @@ const baseStyle  = {
 
 const getMarqueeStyle = duration => ({
   ...baseStyle,
-  animation: `${animationName} ${duration}s infinite linear`
+  animation: `${marqueeAniationName} ${duration}s infinite linear`
 })
 
 class TM extends Component {

@@ -199,9 +199,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }
 	}
 
+	var marqueeAniationName = 'rdap_marquee';
+
 	if (_ExecutionEnvironment.canUseDOM) {
-	  var _animationName = 'marquee_' + Math.round(Math.random() * 10000000);
-	  var keyframes = '@keyframes ' + _animationName + ' {\n      0% {-webkit-transform:translate(0, 0)} \n      100% {-webkit-transform:translate(-100%, 0)}\n   }';
+	  var keyframes = '@keyframes ' + marqueeAniationName + ' {\n      0% {-webkit-transform:translate(0, 0)} \n      100% {-webkit-transform:translate(-100%, 0)}\n   }';
 	  insertStyle(keyframes);
 	}
 
@@ -212,7 +213,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var getMarqueeStyle = function getMarqueeStyle(duration) {
 	  return _extends({}, baseStyle, {
-	    animation: animationName + ' ' + duration + 's infinite linear'
+	    animation: marqueeAniationName + ' ' + duration + 's infinite linear'
 	  });
 	};
 
