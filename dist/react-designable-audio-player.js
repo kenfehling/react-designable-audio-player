@@ -28751,17 +28751,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return listeners;
 	}
 
-	audio.addEventListener('play', function () {
-	    return updateListeners(UpdateTypes.PLAY);
-	});
-	audio.addEventListener('durationchange', function () {
-	    return updateListeners(UpdateTypes.LOAD);
-	});
+	if (_ExecutionEnvironment.canUseDOM) {
+	    audio.addEventListener('play', function () {
+	        return updateListeners(UpdateTypes.PLAY);
+	    });
+	    audio.addEventListener('durationchange', function () {
+	        return updateListeners(UpdateTypes.LOAD);
+	    });
 
-	audio.addEventListener('ended', function () {
-	    next();
-	    play();
-	});
+	    audio.addEventListener('ended', function () {
+	        next();
+	        play();
+	    });
+	}
 
 /***/ },
 /* 315 */

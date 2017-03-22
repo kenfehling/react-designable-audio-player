@@ -152,10 +152,12 @@ export function getAllListeners() {
     return listeners;
 }
 
-audio.addEventListener('play', () => updateListeners(UpdateTypes.PLAY));
-audio.addEventListener('durationchange', () => updateListeners(UpdateTypes.LOAD));
+if (canUseDOM) {
+  audio.addEventListener('play', () => updateListeners(UpdateTypes.PLAY));
+  audio.addEventListener('durationchange', () => updateListeners(UpdateTypes.LOAD));
 
-audio.addEventListener('ended', () => {
+  audio.addEventListener('ended', () => {
     next();
     play();
-});
+  });
+}
