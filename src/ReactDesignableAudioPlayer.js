@@ -1,6 +1,7 @@
 import React, { Component, PropTypes, createElement } from 'react'
 import {canUseDOM} from 'fbjs/lib/ExecutionEnvironment'
 import Slider from 'rc-slider'
+import Helmet from 'react-helmet'
 import 'rc-slider/assets/index.css'
 import {
   play, stop, seek, next, prev, goto, gotoAndPlay, addTracks, turnOnAutoplay,
@@ -73,16 +74,7 @@ function insertStyle(style) {
   }
 }
 
-const marqueeAniationName = 'rdap_marquee'
-
-if (canUseDOM) {
-  const keyframes =
-    `@keyframes ${marqueeAniationName} {
-      0% {-webkit-transform:translate(0, 0)} 
-      100% {-webkit-transform:translate(-100%, 0)}
-   }`
-  insertStyle(keyframes)
-}
+const marqueeAnimationName = 'rdap_marquee'
 
 const baseStyle  = {
   paddingLeft: '100%',
@@ -91,7 +83,7 @@ const baseStyle  = {
 
 const getMarqueeStyle = duration => ({
   ...baseStyle,
-  animation: `${marqueeAniationName} ${duration}s infinite linear`
+  animation: `${marqueeAnimationName} ${duration}s infinite linear`
 })
 
 class TM extends Component {
@@ -119,6 +111,17 @@ class TM extends Component {
     const {currentTrack} = this.state
     const {number, artist, title} = currentTrack || {}
     return (<div className={className}>
+      <Helmet>
+        <style type="text/css">{`
+          @keyframes ${marqueeAnimationName} {
+            0% {-webkit-transform:translate(0, 0)}
+            100% {-webkit-transform:translate(-100%, 0)}
+          }
+        `}</style>
+      </Helmet>
+
+
+
       <div style={{overflow: 'hidden', whiteSpace: 'nowrap'}}>
         <div style={this.state.on ? getMarqueeStyle(duration || 10) : baseStyle}>
           {currentTrack ? (textFn ? textFn(currentTrack) : `${number}. ${artist} - ${title}`) : ''}

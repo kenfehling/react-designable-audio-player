@@ -15,7 +15,7 @@ export default () => (
             <div style={playlistContainerStyle}><WithPlaylist /></div>
         </div>
         <div style={rowStyle}>
-            <div style={{...playlistContainerStyle, width: '250px'}}><Unstyled /></div>
+            <div style={{...playlistContainerStyle, width: '320px'}}><Unstyled /></div>
             <div style={playlistContainerStyle}><CustomPlaylist /></div>
         </div>
         <Fixed />
