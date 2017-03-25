@@ -1,0 +1,19 @@
+{
+  "name": "e2e",
+  "version": "1.0.0",
+  "description": "End to end tests",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --host 0.0.0.0 --progress --colors --history-api-fallback --content-base ./"
+  },
+  "author": "Ken Fehling",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.22.1",
+    "babel-loader": "^6.2.10",
+    "style-loader": "^0.13.1",
+    "webpack": "^2.2.0",
+    "webpack-dev-server": "^2.2.0"
+  },
+  "dependencies": {}
+}

@@ -1,4 +1,4 @@
-import * as core from '../src/audioPlayerCore';
+import * as core from '../../src/audioPlayerCore';
 import _ from 'lodash';
 
 test('formats time', () => {
