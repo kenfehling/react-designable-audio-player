@@ -304,7 +304,7 @@ The `Playlist` shows all of the tracks, indicates the current track, and handles
         <tr>
           <td>itemComponent</td>
           <td>Component</td>
-          <td>/td>
+          <td></td>
           <td>Custom component for a playlist item</td>
         </tr>
     </tbody>
