@@ -17,7 +17,7 @@ Built on top of the HTML5 [&lt;audio&gt;](https://developer.mozilla.org/en-US/do
 npm install --save kenfehling/react-designable-audio-player
 ```
 
-##Usage
+## Usage
 
 You can create whatever React component you like for the player view.
 The library [provides many props](#provided-props) for your component to use, as well as some [prebuilt components](#prebuilt-components) for common player elements.
