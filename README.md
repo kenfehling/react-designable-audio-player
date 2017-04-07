@@ -208,7 +208,7 @@ A number of props are provided for your component to use.
 </table>
 
 ### Prebuilt components
-`TitleMarquee`, `TimeSlider`, and `Playlist` are stylable components for common playlist elements.
+`TitleMarquee`, `TimeSlider`, and `Playlist` are stylable components for common player elements.
 
 #### TitleMarquee
 Use the `TitleMarquee` component to show the current tracking playing.
