@@ -161,12 +161,12 @@ A number of props are provided for your component to use.
         </tr>
         <tr>
           <td>currentTrack.artist</td>
-          <td>String</td>
+          <td>string</td>
           <td>Artist of the current track</td>
         </tr>
         <tr>
           <td>currentTrack.title</td>
-          <td>String</td>
+          <td>string</td>
           <td>Title of the current track</td>
         </tr>
         <tr>
@@ -176,7 +176,7 @@ A number of props are provided for your component to use.
         </tr>
         <tr>
           <td>currentTrack.durationString</td>
-          <td>String</td>
+          <td>string</td>
           <td>Duration of the current track as a string (mm:ss)</td>
         </tr>
         <tr>
@@ -226,7 +226,7 @@ Use the `TitleMarquee` component to show the current tracking playing.
     <tbody>
         <tr>
           <td>className</td>
-          <td>String</td>
+          <td>string</td>
           <td></td>
           <td>CSS class name(s) of the title marquee container</td>
         </tr>
@@ -262,7 +262,7 @@ The component is based on [rc-slider](https://github.com/react-component/slider#
     <tbody>
         <tr>
           <td>className</td>
-          <td>String</td>
+          <td>string</td>
           <td></td>
           <td>CSS class name(s) of the time slider container</td>
         </tr>
@@ -285,19 +285,19 @@ The `Playlist` shows all of the tracks, indicates the current track, and handles
     <tbody>
         <tr>
           <td>className</td>
-          <td>String</td>
+          <td>string</td>
           <td></td>
           <td>CSS class name(s) of the playlist container</td>
         </tr>
         <tr>
           <td>itemClassName</td>
-          <td>String</td>
+          <td>string</td>
           <td></td>
           <td>CSS class name(s) of all of the playlist items</td>
         </tr>
         <tr>
           <td>currentItemClassName</td>
-          <td>String</td>
+          <td>string</td>
           <td></td>
           <td>CSS class name(s) of the current playlist item</td>
         </tr>
