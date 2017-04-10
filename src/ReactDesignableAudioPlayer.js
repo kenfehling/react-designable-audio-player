@@ -226,9 +226,11 @@ class PL extends Component {
     return (
       <div className={className}>
         {tracks.map((track, i) =>
-          <div className={number === i + 1 ? itemClassName + ' ' + currentItemClassName : itemClassName}
+          <div key={i}
+               className={number === i + 1 ? itemClassName + ' ' + currentItemClassName : itemClassName}
                style={itemStyle}
-               onClick={() => number === i + 1 ? gotoAndPlay(i + 1) : goto(i + 1)} key={i}>
+               onClick={() => number === i + 1 ? gotoAndPlay(i + 1) : goto(i + 1)}
+          >
                   {itemComponent ? itemComponent(track) :
                       `${i + 1}. ${track.artist} - ${track.title}`}
           </div>)}
