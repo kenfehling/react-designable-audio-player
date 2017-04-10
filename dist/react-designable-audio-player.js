@@ -419,6 +419,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    value: function render() {
 	      var _props3 = this.props;
 	      var className = _props3.className;
+	      var _props3$style = _props3.style;
+	      var style = _props3$style === undefined ? {} : _props3$style;
 	      var itemClassName = _props3.itemClassName;
 	      var currentItemClassName = _props3.currentItemClassName;
 	      var itemComponent = _props3.itemComponent;
@@ -432,7 +434,17 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	      return _react2.default.createElement(
 	        'div',
-	        { className: className },
+	        { className: className,
+	          style: _extends({
+	            padding: '2px 6px',
+	            cursor: 'pointer',
+	            whiteSpace: 'nowrap',
+	            textOverflow: 'ellipsis',
+	            boxSizing: 'border-box',
+	            width: '100%',
+	            overflow: 'hidden'
+	          }, style)
+	        },
 	        tracks.map(function (track, i) {
 	          return _react2.default.createElement(
 	            'div',

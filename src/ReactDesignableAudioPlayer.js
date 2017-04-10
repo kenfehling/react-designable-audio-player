@@ -211,11 +211,22 @@ class PL extends Component {
   }
 
   render() {
-    const {className, itemClassName, currentItemClassName, itemComponent} = this.props
+    const {className, style={}, itemClassName, currentItemClassName, itemComponent} = this.props
     const {tracks, currentTrack} = this.state
     const {number} = currentTrack || {}
     return (
-      <div className={className}>
+      <div className={className}
+           style={{
+             padding: '2px 6px',
+             cursor: 'pointer',
+             whiteSpace: 'nowrap',
+             textOverflow: 'ellipsis',
+             boxSizing: 'border-box',
+             width: '100%',
+             overflow: 'hidden',
+             ...style
+           }}
+      >
         {tracks.map((track, i) =>
           <div className={number === i + 1 ? itemClassName + ' ' + currentItemClassName : itemClassName}
                onClick={() => number === i + 1 ? gotoAndPlay(i + 1) : goto(i + 1)} key={i}>
