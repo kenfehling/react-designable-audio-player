@@ -219,8 +219,6 @@ class PL extends Component {
       cursor: 'pointer',
       whiteSpace: 'nowrap',
       textOverflow: 'ellipsis',
-      boxSizing: 'border-box',
-      width: '100%',
       overflow: 'hidden'
     }
     return (
