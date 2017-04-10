@@ -1,7 +1,6 @@
 .cp.container {
     font-family: Arial, sans-serif;
     font-size: 14px;
-    width: 480px;
 }
 
 .cp .controls {
@@ -11,6 +10,7 @@
 
 .cp .playlist {
     text-align: center;
+    width: 400px;
 }
 
 .cp i.fa {
