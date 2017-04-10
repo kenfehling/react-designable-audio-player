@@ -211,24 +211,23 @@ class PL extends Component {
   }
 
   render() {
-    const {className, style={}, itemClassName, currentItemClassName, itemComponent} = this.props
+    const {className, itemClassName, currentItemClassName, itemComponent} = this.props
     const {tracks, currentTrack} = this.state
     const {number} = currentTrack || {}
+    const itemStyle = {
+      padding: '2px 6px',
+      cursor: 'pointer',
+      whiteSpace: 'nowrap',
+      textOverflow: 'ellipsis',
+      boxSizing: 'border-box',
+      width: '100%',
+      overflow: 'hidden'
+    }
     return (
-      <div className={className}
-           style={{
-             padding: '2px 6px',
-             cursor: 'pointer',
-             whiteSpace: 'nowrap',
-             textOverflow: 'ellipsis',
-             boxSizing: 'border-box',
-             width: '100%',
-             overflow: 'hidden',
-             ...style
-           }}
-      >
+      <div className={className}>
         {tracks.map((track, i) =>
           <div className={number === i + 1 ? itemClassName + ' ' + currentItemClassName : itemClassName}
+               style={itemStyle}
                onClick={() => number === i + 1 ? gotoAndPlay(i + 1) : goto(i + 1)} key={i}>
                   {itemComponent ? itemComponent(track) :
                       `${i + 1}. ${track.artist} - ${track.title}`}
