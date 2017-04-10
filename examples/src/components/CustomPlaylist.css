@@ -23,10 +23,9 @@
     opacity: 0.5;
 }
 
-
 .cp .playlist-item {
     display: inline-block;
-    margin: 0 7px;
+    margin: 0 7px 7px 7px;
     width: 3rem;
     text-align: center;
     padding: 10px;
