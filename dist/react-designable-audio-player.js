@@ -435,8 +435,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	        cursor: 'pointer',
 	        whiteSpace: 'nowrap',
 	        textOverflow: 'ellipsis',
-	        boxSizing: 'border-box',
-	        width: '100%',
 	        overflow: 'hidden'
 	      };
 	      return _react2.default.createElement(
@@ -445,11 +443,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	        tracks.map(function (track, i) {
 	          return _react2.default.createElement(
 	            'div',
-	            { className: number === i + 1 ? itemClassName + ' ' + currentItemClassName : itemClassName,
+	            { key: i,
+	              className: number === i + 1 ? itemClassName + ' ' + currentItemClassName : itemClassName,
 	              style: itemStyle,
 	              onClick: function onClick() {
 	                return number === i + 1 ? (0, _audioPlayerCore.gotoAndPlay)(i + 1) : (0, _audioPlayerCore.goto)(i + 1);
-	              }, key: i },
+	              }
+	            },
 	            itemComponent ? itemComponent(track) : i + 1 + '. ' + track.artist + ' - ' + track.title
 	          );
 	        })
