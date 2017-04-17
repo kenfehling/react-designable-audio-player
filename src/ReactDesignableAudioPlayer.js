@@ -1,7 +1,7 @@
 import React, { Component, PropTypes, createElement } from 'react'
 import {canUseDOM} from 'fbjs/lib/ExecutionEnvironment'
 import Slider from 'rc-slider'
-import Helmet from 'react-helmet'
+import insertCss from 'insert-css'
 import 'rc-slider/assets/index.css'
 import {
   play, stop, seek, next, prev, goto, gotoAndPlay, addTracks, turnOnAutoplay,
@@ -60,20 +60,6 @@ export function connectAudioPlayer(WrappedComponent, tracks, {autoplay=false}={}
 
 /* TitleMarquee component */
 
-function insertStyle(style) {
-  for (let i = 0; i < document.styleSheets.length; i++) {
-    try {
-      document.styleSheets[i].insertRule(style, _.size(document.styleSheets[i].cssRules))
-      break
-    }
-    catch(e) {
-      if (e.name !== "SecurityError" && e.name !== 'InvalidAccessError') {
-        throw e
-      }
-    }
-  }
-}
-
 const marqueeAnimationName = 'rdap_marquee'
 
 const baseStyle  = {
@@ -93,6 +79,17 @@ class TM extends Component {
       on: true,
       currentTrack: null
     }
+    insertCss(
+      `@keyframes ${marqueeAnimationName} {
+        0% {-webkit-transform:translate(0, 0)}
+        100% {-webkit-transform:translate(-100%, 0)}
+       }`
+    )
+  }
+
+  shouldComponentUpdate(newProps) {
+    console.log(newProps)
+    return true
   }
 
   componentDidMount() {
@@ -111,17 +108,6 @@ class TM extends Component {
     const {currentTrack} = this.state
     const {number, artist, title} = currentTrack || {}
     return (<div className={className}>
-      <Helmet>
-        <style type="text/css">{`
-          @keyframes ${marqueeAnimationName} {
-            0% {-webkit-transform:translate(0, 0)}
-            100% {-webkit-transform:translate(-100%, 0)}
-          }
-        `}</style>
-      </Helmet>
-
-
-
       <div style={{overflow: 'hidden', whiteSpace: 'nowrap'}}>
         <div style={this.state.on ? getMarqueeStyle(duration || 10) : baseStyle}>
           {currentTrack ? (textFn ? textFn(currentTrack) : `${number}. ${artist} - ${title}`) : ''}
