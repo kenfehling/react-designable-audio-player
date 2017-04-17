@@ -220,12 +220,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }
 
 	  _createClass(TM, [{
-	    key: 'shouldComponentUpdate',
-	    value: function shouldComponentUpdate(newProps) {
-	      console.log(newProps);
-	      return true;
-	    }
-	  }, {
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
 	      var _this4 = this;

@@ -87,11 +87,6 @@ class TM extends Component {
     )
   }
 
-  shouldComponentUpdate(newProps) {
-    console.log(newProps)
-    return true
-  }
-
   componentDidMount() {
     this.listenerId = addListener(update => this.setState({
       currentTrack: update.currentTrack,
