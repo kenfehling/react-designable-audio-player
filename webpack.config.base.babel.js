@@ -1,6 +1,5 @@
-var webpack = require('webpack');
-
-module.exports = {
+export default {
+  entry: ["babel-polyfill", "./src/index.js"],
   output: {
     libraryTarget: 'umd',
     library: 'ReactDesignableAudioPlayer',
@@ -10,16 +9,16 @@ module.exports = {
     loaders: [
       {
         test: /\.(js|jsx)?$/,
-        loaders: ['babel'],
+        loaders: ['babel-loader'],
         exclude: /node_modules/,
       }, {
         test: /\.css$/,
-        loader: 'style!css'
+        loader: 'style-loader!css-loader'
       },
     ],
   },
   resolve: {
-    extensions: ['', '.js', '.jsx'],
+    extensions: ['.js', '.jsx'],
   },
   externals: {
     react: {

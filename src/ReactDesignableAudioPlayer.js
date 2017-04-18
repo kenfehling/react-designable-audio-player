@@ -7,7 +7,7 @@ import {
   play, stop, seek, next, prev, goto, gotoAndPlay, addTracks, turnOnAutoplay,
   addListener, removeListener, UpdateTypes
 } from './audioPlayerCore'
-import _ from 'lodash'
+import "babel-polyfill"
 
 export function connectAudioPlayer(WrappedComponent, tracks, {autoplay=false}={}) {
   class Connect extends Component {
@@ -24,7 +24,10 @@ export function connectAudioPlayer(WrappedComponent, tracks, {autoplay=false}={}
     }
 
     componentDidMount() {
-      this.listenerId = addListener(update => this.setState(_.omit(update, 'type')))
+      this.listenerId = addListener(update => {
+        const {type, ...state} = update
+        this.setState(state)
+      })
       if (autoplay) {
         turnOnAutoplay()
       }
@@ -139,8 +142,10 @@ class TS extends Component {
   }
 
   componentDidMount() {
-    this.listenerId = addListener(update =>
-        this.setState(_.pick(update, ['secondsElapsed', 'secondsRemaining'])))
+    this.listenerId = addListener(update => {
+      const {secondsElapsed, secondsRemaining} = update
+      this.setState({secondsElapsed, secondsRemaining})
+    })
   }
 
   componentWillUnmount() {
@@ -183,8 +188,10 @@ class PL extends Component {
   }
 
   componentDidMount() {
-    this.listenerId = addListener(update =>
-        this.setState(_.pick(update, ['tracks', 'currentTrack'])))
+    this.listenerId = addListener(update => {
+      const {tracks, currentTrack} = update
+      this.setState({tracks, currentTrack})
+    })
   }
 
   componentWillUnmount() {
@@ -204,15 +211,20 @@ class PL extends Component {
     }
     return (
       <div className={className}>
-        {tracks.map((track, i) =>
+        {tracks.map((track, i) => (
           <div key={i}
-               className={number === i + 1 ? itemClassName + ' ' + currentItemClassName : itemClassName}
+               className={
+                 number === i + 1 ?
+                   (itemClassName + ' ' + currentItemClassName) :
+                   itemClassName
+               }
                style={itemStyle}
                onClick={() => number === i + 1 ? gotoAndPlay(i + 1) : goto(i + 1)}
           >
                   {itemComponent ? itemComponent(track) :
                       `${i + 1}. ${track.artist} - ${track.title}`}
-          </div>)}
+          </div>
+        ))}
       </div>
     )
   }

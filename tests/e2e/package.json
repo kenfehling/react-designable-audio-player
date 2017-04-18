@@ -15,5 +15,7 @@
     "webpack": "^2.2.0",
     "webpack-dev-server": "^2.2.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "babel-polyfill": "^6.23.0"
+  }
 }

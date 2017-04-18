@@ -1,7 +1,6 @@
 /* global Audio */
 
 import {canUseDOM} from 'fbjs/lib/ExecutionEnvironment'
-import * as _ from 'lodash';
 
 const noop = () => {};
 const audio = canUseDOM ? new Audio() : null;
@@ -12,6 +11,7 @@ let listeners = {};
 let lastListenerId = 0;
 
 export const UpdateTypes = {
+    LISTENER_ADDED: 'LISTENER_ADDED',
     TRACKS_ADDED: 'TRACKS_ADDED',
     LOAD: 'LOAD',
     PLAY: 'PLAY',
@@ -48,7 +48,7 @@ export function formatTime(seconds) {
 }
 
 function updateListeners(type) {
-    _.each(_.values(listeners), listener => listener({
+    Object.values(listeners).forEach(listener => listener({
         type,
         tracks: tracks,
         isPlaying: isPlaying(),
@@ -81,10 +81,10 @@ function stopTimer() {
 }
 
 export const addTracks = canUseDOM ? (newTracks) => {
-    if (_.isEmpty(tracks)) {
+    if (tracks === undefined || tracks === []) {
         audio.src = newTracks[0].file;
     }
-    tracks = _.map(newTracks, (t, i) => ({...t, number: i + 1}));
+    tracks = newTracks.map((t, i) => ({...t, number: i + 1}));
     updateListeners(UpdateTypes.TRACKS_ADDED);
 } : noop;
 
@@ -114,12 +114,12 @@ export const seek = canUseDOM ? (seconds) => {
 } : noop;
 
 export const next = canUseDOM ? () => {
-    currentTrackIndex = currentTrackIndex + 1 >= _.size(tracks) ? 0 : currentTrackIndex + 1;
+    currentTrackIndex = currentTrackIndex + 1 >= tracks.length ? 0 : currentTrackIndex + 1;
     switchTrack();
 } : noop;
 
 export const prev = canUseDOM ? () => {
-    currentTrackIndex = currentTrackIndex - 1 < 0 ? _.size(tracks) - 1 : currentTrackIndex - 1;
+    currentTrackIndex = currentTrackIndex - 1 < 0 ? tracks.length - 1 : currentTrackIndex - 1;
     switchTrack();
 } : noop;
 

@@ -8,13 +8,14 @@
     "lint": "eslint src tests",
     "build:lib": "babel src --out-dir lib",
     "build:examples": "cd examples; npm uninstall react-designable-audio-player; npm install react-designable-audio-player; npm run build",
-    "build:umd": "webpack src/index.js dist/react-designable-audio-player.js --config webpack.config.development.js",
-    "build:umd:min": "webpack src/index.js dist/designable-audio-player.min.js --config webpack.config.production.js",
+    "build:umd": "webpack src/index.js dist/react-designable-audio-player.js --config webpack.config.development.babel.js",
+    "build:umd:min": "webpack src/index.js dist/designable-audio-player.min.js --config webpack.config.production.babel.js",
     "build": "npm run build:lib && npm run build:umd && npm run build:umd:min",
     "publish:examples": "git subtree push --prefix examples/build origin gh-pages",
     "prepublish": "npm run clean && npm run build",
     "test": "jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "stats": "webpack --config webpack.config.production.babel.js --profile --json > stats.json"
   },
   "author": "Ken Fehling",
   "license": "MIT",
@@ -37,9 +38,7 @@
   ],
   "dependencies": {
     "insert-css": "^2.0.0",
-    "lodash": "^4.2.0",
-    "rc-slider": "5.1.1",
-    "react-dom": "^15.3.2"
+    "rc-slider": "5.1.1"
   },
   "devDependencies": {
     "babel-cli": "^6.3.17",
@@ -56,13 +55,15 @@
     "jest-cli": "^15.1.1",
     "react": "^15.3.2",
     "react-addons-test-utils": "^15.3.2",
+    "react-dom": "^15.3.2",
     "rimraf": "^2.3.4",
     "style-loader": "^0.13.1",
-    "webpack": "^1.11.0",
+    "webpack": "^2.2.0",
     "webpack-babel-jest": "^1.0.4"
   },
   "peerDependencies": {
-    "react": "^0.14.0 || ^15.0.0-0"
+    "react": "^0.14.0 || ^15.0.0-0",
+    "react-dom": ">=15"
   },
   "jest": {
     "scriptPreprocessor": "node_modules/webpack-babel-jest",
