@@ -7,7 +7,6 @@ import {
   play, stop, seek, next, prev, goto, gotoAndPlay, addTracks, turnOnAutoplay,
   addListener, removeListener, UpdateTypes
 } from './audioPlayerCore'
-import "babel-polyfill"
 
 export function connectAudioPlayer(WrappedComponent, tracks, {autoplay=false}={}) {
   class Connect extends Component {
