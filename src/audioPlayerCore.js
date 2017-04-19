@@ -81,7 +81,7 @@ function stopTimer() {
 }
 
 export const addTracks = canUseDOM ? (newTracks) => {
-    if (tracks === undefined || tracks === []) {
+    if (tracks === undefined || tracks.length === 0) {
         audio.src = newTracks[0].file;
     }
     tracks = newTracks.map((t, i) => ({...t, number: i + 1}));
