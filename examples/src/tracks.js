@@ -1,7 +1,7 @@
 const tracks = [{
-  title: 'Jammed',
+  title: 'Flung',
   artist: 'Ken Fehling',
-  file: '//archive.org/download/kenfehling_music/jammed.mp3'
+  file: '//archive.org/download/kenfehling_music/flung.mp3'
 }, {
   title: 'Putter',
   artist: 'Ken Fehling & Yi Han',
