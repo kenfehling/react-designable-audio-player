@@ -81,12 +81,14 @@ class TM extends Component {
       on: true,
       currentTrack: null
     }
-    insertCss(
-      `@keyframes ${marqueeAnimationName} {
+    if (canUseDOM) {
+      insertCss(
+        `@keyframes ${marqueeAnimationName} {
         0% {-webkit-transform:translate(0, 0)}
         100% {-webkit-transform:translate(-100%, 0)}
        }`
-    )
+      )
+    }
   }
 
   componentDidMount() {

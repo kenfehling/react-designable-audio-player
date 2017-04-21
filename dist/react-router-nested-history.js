@@ -11445,7 +11445,9 @@ var TM = function (_Component2) {
       on: true,
       currentTrack: null
     };
-    (0, _insertCss2.default)('@keyframes ' + marqueeAnimationName + ' {\n        0% {-webkit-transform:translate(0, 0)}\n        100% {-webkit-transform:translate(-100%, 0)}\n       }');
+    if (_ExecutionEnvironment.canUseDOM) {
+      (0, _insertCss2.default)('@keyframes ' + marqueeAnimationName + ' {\n        0% {-webkit-transform:translate(0, 0)}\n        100% {-webkit-transform:translate(-100%, 0)}\n       }');
+    }
     return _this3;
   }
 
