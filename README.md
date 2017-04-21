@@ -12,6 +12,9 @@ Built on top of the HTML5 [&lt;audio&gt;](https://developer.mozilla.org/en-US/do
 ## Online demo
 [kenfehling.github.io/react-designable-audio-player](https://kenfehling.github.io/react-designable-audio-player/)
 
+## In the wild
+The library is used on my [personal webpage](http://www.kenfehling.com/music)
+
 ## Installation
 ```
 npm install --save kenfehling/react-designable-audio-player
