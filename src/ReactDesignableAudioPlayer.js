@@ -1,4 +1,5 @@
-import React, { Component, PropTypes, createElement } from 'react'
+import React, { Component, createElement } from 'react'
+import PropTypes from 'prop-types'
 import {canUseDOM} from 'fbjs/lib/ExecutionEnvironment'
 import Slider from 'rc-slider'
 import insertCss from 'insert-css'
