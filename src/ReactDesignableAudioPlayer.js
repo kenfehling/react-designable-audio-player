@@ -1,6 +1,6 @@
 import React, { Component, createElement } from 'react'
 import PropTypes from 'prop-types'
-import {canUseDOM} from 'fbjs/lib/ExecutionEnvironment'
+import {canUseDOM} from 'exenv'
 import Slider from 'rc-slider'
 import insertCss from 'insert-css'
 import 'rc-slider/assets/index.css'

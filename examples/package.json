@@ -1,13 +1,13 @@
 {
   "name": "examples",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "homepage": "https://kenfehling.github.io/react-designable-audio-player/",
   "devDependencies": {
     "react-scripts": "^0.6.0"
   },
   "dependencies": {
-    "react": "^15.3.0",
-    "react-dom": "^15.3.0",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
     "react-designable-audio-player": "github:kenfehling/react-designable-audio-player"
   },
   "scripts": {

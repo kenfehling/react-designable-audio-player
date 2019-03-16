@@ -1,6 +1,6 @@
 /* global Audio */
 
-import {canUseDOM} from 'fbjs/lib/ExecutionEnvironment'
+import {canUseDOM} from 'exenv'
 
 const noop = () => {};
 const audio = canUseDOM ? new Audio() : null;
