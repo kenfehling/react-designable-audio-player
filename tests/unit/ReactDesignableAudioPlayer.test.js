@@ -1,8 +1,11 @@
 import React from 'react';
-import {shallow, mount, render} from 'enzyme';
+import Enzyme, {shallow, mount, render} from 'enzyme';
 import {connectAudioPlayer, TitleMarquee, TimeSlider, Playlist} from '../../src/ReactDesignableAudioPlayer';
 import * as core from '../../src/audioPlayerCore';
 import _ from 'lodash';
+import Adapter from 'enzyme-adapter-react-16';
+
+Enzyme.configure({ adapter: new Adapter() });
 
 const tracks = [
     {artist: 'Radiohead', title: 'You', file: ''},

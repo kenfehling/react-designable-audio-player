@@ -128,11 +128,7 @@ export const TitleMarquee = TM
 
 /* TimeSlider component */
 
-class DefaultSliderHandle extends Component {
-  render() {
-    return <div></div>
-  }
-}
+const DefaultSliderHandle = () => <div />;
 
 class TS extends Component {
   constructor(props) {
@@ -163,7 +159,7 @@ class TS extends Component {
                 value={secondsElapsed}
                 min={0}
                 max={secondsElapsed + secondsRemaining}
-                handle={this.props.handle || <DefaultSliderHandle />}
+                handle={this.props.handle || DefaultSliderHandle}
                 {...props}
         />
       </div>
@@ -173,6 +169,7 @@ class TS extends Component {
 
 TS.propTypes = {
   className: PropTypes.string,
+  handle: PropTypes.func
 }
 
 export const TimeSlider = TS
