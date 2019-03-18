@@ -1298,7 +1298,7 @@ function addEventListenerWrap(target, eventType, cb, option) {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.Playlist = exports.TimeSlider = exports.TitleMarquee = exports.connectAudioPlayer = undefined;
+exports.Track = exports.Tracks = exports.Playlist = exports.TimeSlider = exports.TitleMarquee = exports.connectAudioPlayer = undefined;
 
 var _ReactDesignableAudioPlayer = __webpack_require__(84);
 
@@ -1306,6 +1306,8 @@ exports.connectAudioPlayer = _ReactDesignableAudioPlayer.connectAudioPlayer;
 exports.TitleMarquee = _ReactDesignableAudioPlayer.TitleMarquee;
 exports.TimeSlider = _ReactDesignableAudioPlayer.TimeSlider;
 exports.Playlist = _ReactDesignableAudioPlayer.Playlist;
+exports.Tracks = _ReactDesignableAudioPlayer.Tracks;
+exports.Track = _ReactDesignableAudioPlayer.Track;
 
 /***/ }),
 /* 33 */
@@ -3966,7 +3968,7 @@ module.exports = exports['default'];
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Playlist = exports.TimeSlider = exports.TitleMarquee = undefined;
+exports.Tracks = exports.Track = exports.Playlist = exports.TimeSlider = exports.TitleMarquee = undefined;
 
 var _extends2 = __webpack_require__(5);
 
@@ -4060,7 +4062,17 @@ function connectAudioPlayer(WrappedComponent, tracks) {
         if (autoplay) {
           (0, _audioPlayerCore.turnOnAutoplay)();
         }
-        (0, _audioPlayerCore.addTracks)(tracks);
+
+        if (tracks instanceof Function) {
+          var children = tracks().props.children;
+          var cs = _react.Children.count(children) === 1 ? [children] : children;
+          var ts = _react.Children.map(cs, function (c) {
+            return c.props;
+          });
+          (0, _audioPlayerCore.addTracks)(ts);
+        } else {
+          (0, _audioPlayerCore.addTracks)(tracks);
+        }
       }
     }, {
       key: 'componentWillUnmount',
@@ -4340,6 +4352,35 @@ PL.propTypes = {
 };
 
 var Playlist = exports.Playlist = PL;
+
+/* Track component */
+
+var Tk = function Tk(_ref4) {
+  var children = _ref4.children;
+  return children;
+};
+
+Tk.propTypes = {
+  artist: _propTypes2.default.string.isRequired,
+  title: _propTypes2.default.string.isRequired,
+  file: _propTypes2.default.string.isRequired,
+  children: _propTypes2.default.element
+};
+
+var Track = exports.Track = Tk;
+
+/* Tracks component */
+
+var Tks = function Tks(_ref5) {
+  var children = _ref5.children;
+  return children;
+};
+
+Tks.propTypes = {
+  children: _propTypes2.default.oneOfType([_propTypes2.default.arrayOf(_propTypes2.default.object), _propTypes2.default.object]).isRequired
+};
+
+var Tracks = exports.Tracks = Tks;
 
 /***/ }),
 /* 85 */

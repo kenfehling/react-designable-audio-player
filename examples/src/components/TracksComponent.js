@@ -1,5 +1,5 @@
 import React from 'react';
-import {connectAudioPlayer} from 'react-designable-audio-player';
+import {connectAudioPlayer, Tracks, Track} from 'react-designable-audio-player';
 
 const AudioPlayer = ({play, stop, next, prev, isPlaying, timeElapsed, timeRemaining, currentTrack:{artist, title}}) => (
   <div>
