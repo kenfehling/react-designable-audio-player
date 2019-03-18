@@ -9,7 +9,7 @@ import {
   addListener, removeListener, UpdateTypes
 } from './audioPlayerCore'
 
-export function connectAudioPlayer(WrappedComponent, tracks, {autoplay=false}={}) {
+export function connectAudioPlayer(WrappedComponent, tracks=[], {autoplay=false}={}) {
   class Connect extends Component {
     constructor(props) {
       super(props)
@@ -32,15 +32,15 @@ export function connectAudioPlayer(WrappedComponent, tracks, {autoplay=false}={}
         turnOnAutoplay()
       }
 
-      if (tracks instanceof Function) {
-        const children = tracks().props.children;
-        const cs = Children.count(children) === 1 ? [children] : children;
-        const ts = Children.map(cs, c => c.props);
-        addTracks(ts);
-      }
-      else {
+      // if (tracks instanceof Function) {
+      //   const children = tracks().props.children;
+      //   const cs = Children.count(children) === 1 ? [children] : children;
+      //   const ts = Children.map(cs, c => c.props);
+      //   addTracks(ts);
+      // }
+      // else {
         addTracks(tracks);
-      }
+      // }
     }
 
     componentWillUnmount() {
@@ -248,29 +248,29 @@ PL.propTypes = {
 export const Playlist = PL
 
 
-/* Track component */
-
-const Tk = ({children}) => children;
-
-Tk.propTypes = {
-  artist: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  file: PropTypes.string.isRequired,
-  children: PropTypes.element
-}
-
-export const Track = Tk;
-
-
-/* Tracks component */
-
-const Tks = ({children}) => children;
-
-Tks.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.object),
-    PropTypes.object
-  ]).isRequired
-}
-
-export const Tracks = Tks;
+// /* Track component */
+//
+// const Tk = ({children}) => children;
+//
+// Tk.propTypes = {
+//   artist: PropTypes.string.isRequired,
+//   title: PropTypes.string.isRequired,
+//   file: PropTypes.string.isRequired,
+//   children: PropTypes.element
+// }
+//
+// export const Track = Tk;
+//
+//
+// /* Tracks component */
+//
+// const Tks = ({children}) => children;
+//
+// Tks.propTypes = {
+//   children: PropTypes.oneOfType([
+//     PropTypes.arrayOf(PropTypes.object),
+//     PropTypes.object
+//   ]).isRequired
+// }
+//
+// export const Tracks = Tks;

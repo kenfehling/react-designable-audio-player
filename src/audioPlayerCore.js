@@ -81,11 +81,26 @@ function stopTimer() {
 }
 
 export const addTracks = canUseDOM ? (newTracks) => {
+    if (newTracks === []) {
+        return;
+    }
     if (tracks === undefined || tracks.length === 0) {
         audio.src = newTracks[0].file;
     }
     tracks = newTracks.map((t, i) => ({...t, number: i + 1}));
     updateListeners(UpdateTypes.TRACKS_ADDED);
+} : noop;
+
+export const replaceTracks = canUseDOM ? (newTracks, keepCurrent=true) => {
+    if (tracks !== undefined && tracks.length !== 0) {
+       if (isPlaying() && keepCurrent) {
+           tracks = [tracks[0]];
+       }
+       else {
+           tracks = [];
+       }
+    }
+    addTracks(newTracks);
 } : noop;
 
 export const play = canUseDOM ? () => {
