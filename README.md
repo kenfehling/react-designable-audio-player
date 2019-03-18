@@ -48,13 +48,13 @@ const AudioPlayer = ({play, stop, next, prev, isPlaying, timeElapsed, timeRemain
 Create an array of objects to hold all of your tracks. Each object must have an `artist`, `title`, and `file`.
 ```js
 const tracks = [{
-    artist: '8BIT-SOLDIER',
-    title: 'Close Your Eyes',
-    file: 'https://ia601209.us.archive.org/20/items/Chiptune_Songs_Archive/8BIT-SOLDIER/06%20Close%20Your%20Eyes.mp3'
+    artist: 'Ken Fehling',
+    title: 'Flung',
+    file: '//archive.org/download/kenfehling_music/flung.mp3'
 }, {
-    artist: 'Hidden Fortress',
-    title: 'I Need a Quarter',
-    file: 'https://ia802605.us.archive.org/14/items/upupdowndownleftrightleftrightbaslectremix/01INeedAQuartrer.mp3'
+    artist: 'Ken Fehling',
+    title: 'Putter',
+    file: '//archive.org/download/kenfehling_music/putter.mp3'
 }];
 ```
 

@@ -1,4 +1,4 @@
-import React, { Component, createElement } from 'react'
+import React, { Component, createElement, Children } from 'react'
 import PropTypes from 'prop-types'
 import {canUseDOM} from 'exenv'
 import Slider from 'rc-slider'
@@ -31,7 +31,16 @@ export function connectAudioPlayer(WrappedComponent, tracks, {autoplay=false}={}
       if (autoplay) {
         turnOnAutoplay()
       }
-      addTracks(tracks)
+
+      if (tracks instanceof Function) {
+        const children = tracks().props.children;
+        const cs = Children.count(children) === 1 ? [children] : children;
+        const ts = Children.map(cs, c => c.props);
+        addTracks(ts);
+      }
+      else {
+        addTracks(tracks);
+      }
     }
 
     componentWillUnmount() {
@@ -220,8 +229,8 @@ class PL extends Component {
                style={itemStyle}
                onClick={() => number === i + 1 ? gotoAndPlay(i + 1) : goto(i + 1)}
           >
-                  {itemComponent ? itemComponent(track) :
-                      `${i + 1}. ${track.artist} - ${track.title}`}
+            {itemComponent ? itemComponent(track) :
+              `${i + 1}. ${track.artist} - ${track.title}`}
           </div>
         ))}
       </div>
@@ -237,3 +246,31 @@ PL.propTypes = {
 }
 
 export const Playlist = PL
+
+
+/* Track component */
+
+const Tk = ({children}) => children;
+
+Tk.propTypes = {
+  artist: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  file: PropTypes.string.isRequired,
+  children: PropTypes.element
+}
+
+export const Track = Tk;
+
+
+/* Tracks component */
+
+const Tks = ({children}) => children;
+
+Tks.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.object),
+    PropTypes.object
+  ]).isRequired
+}
+
+export const Tracks = Tks;

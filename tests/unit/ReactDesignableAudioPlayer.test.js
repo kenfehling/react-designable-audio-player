@@ -1,6 +1,8 @@
 import React from 'react';
 import Enzyme, {shallow, mount, render} from 'enzyme';
-import {connectAudioPlayer, TitleMarquee, TimeSlider, Playlist} from '../../src/ReactDesignableAudioPlayer';
+import {
+    connectAudioPlayer, TitleMarquee, TimeSlider, Playlist, Tracks, Track
+} from '../../src/ReactDesignableAudioPlayer';
 import * as core from '../../src/audioPlayerCore';
 import _ from 'lodash';
 import Adapter from 'enzyme-adapter-react-16';
@@ -11,6 +13,28 @@ const tracks = [
     {artist: 'Radiohead', title: 'You', file: ''},
     {artist: 'Joy Division', title: 'Transmission', file: ''},
 ];
+
+test('Player accepts tracks object', () => {
+    const ItemComponent = ({title}) => <div>{title}</div>;
+    const PlayerComponent = () => <Playlist itemComponent={ItemComponent} />;
+    const AudioPlayer = connectAudioPlayer(PlayerComponent, tracks);
+    const output = mount(<AudioPlayer />);
+    expect(output.text()).toEqual('YouTransmission');
+});
+
+test('Player accepts Tracks component', () => {
+    const ItemComponent = ({title}) => <div>{title}</div>;
+    const PlayerComponent = () => <Playlist itemComponent={ItemComponent} />;
+    const TracksComponent = () => (
+      <Tracks>
+          <Track artist='Radiohead' title='You' file='' />
+          <Track artist='Joy Division' title='Transmission' file='' />
+      </Tracks>
+    );
+    const AudioPlayer = connectAudioPlayer(PlayerComponent, TracksComponent);
+    const output = mount(<AudioPlayer />);
+    expect(output.text()).toEqual('YouTransmission');
+});
 
 test("Current track props don't break the component before initialization", () => {
     const PlayerComponent = ({currentTrack:{number}}) => <div>Number: {number}</div>;
