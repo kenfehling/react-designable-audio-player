@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import {canUseDOM} from 'fbjs/lib/ExecutionEnvironment'
 import Slider from 'rc-slider'
 import insertCss from 'insert-css'
-import style from 'bundle-text:rc-slider/assets/index.css'
+import 'rc-slider/assets/index.css'
 import {
   play, stop, seek, next, prev, goto, gotoAndPlay, addTracks, turnOnAutoplay,
   addListener, removeListener, UpdateTypes
@@ -14,18 +14,13 @@ export function connectAudioPlayer(WrappedComponent, tracks, {autoplay=false}={}
     constructor(props) {
       super(props)
       this.state = {
-        isPlaying: false, 
+        isPlaying: false,
         currentTrack: null,
         secondsElapsed: 0,
         secondsRemaining: 0,
         timeElapsed: null,
         timeRemaining: null,
       }
-      let shadow = this.attachShadow({ mode: "open" });
-
-      let styleEl = document.createElement("style");
-      styleEl.textContent = style;
-      shadow.appendChild(style);
     }
 
     componentDidMount() {
