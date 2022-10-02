@@ -1,6 +1,6 @@
 {
   "name": "react-designable-audio-player",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "An audio player library for React that lets you use your own UI component",
   "source": "src/index.js",
   "main": "lib/index.js",
