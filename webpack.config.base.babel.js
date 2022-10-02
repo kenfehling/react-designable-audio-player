@@ -1,21 +1,22 @@
 import path from 'path'
 
 export default {
-  entry: ["./src/index.js"],
+  entry: "./src/index.js",
   output: {
     library: '',
-    libraryTarget: 'commonjs',
+    libraryTarget: 'umd',
+    globalObject: 'this',
     path: path.resolve('./lib'),
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.(js|jsx)?$/,
-        loaders: ['babel-loader'],
+        use: ['babel-loader'],
         exclude: /node_modules/,
       }, {
         test: /\.css$/,
-        loader: 'style-loader!css-loader'
+        use: ['style-loader', 'css-loader']
       },
     ],
   },
@@ -30,5 +31,5 @@ export default {
       amd: 'react',
     }
   },
-  node: { Buffer: false },
+  node: { Buffer: false }
 };

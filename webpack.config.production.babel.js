@@ -3,6 +3,7 @@ import baseConfig from './webpack.config.base.babel'
 
 export default {
   ...baseConfig,
+  mode: 'production',
   output: {
     ...baseConfig.output,
     filename: 'index.js'
@@ -10,12 +11,9 @@ export default {
   plugins: [
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production'),
-    }),
-    new webpack.optimize.UglifyJsPlugin({
-      compressor: {
-        screw_ie8: true,
-        warnings: false
-      },
-    }),
-  ]
+    })
+  ],
+  optimization: {
+    minimize: true
+  }
 }
