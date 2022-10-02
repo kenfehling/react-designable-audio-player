@@ -5,7 +5,7 @@ export default {
   ...baseConfig,
   output: {
     ...baseConfig.output,
-    filename: 'react-router-nested-history.js'
+    filename: 'react-designable-audio-player.js'
   },
   plugins: [
     new webpack.DefinePlugin({
