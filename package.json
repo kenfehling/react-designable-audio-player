@@ -23,7 +23,6 @@
   },
   "bugs": "https://github.com/kenfehling/react-designable-audio-player/issues",
   "files": [
-    "dist",
     "lib",
     "src"
   ],

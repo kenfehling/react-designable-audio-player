@@ -14,7 +14,7 @@ export function connectAudioPlayer(WrappedComponent, tracks, {autoplay=false}={}
     constructor(props) {
       super(props)
       this.state = {
-        isPlaying: false,
+        isPlaying: false, 
         currentTrack: null,
         secondsElapsed: 0,
         secondsRemaining: 0,
@@ -25,7 +25,7 @@ export function connectAudioPlayer(WrappedComponent, tracks, {autoplay=false}={}
 
       let styleEl = document.createElement("style");
       styleEl.textContent = style;
-      shadow.appendChild(styleEl);
+      shadow.appendChild(style);
     }
 
     componentDidMount() {
