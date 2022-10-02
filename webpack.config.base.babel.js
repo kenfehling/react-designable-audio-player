@@ -6,7 +6,6 @@ export default {
     library: 'react-designable-audio-player',
     libraryTarget: 'umd',
     globalObject: 'this',
-    umdNamedDefine: true,
     path: path.resolve('./lib'),
   },
   module: {
@@ -32,5 +31,5 @@ export default {
       amd: 'react',
     }
   },
-  node: { Buffer: false }
+  node: { global: true }
 };
