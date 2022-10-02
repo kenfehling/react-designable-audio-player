@@ -3,9 +3,9 @@ import path from 'path'
 export default {
   entry: ["./src/index.js"],
   output: {
-    libraryTarget: 'umd',
-    library: 'ReactDesignableAudioPlayer',
-    path: path.resolve('./dist'),
+    library: '',
+    libraryTarget: 'commonjs',
+    path: path.resolve('./lib'),
   },
   module: {
     loaders: [

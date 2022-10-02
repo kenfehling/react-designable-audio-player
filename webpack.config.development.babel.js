@@ -5,7 +5,7 @@ export default {
   ...baseConfig,
   output: {
     ...baseConfig.output,
-    filename: 'react-designable-audio-player.js'
+    filename: 'index.js'
   },
   plugins: [
     new webpack.DefinePlugin({
