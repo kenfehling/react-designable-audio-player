@@ -3,8 +3,8 @@ import path from 'path'
 export default {
   entry: "./src/index.js",
   output: {
-    library: '',
-    libraryTarget: 'umd',
+    library: 'react-designable-audio-player',
+    libraryTarget: 'commonjs',
     globalObject: 'this',
     path: path.resolve('./lib'),
   },
