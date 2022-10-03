@@ -9,7 +9,10 @@
       "source": "src/index.js",
       "isLibrary": true,
       "outputFormat": "esmodule",
-      "includeNodeModules": ["fbjs", "insert-css", "rc-slider"]
+      "includeNodeModules": {
+        "react": false,
+        "react-dom": false
+       }
     }
   },
   "scripts": {
