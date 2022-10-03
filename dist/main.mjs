@@ -1,17 +1,25 @@
-import $a2Yf5$react, {createElement as $a2Yf5$createElement, Component as $a2Yf5$Component, forwardRef as $a2Yf5$forwardRef, useRef as $a2Yf5$useRef, useMemo as $a2Yf5$useMemo, isValidElement as $a2Yf5$isValidElement, useState as $a2Yf5$useState, useEffect as $a2Yf5$useEffect, useImperativeHandle as $a2Yf5$useImperativeHandle, Fragment as $a2Yf5$Fragment, useContext as $a2Yf5$useContext, createContext as $a2Yf5$createContext, useCallback as $a2Yf5$useCallback} from "react";
+import $a2Yf5$react, {createElement as $a2Yf5$createElement, Component as $a2Yf5$Component, forwardRef as $a2Yf5$forwardRef, useRef as $a2Yf5$useRef, useEffect as $a2Yf5$useEffect} from "react";
 import $a2Yf5$proptypes from "prop-types";
+import $a2Yf5$babelruntimehelpersesmobjectSpread2 from "@babel/runtime/helpers/esm/objectSpread2";
+import $a2Yf5$babelruntimehelpersesmclassCallCheck from "@babel/runtime/helpers/esm/classCallCheck";
+import $a2Yf5$babelruntimehelpersesmcreateClass from "@babel/runtime/helpers/esm/createClass";
+import $a2Yf5$babelruntimehelpersesminherits from "@babel/runtime/helpers/esm/inherits";
+import $a2Yf5$babelruntimehelpersesmcreateSuper from "@babel/runtime/helpers/esm/createSuper";
+import $a2Yf5$rcutileswarning from "rc-util/es/warning";
 import $a2Yf5$babelruntimehelpersesmdefineProperty from "@babel/runtime/helpers/esm/defineProperty";
-import $a2Yf5$babelruntimehelpersesmtoConsumableArray from "@babel/runtime/helpers/esm/toConsumableArray";
-import $a2Yf5$babelruntimehelpersesmslicedToArray from "@babel/runtime/helpers/esm/slicedToArray";
-import $a2Yf5$babelruntimehelpersesmtypeof from "@babel/runtime/helpers/esm/typeof";
-import $a2Yf5$classnames from "classnames";
-import $a2Yf5$shallowequal from "shallowequal";
-import $a2Yf5$rcutileshooksuseMergedState from "rc-util/es/hooks/useMergedState";
-import "rc-util/es/warning";
 import $a2Yf5$babelruntimehelpersesmextends from "@babel/runtime/helpers/esm/extends";
 import $a2Yf5$babelruntimehelpersesmobjectWithoutProperties from "@babel/runtime/helpers/esm/objectWithoutProperties";
-import $a2Yf5$babelruntimehelpersesmobjectSpread2 from "@babel/runtime/helpers/esm/objectSpread2";
+import $a2Yf5$babelruntimehelpersesmtoConsumableArray from "@babel/runtime/helpers/esm/toConsumableArray";
+import $a2Yf5$babelruntimehelpersesmget from "@babel/runtime/helpers/esm/get";
+import $a2Yf5$babelruntimehelpersesmgetPrototypeOf from "@babel/runtime/helpers/esm/getPrototypeOf";
+import $a2Yf5$rcutilesDomaddEventListener from "rc-util/es/Dom/addEventListener";
+import $a2Yf5$classnames from "classnames";
+import $a2Yf5$babelruntimehelpersesmtypeof from "@babel/runtime/helpers/esm/typeof";
+import {findDOMNode as $a2Yf5$findDOMNode} from "react-dom";
 import $a2Yf5$rcutilesKeyCode from "rc-util/es/KeyCode";
+import $a2Yf5$rctooltip from "rc-tooltip";
+import {composeRef as $a2Yf5$composeRef} from "rc-util/es/ref";
+import $a2Yf5$rcutilesraf from "rc-util/es/raf";
 
 function $parcel$interopDefault(a) {
   return a && a.__esModule ? a.default : a;
@@ -52,453 +60,23 @@ $3276797958263460$exports = $3276797958263460$var$ExecutionEnvironment;
 
 
 
-
-
-
-
-
-
-
-
-
-var $082fec70572b288f$var$SliderContext = /*#__PURE__*/ $a2Yf5$createContext({
-    min: 0,
-    max: 0,
-    direction: "ltr",
-    step: 1,
-    includedStart: 0,
-    includedEnd: 0,
-    tabIndex: 0
-});
-var $082fec70572b288f$export$2e2bcd8739ae039 = $082fec70572b288f$var$SliderContext;
-
-
-function $35fda12cd89451f5$export$622cea445a1c5b7d(value, min, max) {
-    return (value - min) / (max - min);
-}
-function $35fda12cd89451f5$export$a41628415415e6e(direction, value, min, max) {
-    var offset = $35fda12cd89451f5$export$622cea445a1c5b7d(value, min, max);
-    var positionStyle = {};
-    switch(direction){
-        case "rtl":
-            positionStyle.right = "".concat(offset * 100, "%");
-            positionStyle.transform = "translateX(50%)";
-            break;
-        case "btt":
-            positionStyle.bottom = "".concat(offset * 100, "%");
-            positionStyle.transform = "translateY(50%)";
-            break;
-        case "ttb":
-            positionStyle.top = "".concat(offset * 100, "%");
-            positionStyle.transform = "translateY(-50%)";
-            break;
-        default:
-            positionStyle.left = "".concat(offset * 100, "%");
-            positionStyle.transform = "translateX(-50%)";
-            break;
+var $756f770978e0c648$var$Track = function Track(props) {
+    var _ref, _ref2;
+    var className = props.className, included = props.included, vertical = props.vertical, style = props.style;
+    var length = props.length, offset = props.offset, reverse = props.reverse;
+    if (length < 0) {
+        reverse = !reverse;
+        length = Math.abs(length);
+        offset = 100 - offset;
     }
-    return positionStyle;
-}
-function $35fda12cd89451f5$export$ddfa24987dade61b(value, index) {
-    return Array.isArray(value) ? value[index] : value;
-}
-
-
-var $d9b6b450487eb8c4$var$_excluded = [
-    "prefixCls",
-    "value",
-    "valueIndex",
-    "onStartMove",
-    "style",
-    "render",
-    "dragging",
-    "onOffsetChange"
-];
-var $d9b6b450487eb8c4$var$Handle = /*#__PURE__*/ $a2Yf5$forwardRef(function(props, ref) {
-    var _classNames, _getIndex;
-    var prefixCls = props.prefixCls, value = props.value, valueIndex = props.valueIndex, onStartMove = props.onStartMove, style = props.style, render = props.render, dragging = props.dragging, onOffsetChange = props.onOffsetChange, restProps = (0, $a2Yf5$babelruntimehelpersesmobjectWithoutProperties)(props, $d9b6b450487eb8c4$var$_excluded);
-    var _React$useContext = $a2Yf5$useContext((0, $082fec70572b288f$export$2e2bcd8739ae039)), min = _React$useContext.min, max = _React$useContext.max, direction = _React$useContext.direction, disabled = _React$useContext.disabled, range = _React$useContext.range, tabIndex = _React$useContext.tabIndex, ariaLabelForHandle = _React$useContext.ariaLabelForHandle, ariaLabelledByForHandle = _React$useContext.ariaLabelledByForHandle, ariaValueTextFormatterForHandle = _React$useContext.ariaValueTextFormatterForHandle;
-    var handlePrefixCls = "".concat(prefixCls, "-handle"); // ============================ Events ============================
-    var onInternalStartMove = function onInternalStartMove(e) {
-        if (!disabled) onStartMove(e, valueIndex);
-    }; // =========================== Keyboard ===========================
-    var onKeyDown = function onKeyDown(e) {
-        if (!disabled) {
-            var offset = null; // Change the value
-            switch(e.which || e.keyCode){
-                case (0, $a2Yf5$rcutilesKeyCode).LEFT:
-                    offset = direction === "ltr" || direction === "btt" ? -1 : 1;
-                    break;
-                case (0, $a2Yf5$rcutilesKeyCode).RIGHT:
-                    offset = direction === "ltr" || direction === "btt" ? 1 : -1;
-                    break;
-                // Up is plus
-                case (0, $a2Yf5$rcutilesKeyCode).UP:
-                    offset = direction !== "ttb" ? 1 : -1;
-                    break;
-                // Down is minus
-                case (0, $a2Yf5$rcutilesKeyCode).DOWN:
-                    offset = direction !== "ttb" ? -1 : 1;
-                    break;
-                case (0, $a2Yf5$rcutilesKeyCode).HOME:
-                    offset = "min";
-                    break;
-                case (0, $a2Yf5$rcutilesKeyCode).END:
-                    offset = "max";
-                    break;
-                case (0, $a2Yf5$rcutilesKeyCode).PAGE_UP:
-                    offset = 2;
-                    break;
-                case (0, $a2Yf5$rcutilesKeyCode).PAGE_DOWN:
-                    offset = -2;
-                    break;
-            }
-            if (offset !== null) {
-                e.preventDefault();
-                onOffsetChange(offset, valueIndex);
-            }
-        }
-    }; // ============================ Offset ============================
-    var positionStyle = (0, $35fda12cd89451f5$export$a41628415415e6e)(direction, value, min, max); // ============================ Render ============================
-    var handleNode = /*#__PURE__*/ $a2Yf5$createElement("div", (0, $a2Yf5$babelruntimehelpersesmextends)({
-        ref: ref,
-        className: (0, $a2Yf5$classnames)(handlePrefixCls, (_classNames = {}, (0, $a2Yf5$babelruntimehelpersesmdefineProperty)(_classNames, "".concat(handlePrefixCls, "-").concat(valueIndex + 1), range), (0, $a2Yf5$babelruntimehelpersesmdefineProperty)(_classNames, "".concat(handlePrefixCls, "-dragging"), dragging), _classNames)),
-        style: (0, $a2Yf5$babelruntimehelpersesmobjectSpread2)((0, $a2Yf5$babelruntimehelpersesmobjectSpread2)({}, positionStyle), style),
-        onMouseDown: onInternalStartMove,
-        onTouchStart: onInternalStartMove,
-        onKeyDown: onKeyDown,
-        tabIndex: disabled ? null : (0, $35fda12cd89451f5$export$ddfa24987dade61b)(tabIndex, valueIndex),
-        role: "slider",
-        "aria-valuemin": min,
-        "aria-valuemax": max,
-        "aria-valuenow": value,
-        "aria-disabled": disabled,
-        "aria-label": (0, $35fda12cd89451f5$export$ddfa24987dade61b)(ariaLabelForHandle, valueIndex),
-        "aria-labelledby": (0, $35fda12cd89451f5$export$ddfa24987dade61b)(ariaLabelledByForHandle, valueIndex),
-        "aria-valuetext": (_getIndex = (0, $35fda12cd89451f5$export$ddfa24987dade61b)(ariaValueTextFormatterForHandle, valueIndex)) === null || _getIndex === void 0 ? void 0 : _getIndex(value)
-    }, restProps)); // Customize
-    if (render) handleNode = render(handleNode, {
-        index: valueIndex,
-        prefixCls: prefixCls,
-        value: value,
-        dragging: dragging
-    });
-    return handleNode;
-});
-var $d9b6b450487eb8c4$export$2e2bcd8739ae039 = $d9b6b450487eb8c4$var$Handle;
-
-
-
-var $adc2257fd6b9b4f9$var$_excluded = [
-    "prefixCls",
-    "style",
-    "onStartMove",
-    "onOffsetChange",
-    "values",
-    "handleRender",
-    "draggingIndex"
-];
-var $adc2257fd6b9b4f9$var$Handles = /*#__PURE__*/ $a2Yf5$forwardRef(function(props, ref) {
-    var prefixCls = props.prefixCls, style = props.style, onStartMove = props.onStartMove, onOffsetChange = props.onOffsetChange, values = props.values, handleRender = props.handleRender, draggingIndex = props.draggingIndex, restProps = (0, $a2Yf5$babelruntimehelpersesmobjectWithoutProperties)(props, $adc2257fd6b9b4f9$var$_excluded);
-    var handlesRef = $a2Yf5$useRef({});
-    $a2Yf5$useImperativeHandle(ref, function() {
-        return {
-            focus: function focus(index) {
-                var _handlesRef$current$i;
-                (_handlesRef$current$i = handlesRef.current[index]) === null || _handlesRef$current$i === void 0 || _handlesRef$current$i.focus();
-            }
-        };
-    });
-    return /*#__PURE__*/ $a2Yf5$createElement($a2Yf5$Fragment, null, values.map(function(value, index) {
-        return /*#__PURE__*/ $a2Yf5$createElement((0, $d9b6b450487eb8c4$export$2e2bcd8739ae039), (0, $a2Yf5$babelruntimehelpersesmextends)({
-            ref: function ref(node) {
-                if (!node) delete handlesRef.current[index];
-                else handlesRef.current[index] = node;
-            },
-            dragging: draggingIndex === index,
-            prefixCls: prefixCls,
-            style: (0, $35fda12cd89451f5$export$ddfa24987dade61b)(style, index),
-            key: index,
-            value: value,
-            valueIndex: index,
-            onStartMove: onStartMove,
-            onOffsetChange: onOffsetChange,
-            render: handleRender
-        }, restProps));
-    }));
-});
-var $adc2257fd6b9b4f9$export$2e2bcd8739ae039 = $adc2257fd6b9b4f9$var$Handles;
-
-
-
-
-
-function $bab692743f110605$var$getPosition(e) {
-    var obj = "touches" in e ? e.touches[0] : e;
-    return {
-        pageX: obj.pageX,
-        pageY: obj.pageY
-    };
-}
-function $bab692743f110605$export$2e2bcd8739ae039(containerRef, direction, rawValues, min, max, formatValue, triggerChange, finishChange, offsetValues) {
-    var _React$useState = $a2Yf5$useState(null), _React$useState2 = (0, $a2Yf5$babelruntimehelpersesmslicedToArray)(_React$useState, 2), draggingValue = _React$useState2[0], setDraggingValue = _React$useState2[1];
-    var _React$useState3 = $a2Yf5$useState(-1), _React$useState4 = (0, $a2Yf5$babelruntimehelpersesmslicedToArray)(_React$useState3, 2), draggingIndex = _React$useState4[0], setDraggingIndex = _React$useState4[1];
-    var _React$useState5 = $a2Yf5$useState(rawValues), _React$useState6 = (0, $a2Yf5$babelruntimehelpersesmslicedToArray)(_React$useState5, 2), cacheValues = _React$useState6[0], setCacheValues = _React$useState6[1];
-    var _React$useState7 = $a2Yf5$useState(rawValues), _React$useState8 = (0, $a2Yf5$babelruntimehelpersesmslicedToArray)(_React$useState7, 2), originValues = _React$useState8[0], setOriginValues = _React$useState8[1];
-    var mouseMoveEventRef = $a2Yf5$useRef(null);
-    var mouseUpEventRef = $a2Yf5$useRef(null);
-    $a2Yf5$useEffect(function() {
-        if (draggingIndex === -1) setCacheValues(rawValues);
-    }, [
-        rawValues,
-        draggingIndex
-    ]); // Clean up event
-    $a2Yf5$useEffect(function() {
-        return function() {
-            document.removeEventListener("mousemove", mouseMoveEventRef.current);
-            document.removeEventListener("mouseup", mouseUpEventRef.current);
-            document.removeEventListener("touchmove", mouseMoveEventRef.current);
-            document.removeEventListener("touchend", mouseUpEventRef.current);
-        };
-    }, []);
-    var flushValues = function flushValues(nextValues, nextValue) {
-        // Perf: Only update state when value changed
-        if (cacheValues.some(function(val, i) {
-            return val !== nextValues[i];
-        })) {
-            if (nextValue !== undefined) setDraggingValue(nextValue);
-            setCacheValues(nextValues);
-            triggerChange(nextValues);
-        }
-    };
-    var updateCacheValue = function updateCacheValue(valueIndex, offsetPercent) {
-        // Basic point offset
-        if (valueIndex === -1) {
-            // >>>> Dragging on the track
-            var startValue = originValues[0];
-            var endValue = originValues[originValues.length - 1];
-            var maxStartOffset = min - startValue;
-            var maxEndOffset = max - endValue; // Get valid offset
-            var offset = offsetPercent * (max - min);
-            offset = Math.max(offset, maxStartOffset);
-            offset = Math.min(offset, maxEndOffset); // Use first value to revert back of valid offset (like steps marks)
-            var formatStartValue = formatValue(startValue + offset);
-            offset = formatStartValue - startValue;
-            var cloneCacheValues = originValues.map(function(val) {
-                return val + offset;
-            });
-            flushValues(cloneCacheValues);
-        } else {
-            // >>>> Dragging on the handle
-            var offsetDist = (max - min) * offsetPercent; // Always start with the valueIndex origin value
-            var cloneValues = (0, $a2Yf5$babelruntimehelpersesmtoConsumableArray)(cacheValues);
-            cloneValues[valueIndex] = originValues[valueIndex];
-            var next = offsetValues(cloneValues, offsetDist, valueIndex, "dist");
-            flushValues(next.values, next.value);
-        }
-    }; // Resolve closure
-    var updateCacheValueRef = $a2Yf5$useRef(updateCacheValue);
-    updateCacheValueRef.current = updateCacheValue;
-    var onStartMove = function onStartMove(e, valueIndex) {
-        e.stopPropagation();
-        var originValue = rawValues[valueIndex];
-        setDraggingIndex(valueIndex);
-        setDraggingValue(originValue);
-        setOriginValues(rawValues);
-        var _getPosition = $bab692743f110605$var$getPosition(e), startX = _getPosition.pageX, startY = _getPosition.pageY; // Moving
-        var onMouseMove = function onMouseMove(event) {
-            event.preventDefault();
-            var _getPosition2 = $bab692743f110605$var$getPosition(event), moveX = _getPosition2.pageX, moveY = _getPosition2.pageY;
-            var offsetX = moveX - startX;
-            var offsetY = moveY - startY;
-            var _containerRef$current = containerRef.current.getBoundingClientRect(), width = _containerRef$current.width, height = _containerRef$current.height;
-            var offSetPercent;
-            switch(direction){
-                case "btt":
-                    offSetPercent = -offsetY / height;
-                    break;
-                case "ttb":
-                    offSetPercent = offsetY / height;
-                    break;
-                case "rtl":
-                    offSetPercent = -offsetX / width;
-                    break;
-                default:
-                    offSetPercent = offsetX / width;
-            }
-            updateCacheValueRef.current(valueIndex, offSetPercent);
-        }; // End
-        var onMouseUp = function onMouseUp(event) {
-            event.preventDefault();
-            document.removeEventListener("mouseup", onMouseUp);
-            document.removeEventListener("mousemove", onMouseMove);
-            document.removeEventListener("touchend", onMouseUp);
-            document.removeEventListener("touchmove", onMouseMove);
-            mouseMoveEventRef.current = null;
-            mouseUpEventRef.current = null;
-            setDraggingIndex(-1);
-            finishChange();
-        };
-        document.addEventListener("mouseup", onMouseUp);
-        document.addEventListener("mousemove", onMouseMove);
-        document.addEventListener("touchend", onMouseUp);
-        document.addEventListener("touchmove", onMouseMove);
-        mouseMoveEventRef.current = onMouseMove;
-        mouseUpEventRef.current = onMouseUp;
-    }; // Only return cache value when it mapping with rawValues
-    var returnValues = $a2Yf5$useMemo(function() {
-        var sourceValues = (0, $a2Yf5$babelruntimehelpersesmtoConsumableArray)(rawValues).sort(function(a, b) {
-            return a - b;
-        });
-        var targetValues = (0, $a2Yf5$babelruntimehelpersesmtoConsumableArray)(cacheValues).sort(function(a, b) {
-            return a - b;
-        });
-        return sourceValues.every(function(val, index) {
-            return val === targetValues[index];
-        }) ? cacheValues : rawValues;
-    }, [
-        rawValues,
-        cacheValues
-    ]);
-    return [
-        draggingIndex,
-        draggingValue,
-        returnValues,
-        onStartMove
-    ];
-}
-
-
-
-
-
-
-
-
-
-
-function $a89d1377f1cf0514$export$2e2bcd8739ae039(props) {
-    var prefixCls = props.prefixCls, style = props.style, start = props.start, end = props.end, index = props.index, onStartMove = props.onStartMove;
-    var _React$useContext = $a2Yf5$useContext((0, $082fec70572b288f$export$2e2bcd8739ae039)), direction = _React$useContext.direction, min = _React$useContext.min, max = _React$useContext.max, disabled = _React$useContext.disabled, range = _React$useContext.range;
-    var trackPrefixCls = "".concat(prefixCls, "-track");
-    var offsetStart = (0, $35fda12cd89451f5$export$622cea445a1c5b7d)(start, min, max);
-    var offsetEnd = (0, $35fda12cd89451f5$export$622cea445a1c5b7d)(end, min, max); // ============================ Events ============================
-    var onInternalStartMove = function onInternalStartMove(e) {
-        if (!disabled && onStartMove) onStartMove(e, -1);
-    }; // ============================ Render ============================
-    var positionStyle = {};
-    switch(direction){
-        case "rtl":
-            positionStyle.right = "".concat(offsetStart * 100, "%");
-            positionStyle.width = "".concat(offsetEnd * 100 - offsetStart * 100, "%");
-            break;
-        case "btt":
-            positionStyle.bottom = "".concat(offsetStart * 100, "%");
-            positionStyle.height = "".concat(offsetEnd * 100 - offsetStart * 100, "%");
-            break;
-        case "ttb":
-            positionStyle.top = "".concat(offsetStart * 100, "%");
-            positionStyle.height = "".concat(offsetEnd * 100 - offsetStart * 100, "%");
-            break;
-        default:
-            positionStyle.left = "".concat(offsetStart * 100, "%");
-            positionStyle.width = "".concat(offsetEnd * 100 - offsetStart * 100, "%");
-    }
-    return /*#__PURE__*/ $a2Yf5$createElement("div", {
-        className: (0, $a2Yf5$classnames)(trackPrefixCls, range && "".concat(trackPrefixCls, "-").concat(index + 1)),
-        style: (0, $a2Yf5$babelruntimehelpersesmobjectSpread2)((0, $a2Yf5$babelruntimehelpersesmobjectSpread2)({}, positionStyle), style),
-        onMouseDown: onInternalStartMove,
-        onTouchStart: onInternalStartMove
-    });
-}
-
-
-
-function $3e5c9f910f0cbf24$export$2e2bcd8739ae039(props) {
-    var prefixCls = props.prefixCls, style = props.style, values = props.values, startPoint = props.startPoint, onStartMove = props.onStartMove;
-    var _React$useContext = $a2Yf5$useContext((0, $082fec70572b288f$export$2e2bcd8739ae039)), included = _React$useContext.included, range = _React$useContext.range, min = _React$useContext.min;
-    var trackList = $a2Yf5$useMemo(function() {
-        if (!range) {
-            // null value do not have track
-            if (values.length === 0) return [];
-            var startValue = startPoint !== null && startPoint !== void 0 ? startPoint : min;
-            var endValue = values[0];
-            return [
-                {
-                    start: Math.min(startValue, endValue),
-                    end: Math.max(startValue, endValue)
-                }
-            ];
-        } // Multiple
-        var list = [];
-        for(var i = 0; i < values.length - 1; i += 1)list.push({
-            start: values[i],
-            end: values[i + 1]
-        });
-        return list;
-    }, [
-        values,
-        range,
-        startPoint,
-        min
-    ]);
-    return included ? trackList.map(function(_ref, index) {
-        var start = _ref.start, end = _ref.end;
-        return /*#__PURE__*/ $a2Yf5$createElement((0, $a89d1377f1cf0514$export$2e2bcd8739ae039), {
-            index: index,
-            prefixCls: prefixCls,
-            style: (0, $35fda12cd89451f5$export$ddfa24987dade61b)(style, index),
-            start: start,
-            end: end,
-            key: index,
-            onStartMove: onStartMove
-        });
+    var positonStyle = vertical ? (_ref = {}, (0, $a2Yf5$babelruntimehelpersesmdefineProperty)(_ref, reverse ? "top" : "bottom", "".concat(offset, "%")), (0, $a2Yf5$babelruntimehelpersesmdefineProperty)(_ref, reverse ? "bottom" : "top", "auto"), (0, $a2Yf5$babelruntimehelpersesmdefineProperty)(_ref, "height", "".concat(length, "%")), _ref) : (_ref2 = {}, (0, $a2Yf5$babelruntimehelpersesmdefineProperty)(_ref2, reverse ? "right" : "left", "".concat(offset, "%")), (0, $a2Yf5$babelruntimehelpersesmdefineProperty)(_ref2, reverse ? "left" : "right", "auto"), (0, $a2Yf5$babelruntimehelpersesmdefineProperty)(_ref2, "width", "".concat(length, "%")), _ref2);
+    var elStyle = (0, $a2Yf5$babelruntimehelpersesmobjectSpread2)((0, $a2Yf5$babelruntimehelpersesmobjectSpread2)({}, style), positonStyle);
+    return included ? /*#__PURE__*/ (0, $a2Yf5$react).createElement("div", {
+        className: className,
+        style: elStyle
     }) : null;
-}
-
-
-
-
-
-
-
-
-
-function $811505128501c4db$export$2e2bcd8739ae039(props) {
-    var prefixCls = props.prefixCls, style = props.style, children = props.children, value = props.value, _onClick = props.onClick;
-    var _React$useContext = $a2Yf5$useContext((0, $082fec70572b288f$export$2e2bcd8739ae039)), min = _React$useContext.min, max = _React$useContext.max, direction = _React$useContext.direction, includedStart = _React$useContext.includedStart, includedEnd = _React$useContext.includedEnd, included = _React$useContext.included;
-    var textCls = "".concat(prefixCls, "-text"); // ============================ Offset ============================
-    var positionStyle = (0, $35fda12cd89451f5$export$a41628415415e6e)(direction, value, min, max);
-    return /*#__PURE__*/ $a2Yf5$createElement("span", {
-        className: (0, $a2Yf5$classnames)(textCls, (0, $a2Yf5$babelruntimehelpersesmdefineProperty)({}, "".concat(textCls, "-active"), included && includedStart <= value && value <= includedEnd)),
-        style: (0, $a2Yf5$babelruntimehelpersesmobjectSpread2)((0, $a2Yf5$babelruntimehelpersesmobjectSpread2)({}, positionStyle), style),
-        onMouseDown: function onMouseDown(e) {
-            e.stopPropagation();
-        },
-        onClick: function onClick() {
-            _onClick(value);
-        }
-    }, children);
-}
-
-
-function $b28fef505ed44895$export$2e2bcd8739ae039(props) {
-    var prefixCls = props.prefixCls, marks = props.marks, onClick = props.onClick;
-    var markPrefixCls = "".concat(prefixCls, "-mark"); // Not render mark if empty
-    if (!marks.length) return null;
-    return /*#__PURE__*/ $a2Yf5$createElement("div", {
-        className: markPrefixCls
-    }, marks.map(function(_ref) {
-        var value = _ref.value, style = _ref.style, label = _ref.label;
-        return /*#__PURE__*/ $a2Yf5$createElement((0, $811505128501c4db$export$2e2bcd8739ae039), {
-            key: value,
-            prefixCls: markPrefixCls,
-            style: style,
-            value: value,
-            onClick: onClick
-        }, label);
-    }));
-}
+};
+var $756f770978e0c648$export$2e2bcd8739ae039 = $756f770978e0c648$var$Track;
 
 
 
@@ -509,536 +87,1495 @@ function $b28fef505ed44895$export$2e2bcd8739ae039(props) {
 
 
 
-function $691f445334909109$export$2e2bcd8739ae039(props) {
-    var prefixCls = props.prefixCls, value = props.value, style = props.style, activeStyle = props.activeStyle;
-    var _React$useContext = $a2Yf5$useContext((0, $082fec70572b288f$export$2e2bcd8739ae039)), min = _React$useContext.min, max = _React$useContext.max, direction = _React$useContext.direction, included = _React$useContext.included, includedStart = _React$useContext.includedStart, includedEnd = _React$useContext.includedEnd;
-    var dotClassName = "".concat(prefixCls, "-dot");
-    var active = included && includedStart <= value && value <= includedEnd; // ============================ Offset ============================
-    var mergedStyle = (0, $a2Yf5$babelruntimehelpersesmobjectSpread2)((0, $a2Yf5$babelruntimehelpersesmobjectSpread2)({}, (0, $35fda12cd89451f5$export$a41628415415e6e)(direction, value, min, max)), typeof style === "function" ? style(value) : style);
-    if (active) mergedStyle = (0, $a2Yf5$babelruntimehelpersesmobjectSpread2)((0, $a2Yf5$babelruntimehelpersesmobjectSpread2)({}, mergedStyle), typeof activeStyle === "function" ? activeStyle(value) : activeStyle);
-    return /*#__PURE__*/ $a2Yf5$createElement("span", {
-        className: (0, $a2Yf5$classnames)(dotClassName, (0, $a2Yf5$babelruntimehelpersesmdefineProperty)({}, "".concat(dotClassName, "-active"), active)),
-        style: mergedStyle
+
+
+
+
+
+
+
+
+
+
+
+
+var $8c13983e77ba506c$var$calcPoints = function calcPoints(vertical, marks, dots, step, min, max) {
+    (0, $a2Yf5$rcutileswarning)(dots ? step > 0 : true, "`Slider[step]` should be a positive number in order to make Slider[dots] work.");
+    var points = Object.keys(marks).map(parseFloat).sort(function(a, b) {
+        return a - b;
     });
-}
-
-
-function $3d4984a439cd435a$export$2e2bcd8739ae039(props) {
-    var prefixCls = props.prefixCls, marks = props.marks, dots = props.dots, style = props.style, activeStyle = props.activeStyle;
-    var _React$useContext = $a2Yf5$useContext((0, $082fec70572b288f$export$2e2bcd8739ae039)), min = _React$useContext.min, max = _React$useContext.max, step = _React$useContext.step;
-    var stepDots = $a2Yf5$useMemo(function() {
-        var dotSet = new Set(); // Add marks
-        marks.forEach(function(mark) {
-            dotSet.add(mark.value);
-        }); // Fill dots
-        if (dots && step !== null) {
-            var current = min;
-            while(current <= max){
-                dotSet.add(current);
-                current += step;
-            }
-        }
-        return Array.from(dotSet);
-    }, [
-        min,
-        max,
-        step,
-        dots,
-        marks
-    ]);
-    return /*#__PURE__*/ $a2Yf5$createElement("div", {
-        className: "".concat(prefixCls, "-step")
-    }, stepDots.map(function(dotValue) {
-        return /*#__PURE__*/ $a2Yf5$createElement((0, $691f445334909109$export$2e2bcd8739ae039), {
-            prefixCls: prefixCls,
-            key: dotValue,
-            value: dotValue,
+    if (dots && step) {
+        for(var i = min; i <= max; i += step)if (points.indexOf(i) === -1) points.push(i);
+    }
+    return points;
+};
+var $8c13983e77ba506c$var$Steps = function Steps(_ref) {
+    var prefixCls = _ref.prefixCls, vertical = _ref.vertical, reverse = _ref.reverse, marks = _ref.marks, dots = _ref.dots, step = _ref.step, included = _ref.included, lowerBound = _ref.lowerBound, upperBound = _ref.upperBound, max = _ref.max, min = _ref.min, dotStyle = _ref.dotStyle, activeDotStyle = _ref.activeDotStyle;
+    var range = max - min;
+    var elements = $8c13983e77ba506c$var$calcPoints(vertical, marks, dots, step, min, max).map(function(point) {
+        var _classNames;
+        var offset = "".concat(Math.abs(point - min) / range * 100, "%");
+        var isActived = !included && point === upperBound || included && point <= upperBound && point >= lowerBound;
+        var style = vertical ? (0, $a2Yf5$babelruntimehelpersesmobjectSpread2)((0, $a2Yf5$babelruntimehelpersesmobjectSpread2)({}, dotStyle), {}, (0, $a2Yf5$babelruntimehelpersesmdefineProperty)({}, reverse ? "top" : "bottom", offset)) : (0, $a2Yf5$babelruntimehelpersesmobjectSpread2)((0, $a2Yf5$babelruntimehelpersesmobjectSpread2)({}, dotStyle), {}, (0, $a2Yf5$babelruntimehelpersesmdefineProperty)({}, reverse ? "right" : "left", offset));
+        if (isActived) style = (0, $a2Yf5$babelruntimehelpersesmobjectSpread2)((0, $a2Yf5$babelruntimehelpersesmobjectSpread2)({}, style), activeDotStyle);
+        var pointClassName = (0, $a2Yf5$classnames)((_classNames = {}, (0, $a2Yf5$babelruntimehelpersesmdefineProperty)(_classNames, "".concat(prefixCls, "-dot"), true), (0, $a2Yf5$babelruntimehelpersesmdefineProperty)(_classNames, "".concat(prefixCls, "-dot-active"), isActived), (0, $a2Yf5$babelruntimehelpersesmdefineProperty)(_classNames, "".concat(prefixCls, "-dot-reverse"), reverse), _classNames));
+        return /*#__PURE__*/ (0, $a2Yf5$react).createElement("span", {
+            className: pointClassName,
             style: style,
-            activeStyle: activeStyle
+            key: point
         });
-    }));
-}
+    });
+    return /*#__PURE__*/ (0, $a2Yf5$react).createElement("div", {
+        className: "".concat(prefixCls, "-step")
+    }, elements);
+};
+var $8c13983e77ba506c$export$2e2bcd8739ae039 = $8c13983e77ba506c$var$Steps;
 
 
 
 
-function $071d42a15e136dea$export$2e2bcd8739ae039(min, max, step, markList, allowCross, pushable) {
-    var formatRangeValue = $a2Yf5$useCallback(function(val) {
-        var formatNextValue = isFinite(val) ? val : min;
-        formatNextValue = Math.min(max, val);
-        formatNextValue = Math.max(min, formatNextValue);
-        return formatNextValue;
-    }, [
-        min,
-        max
-    ]);
-    var formatStepValue = $a2Yf5$useCallback(function(val) {
-        if (step !== null) {
-            var stepValue = min + Math.round((formatRangeValue(val) - min) / step) * step; // Cut number in case to be like 0.30000000000000004
-            var getDecimal = function getDecimal(num) {
-                return (String(num).split(".")[1] || "").length;
-            };
-            var maxDecimal = Math.max(getDecimal(step), getDecimal(max), getDecimal(min));
-            var fixedValue = Number(stepValue.toFixed(maxDecimal));
-            return min <= fixedValue && fixedValue <= max ? fixedValue : null;
-        }
-        return null;
-    }, [
-        step,
-        min,
-        max,
-        formatRangeValue
-    ]);
-    var formatValue = $a2Yf5$useCallback(function(val) {
-        var formatNextValue = formatRangeValue(val); // List align values
-        var alignValues = markList.map(function(mark) {
-            return mark.value;
-        });
-        if (step !== null) alignValues.push(formatStepValue(val));
-         // min & max
-        alignValues.push(min, max); // Align with marks
-        var closeValue = alignValues[0];
-        var closeDist = max - min;
-        alignValues.forEach(function(alignValue) {
-            var dist = Math.abs(formatNextValue - alignValue);
-            if (dist <= closeDist) {
-                closeValue = alignValue;
-                closeDist = dist;
-            }
-        });
-        return closeValue;
-    }, [
-        min,
-        max,
-        markList,
-        step,
-        formatRangeValue,
-        formatStepValue
-    ]); // ========================== Offset ==========================
-    // Single Value
-    var offsetValue = function offsetValue(values, offset, valueIndex) {
-        var mode = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : "unit";
-        if (typeof offset === "number") {
-            var nextValue;
-            var originValue = values[valueIndex]; // Only used for `dist` mode
-            var targetDistValue = originValue + offset; // Compare next step value & mark value which is best match
-            var potentialValues = [];
-            markList.forEach(function(mark) {
-                potentialValues.push(mark.value);
-            }); // Min & Max
-            potentialValues.push(min, max); // In case origin value is align with mark but not with step
-            potentialValues.push(formatStepValue(originValue)); // Put offset step value also
-            var sign = offset > 0 ? 1 : -1;
-            if (mode === "unit") potentialValues.push(formatStepValue(originValue + sign * step));
-            else potentialValues.push(formatStepValue(targetDistValue));
-             // Find close one
-            potentialValues = potentialValues.filter(function(val) {
-                return val !== null;
-            }) // Remove reverse value
-            .filter(function(val) {
-                return offset < 0 ? val <= originValue : val >= originValue;
-            });
-            if (mode === "unit") // `unit` mode can not contain itself
-            potentialValues = potentialValues.filter(function(val) {
-                return val !== originValue;
-            });
-            var compareValue = mode === "unit" ? originValue : targetDistValue;
-            nextValue = potentialValues[0];
-            var valueDist = Math.abs(nextValue - compareValue);
-            potentialValues.forEach(function(potentialValue) {
-                var dist = Math.abs(potentialValue - compareValue);
-                if (dist < valueDist) {
-                    nextValue = potentialValue;
-                    valueDist = dist;
-                }
-            }); // Out of range will back to range
-            if (nextValue === undefined) return offset < 0 ? min : max;
-             // `dist` mode
-            if (mode === "dist") return nextValue;
-             // `unit` mode may need another round
-            if (Math.abs(offset) > 1) {
-                var cloneValues = (0, $a2Yf5$babelruntimehelpersesmtoConsumableArray)(values);
-                cloneValues[valueIndex] = nextValue;
-                return offsetValue(cloneValues, offset - sign, valueIndex, mode);
-            }
-            return nextValue;
-        } else if (offset === "min") return min;
-        else if (offset === "max") return max;
-    };
-    /** Same as `offsetValue` but return `changed` mark to tell value changed */ var offsetChangedValue = function offsetChangedValue(values, offset, valueIndex) {
-        var mode = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : "unit";
-        var originValue = values[valueIndex];
-        var nextValue = offsetValue(values, offset, valueIndex, mode);
-        return {
-            value: nextValue,
-            changed: nextValue !== originValue
-        };
-    };
-    var needPush = function needPush(dist) {
-        return pushable === null && dist === 0 || typeof pushable === "number" && dist < pushable;
-    }; // Values
-    var offsetValues = function offsetValues(values, offset, valueIndex) {
-        var mode = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : "unit";
-        var nextValues = values.map(formatValue);
-        var originValue = nextValues[valueIndex];
-        var nextValue = offsetValue(nextValues, offset, valueIndex, mode);
-        nextValues[valueIndex] = nextValue;
-        if (allowCross === false) {
-            // >>>>> Allow Cross
-            var pushNum = pushable || 0; // ============ AllowCross ===============
-            if (valueIndex > 0 && nextValues[valueIndex - 1] !== originValue) nextValues[valueIndex] = Math.max(nextValues[valueIndex], nextValues[valueIndex - 1] + pushNum);
-            if (valueIndex < nextValues.length - 1 && nextValues[valueIndex + 1] !== originValue) nextValues[valueIndex] = Math.min(nextValues[valueIndex], nextValues[valueIndex + 1] - pushNum);
-        } else if (typeof pushable === "number" || pushable === null) {
-            // >>>>> Pushable
-            // =============== Push ==================
-            // >>>>>> Basic push
-            // End values
-            for(var i = valueIndex + 1; i < nextValues.length; i += 1){
-                var changed = true;
-                while(needPush(nextValues[i] - nextValues[i - 1]) && changed){
-                    var _offsetChangedValue = offsetChangedValue(nextValues, 1, i);
-                    nextValues[i] = _offsetChangedValue.value;
-                    changed = _offsetChangedValue.changed;
-                }
-            } // Start values
-            for(var _i = valueIndex; _i > 0; _i -= 1){
-                var _changed = true;
-                while(needPush(nextValues[_i] - nextValues[_i - 1]) && _changed){
-                    var _offsetChangedValue2 = offsetChangedValue(nextValues, -1, _i - 1);
-                    nextValues[_i - 1] = _offsetChangedValue2.value;
-                    _changed = _offsetChangedValue2.changed;
-                }
-            } // >>>>> Revert back to safe push range
-            // End to Start
-            for(var _i2 = nextValues.length - 1; _i2 > 0; _i2 -= 1){
-                var _changed2 = true;
-                while(needPush(nextValues[_i2] - nextValues[_i2 - 1]) && _changed2){
-                    var _offsetChangedValue3 = offsetChangedValue(nextValues, -1, _i2 - 1);
-                    nextValues[_i2 - 1] = _offsetChangedValue3.value;
-                    _changed2 = _offsetChangedValue3.changed;
-                }
-            } // Start to End
-            for(var _i3 = 0; _i3 < nextValues.length - 1; _i3 += 1){
-                var _changed3 = true;
-                while(needPush(nextValues[_i3 + 1] - nextValues[_i3]) && _changed3){
-                    var _offsetChangedValue4 = offsetChangedValue(nextValues, 1, _i3 + 1);
-                    nextValues[_i3 + 1] = _offsetChangedValue4.value;
-                    _changed3 = _offsetChangedValue4.changed;
-                }
-            }
-        }
-        return {
-            value: nextValues[valueIndex],
-            values: nextValues
-        };
-    };
-    return [
-        formatValue,
-        offsetValues
-    ];
-}
 
 
 
-var $3dc8da5f55b48257$var$Slider = /*#__PURE__*/ $a2Yf5$forwardRef(function(props, ref) {
-    var _classNames;
-    var _props$prefixCls = props.prefixCls, prefixCls = _props$prefixCls === void 0 ? "rc-slider" : _props$prefixCls, className = props.className, style = props.style, _props$disabled = props.disabled, disabled = _props$disabled === void 0 ? false : _props$disabled, autoFocus = props.autoFocus, onFocus = props.onFocus, onBlur = props.onBlur, _props$min = props.min, min = _props$min === void 0 ? 0 : _props$min, _props$max = props.max, max = _props$max === void 0 ? 100 : _props$max, _props$step = props.step, step = _props$step === void 0 ? 1 : _props$step, value = props.value, defaultValue = props.defaultValue, range = props.range, count = props.count, onChange = props.onChange, onBeforeChange = props.onBeforeChange, onAfterChange = props.onAfterChange, _props$allowCross = props.allowCross, allowCross = _props$allowCross === void 0 ? true : _props$allowCross, _props$pushable = props.pushable, pushable = _props$pushable === void 0 ? false : _props$pushable, draggableTrack = props.draggableTrack, reverse = props.reverse, vertical = props.vertical, _props$included = props.included, included = _props$included === void 0 ? true : _props$included, startPoint = props.startPoint, trackStyle = props.trackStyle, handleStyle = props.handleStyle, railStyle = props.railStyle, dotStyle = props.dotStyle, activeDotStyle = props.activeDotStyle, marks = props.marks, dots = props.dots, handleRender = props.handleRender, _props$tabIndex = props.tabIndex, tabIndex = _props$tabIndex === void 0 ? 0 : _props$tabIndex, ariaLabelForHandle = props.ariaLabelForHandle, ariaLabelledByForHandle = props.ariaLabelledByForHandle, ariaValueTextFormatterForHandle = props.ariaValueTextFormatterForHandle;
-    var handlesRef = $a2Yf5$useRef();
-    var containerRef = $a2Yf5$useRef();
-    var direction = $a2Yf5$useMemo(function() {
-        if (vertical) return reverse ? "ttb" : "btt";
-        return reverse ? "rtl" : "ltr";
-    }, [
-        reverse,
-        vertical
-    ]); // ============================ Range =============================
-    var mergedMin = $a2Yf5$useMemo(function() {
-        return isFinite(min) ? min : 0;
-    }, [
-        min
-    ]);
-    var mergedMax = $a2Yf5$useMemo(function() {
-        return isFinite(max) ? max : 100;
-    }, [
-        max
-    ]); // ============================= Step =============================
-    var mergedStep = $a2Yf5$useMemo(function() {
-        return step !== null && step <= 0 ? 1 : step;
-    }, [
-        step
-    ]); // ============================= Push =============================
-    var mergedPush = $a2Yf5$useMemo(function() {
-        if (pushable === true) return mergedStep;
-        return pushable >= 0 ? pushable : false;
-    }, [
-        pushable,
-        mergedStep
-    ]); // ============================ Marks =============================
-    var markList = $a2Yf5$useMemo(function() {
-        var keys = Object.keys(marks || {});
-        return keys.map(function(key) {
-            var mark = marks[key];
-            var markObj = {
-                value: Number(key)
-            };
-            if (mark && (0, $a2Yf5$babelruntimehelpersesmtypeof)(mark) === "object" && !/*#__PURE__*/ $a2Yf5$isValidElement(mark) && ("label" in mark || "style" in mark)) {
-                markObj.style = mark.style;
-                markObj.label = mark.label;
-            } else markObj.label = mark;
-            return markObj;
-        }).filter(function(_ref) {
-            var label = _ref.label;
-            return label || typeof label === "number";
-        }).sort(function(a, b) {
-            return a.value - b.value;
-        });
-    }, [
-        marks
-    ]); // ============================ Format ============================
-    var _useOffset = (0, $071d42a15e136dea$export$2e2bcd8739ae039)(mergedMin, mergedMax, mergedStep, markList, allowCross, mergedPush), _useOffset2 = (0, $a2Yf5$babelruntimehelpersesmslicedToArray)(_useOffset, 2), formatValue = _useOffset2[0], offsetValues = _useOffset2[1]; // ============================ Values ============================
-    var _useMergedState = (0, $a2Yf5$rcutileshooksuseMergedState)(defaultValue, {
-        value: value
-    }), _useMergedState2 = (0, $a2Yf5$babelruntimehelpersesmslicedToArray)(_useMergedState, 2), mergedValue = _useMergedState2[0], setValue = _useMergedState2[1];
-    var rawValues = $a2Yf5$useMemo(function() {
-        var valueList = mergedValue === null || mergedValue === undefined ? [] : Array.isArray(mergedValue) ? mergedValue : [
-            mergedValue
-        ];
-        var _valueList = (0, $a2Yf5$babelruntimehelpersesmslicedToArray)(valueList, 1), _valueList$ = _valueList[0], val0 = _valueList$ === void 0 ? mergedMin : _valueList$;
-        var returnValues = mergedValue === null ? [] : [
-            val0
-        ]; // Format as range
-        if (range) {
-            returnValues = (0, $a2Yf5$babelruntimehelpersesmtoConsumableArray)(valueList); // When count provided or value is `undefined`, we fill values
-            if (count || mergedValue === undefined) {
-                var pointCount = count >= 0 ? count + 1 : 2;
-                returnValues = returnValues.slice(0, pointCount); // Fill with count
-                while(returnValues.length < pointCount){
-                    var _returnValues;
-                    returnValues.push((_returnValues = returnValues[returnValues.length - 1]) !== null && _returnValues !== void 0 ? _returnValues : mergedMin);
-                }
-            }
-            returnValues.sort(function(a, b) {
-                return a - b;
-            });
-        } // Align in range
-        returnValues.forEach(function(val, index) {
-            returnValues[index] = formatValue(val);
-        });
-        return returnValues;
-    }, [
-        mergedValue,
-        range,
-        mergedMin,
-        count,
-        formatValue
-    ]); // =========================== onChange ===========================
-    var rawValuesRef = $a2Yf5$useRef(rawValues);
-    rawValuesRef.current = rawValues;
-    var getTriggerValue = function getTriggerValue(triggerValues) {
-        return range ? triggerValues : triggerValues[0];
-    };
-    var triggerChange = function triggerChange(nextValues) {
-        // Order first
-        var cloneNextValues = (0, $a2Yf5$babelruntimehelpersesmtoConsumableArray)(nextValues).sort(function(a, b) {
-            return a - b;
-        }); // Trigger event if needed
-        if (onChange && !(0, $a2Yf5$shallowequal)(cloneNextValues, rawValuesRef.current)) onChange(getTriggerValue(cloneNextValues));
-         // We set this later since it will re-render component immediately
-        setValue(cloneNextValues);
-    };
-    var changeToCloseValue = function changeToCloseValue(newValue) {
-        if (!disabled) {
-            var valueIndex = 0;
-            var valueDist = mergedMax - mergedMin;
-            rawValues.forEach(function(val, index) {
-                var dist = Math.abs(newValue - val);
-                if (dist <= valueDist) {
-                    valueDist = dist;
-                    valueIndex = index;
-                }
-            }); // Create new values
-            var cloneNextValues = (0, $a2Yf5$babelruntimehelpersesmtoConsumableArray)(rawValues);
-            cloneNextValues[valueIndex] = newValue; // Fill value to match default 2
-            if (range && !rawValues.length && count === undefined) cloneNextValues.push(newValue);
-            onBeforeChange === null || onBeforeChange === void 0 || onBeforeChange(getTriggerValue(cloneNextValues));
-            triggerChange(cloneNextValues);
-            onAfterChange === null || onAfterChange === void 0 || onAfterChange(getTriggerValue(cloneNextValues));
-        }
-    }; // ============================ Click =============================
-    var onSliderMouseDown = function onSliderMouseDown(e) {
-        e.preventDefault();
-        var _containerRef$current = containerRef.current.getBoundingClientRect(), width = _containerRef$current.width, height = _containerRef$current.height, left = _containerRef$current.left, top = _containerRef$current.top, bottom = _containerRef$current.bottom, right = _containerRef$current.right;
-        var clientX = e.clientX, clientY = e.clientY;
-        var percent;
-        switch(direction){
-            case "btt":
-                percent = (bottom - clientY) / height;
-                break;
-            case "ttb":
-                percent = (clientY - top) / height;
-                break;
-            case "rtl":
-                percent = (right - clientX) / width;
-                break;
-            default:
-                percent = (clientX - left) / width;
-        }
-        var nextValue = mergedMin + percent * (mergedMax - mergedMin);
-        changeToCloseValue(formatValue(nextValue));
-    }; // =========================== Keyboard ===========================
-    var _React$useState = $a2Yf5$useState(null), _React$useState2 = (0, $a2Yf5$babelruntimehelpersesmslicedToArray)(_React$useState, 2), keyboardValue = _React$useState2[0], setKeyboardValue = _React$useState2[1];
-    var onHandleOffsetChange = function onHandleOffsetChange(offset, valueIndex) {
-        if (!disabled) {
-            var next = offsetValues(rawValues, offset, valueIndex);
-            onBeforeChange === null || onBeforeChange === void 0 || onBeforeChange(getTriggerValue(rawValues));
-            triggerChange(next.values);
-            onAfterChange === null || onAfterChange === void 0 || onAfterChange(getTriggerValue(next.values));
-            setKeyboardValue(next.value);
-        }
-    };
-    $a2Yf5$useEffect(function() {
-        if (keyboardValue !== null) {
-            var valueIndex = rawValues.indexOf(keyboardValue);
-            if (valueIndex >= 0) handlesRef.current.focus(valueIndex);
-        }
-        setKeyboardValue(null);
-    }, [
-        keyboardValue
-    ]); // ============================= Drag =============================
-    var mergedDraggableTrack = $a2Yf5$useMemo(function() {
-        if (draggableTrack && mergedStep === null) return false;
-        return draggableTrack;
-    }, [
-        draggableTrack,
-        mergedStep
-    ]);
-    var finishChange = function finishChange() {
-        onAfterChange === null || onAfterChange === void 0 || onAfterChange(getTriggerValue(rawValuesRef.current));
-    };
-    var _useDrag = (0, $bab692743f110605$export$2e2bcd8739ae039)(containerRef, direction, rawValues, mergedMin, mergedMax, formatValue, triggerChange, finishChange, offsetValues), _useDrag2 = (0, $a2Yf5$babelruntimehelpersesmslicedToArray)(_useDrag, 4), draggingIndex = _useDrag2[0], draggingValue = _useDrag2[1], cacheValues = _useDrag2[2], onStartDrag = _useDrag2[3];
-    var onStartMove = function onStartMove(e, valueIndex) {
-        onStartDrag(e, valueIndex);
-        onBeforeChange === null || onBeforeChange === void 0 || onBeforeChange(getTriggerValue(rawValuesRef.current));
-    }; // Auto focus for updated handle
-    var dragging = draggingIndex !== -1;
-    $a2Yf5$useEffect(function() {
-        if (!dragging) {
-            var valueIndex = rawValues.lastIndexOf(draggingValue);
-            handlesRef.current.focus(valueIndex);
-        }
-    }, [
-        dragging
-    ]); // =========================== Included ===========================
-    var sortedCacheValues = $a2Yf5$useMemo(function() {
-        return (0, $a2Yf5$babelruntimehelpersesmtoConsumableArray)(cacheValues).sort(function(a, b) {
-            return a - b;
-        });
-    }, [
-        cacheValues
-    ]); // Provide a range values with included [min, max]
-    // Used for Track, Mark & Dot
-    var _React$useMemo = $a2Yf5$useMemo(function() {
-        if (!range) return [
-            mergedMin,
-            sortedCacheValues[0]
-        ];
-        return [
-            sortedCacheValues[0],
-            sortedCacheValues[sortedCacheValues.length - 1]
-        ];
-    }, [
-        sortedCacheValues,
-        range,
-        mergedMin
-    ]), _React$useMemo2 = (0, $a2Yf5$babelruntimehelpersesmslicedToArray)(_React$useMemo, 2), includedStart = _React$useMemo2[0], includedEnd = _React$useMemo2[1]; // ============================= Refs =============================
-    $a2Yf5$useImperativeHandle(ref, function() {
-        return {
-            focus: function focus() {
-                handlesRef.current.focus(0);
+var $434855d4eadbe8c2$var$Marks = function Marks(_ref) {
+    var className = _ref.className, vertical = _ref.vertical, reverse = _ref.reverse, marks = _ref.marks, included = _ref.included, upperBound = _ref.upperBound, lowerBound = _ref.lowerBound, max = _ref.max, min = _ref.min, onClickLabel = _ref.onClickLabel;
+    var marksKeys = Object.keys(marks);
+    var range = max - min;
+    var elements = marksKeys.map(parseFloat).sort(function(a, b) {
+        return a - b;
+    }).map(function(point) {
+        var _classNames;
+        var markPoint = marks[point];
+        var markPointIsObject = (0, $a2Yf5$babelruntimehelpersesmtypeof)(markPoint) === "object" && !/*#__PURE__*/ (0, $a2Yf5$react).isValidElement(markPoint);
+        var markLabel = markPointIsObject ? markPoint.label : markPoint;
+        if (!markLabel && markLabel !== 0) return null;
+        var isActive = !included && point === upperBound || included && point <= upperBound && point >= lowerBound;
+        var markClassName = (0, $a2Yf5$classnames)((_classNames = {}, (0, $a2Yf5$babelruntimehelpersesmdefineProperty)(_classNames, "".concat(className, "-text"), true), (0, $a2Yf5$babelruntimehelpersesmdefineProperty)(_classNames, "".concat(className, "-text-active"), isActive), _classNames));
+        var bottomStyle = (0, $a2Yf5$babelruntimehelpersesmdefineProperty)({
+            marginBottom: "-50%"
+        }, reverse ? "top" : "bottom", "".concat((point - min) / range * 100, "%"));
+        var leftStyle = (0, $a2Yf5$babelruntimehelpersesmdefineProperty)({
+            transform: "translateX(".concat(reverse ? "50%" : "-50%", ")"),
+            msTransform: "translateX(".concat(reverse ? "50%" : "-50%", ")")
+        }, reverse ? "right" : "left", "".concat((point - min) / range * 100, "%"));
+        var style = vertical ? bottomStyle : leftStyle;
+        var markStyle = markPointIsObject ? (0, $a2Yf5$babelruntimehelpersesmobjectSpread2)((0, $a2Yf5$babelruntimehelpersesmobjectSpread2)({}, style), markPoint.style) : style;
+        return /*#__PURE__*/ (0, $a2Yf5$react).createElement("span", {
+            className: markClassName,
+            style: markStyle,
+            key: point,
+            onMouseDown: function onMouseDown(e) {
+                return onClickLabel(e, point);
             },
-            blur: function blur() {
-                var _document = document, activeElement = _document.activeElement;
-                if (containerRef.current.contains(activeElement)) activeElement === null || activeElement === void 0 || activeElement.blur();
+            onTouchStart: function onTouchStart(e) {
+                return onClickLabel(e, point);
             }
+        }, markLabel);
+    });
+    return /*#__PURE__*/ (0, $a2Yf5$react).createElement("div", {
+        className: className
+    }, elements);
+};
+var $434855d4eadbe8c2$export$2e2bcd8739ae039 = $434855d4eadbe8c2$var$Marks;
+
+
+
+
+
+
+
+
+
+
+
+
+
+var $02d8f4533571f053$export$2e2bcd8739ae039 = /*#__PURE__*/ function(_React$Component) {
+    (0, $a2Yf5$babelruntimehelpersesminherits)(Handle, _React$Component);
+    var _super = (0, $a2Yf5$babelruntimehelpersesmcreateSuper)(Handle);
+    function Handle() {
+        var _this;
+        (0, $a2Yf5$babelruntimehelpersesmclassCallCheck)(this, Handle);
+        _this = _super.apply(this, arguments);
+        _this.state = {
+            clickFocused: false
         };
-    }); // ========================== Auto Focus ==========================
+        _this.setHandleRef = function(node) {
+            _this.handle = node;
+        };
+        _this.handleMouseUp = function() {
+            if (document.activeElement === _this.handle) _this.setClickFocus(true);
+        };
+        _this.handleMouseDown = function(e) {
+            // avoid selecting text during drag
+            // https://github.com/ant-design/ant-design/issues/25010
+            e.preventDefault(); // fix https://github.com/ant-design/ant-design/issues/15324
+            _this.focus();
+        };
+        _this.handleBlur = function() {
+            _this.setClickFocus(false);
+        };
+        _this.handleKeyDown = function() {
+            _this.setClickFocus(false);
+        };
+        return _this;
+    }
+    (0, $a2Yf5$babelruntimehelpersesmcreateClass)(Handle, [
+        {
+            key: "componentDidMount",
+            value: function componentDidMount() {
+                // mouseup won't trigger if mouse moved out of handle,
+                // so we listen on document here.
+                this.onMouseUpListener = (0, $a2Yf5$rcutilesDomaddEventListener)(document, "mouseup", this.handleMouseUp);
+            }
+        },
+        {
+            key: "componentWillUnmount",
+            value: function componentWillUnmount() {
+                if (this.onMouseUpListener) this.onMouseUpListener.remove();
+            }
+        },
+        {
+            key: "setClickFocus",
+            value: function setClickFocus(focused) {
+                this.setState({
+                    clickFocused: focused
+                });
+            }
+        },
+        {
+            key: "clickFocus",
+            value: function clickFocus() {
+                this.setClickFocus(true);
+                this.focus();
+            }
+        },
+        {
+            key: "focus",
+            value: function focus() {
+                this.handle.focus();
+            }
+        },
+        {
+            key: "blur",
+            value: function blur() {
+                this.handle.blur();
+            }
+        },
+        {
+            key: "render",
+            value: function render() {
+                var _ref, _ref2;
+                var _this$props = this.props, prefixCls = _this$props.prefixCls, vertical = _this$props.vertical, reverse = _this$props.reverse, offset = _this$props.offset, style = _this$props.style, disabled = _this$props.disabled, min = _this$props.min, max = _this$props.max, value = _this$props.value, tabIndex = _this$props.tabIndex, ariaLabel = _this$props.ariaLabel, ariaLabelledBy = _this$props.ariaLabelledBy, ariaValueTextFormatter = _this$props.ariaValueTextFormatter, restProps = (0, $a2Yf5$babelruntimehelpersesmobjectWithoutProperties)(_this$props, [
+                    "prefixCls",
+                    "vertical",
+                    "reverse",
+                    "offset",
+                    "style",
+                    "disabled",
+                    "min",
+                    "max",
+                    "value",
+                    "tabIndex",
+                    "ariaLabel",
+                    "ariaLabelledBy",
+                    "ariaValueTextFormatter"
+                ]);
+                var className = (0, $a2Yf5$classnames)(this.props.className, (0, $a2Yf5$babelruntimehelpersesmdefineProperty)({}, "".concat(prefixCls, "-handle-click-focused"), this.state.clickFocused));
+                var positionStyle = vertical ? (_ref = {}, (0, $a2Yf5$babelruntimehelpersesmdefineProperty)(_ref, reverse ? "top" : "bottom", "".concat(offset, "%")), (0, $a2Yf5$babelruntimehelpersesmdefineProperty)(_ref, reverse ? "bottom" : "top", "auto"), (0, $a2Yf5$babelruntimehelpersesmdefineProperty)(_ref, "transform", reverse ? null : "translateY(+50%)"), _ref) : (_ref2 = {}, (0, $a2Yf5$babelruntimehelpersesmdefineProperty)(_ref2, reverse ? "right" : "left", "".concat(offset, "%")), (0, $a2Yf5$babelruntimehelpersesmdefineProperty)(_ref2, reverse ? "left" : "right", "auto"), (0, $a2Yf5$babelruntimehelpersesmdefineProperty)(_ref2, "transform", "translateX(".concat(reverse ? "+" : "-", "50%)")), _ref2);
+                var elStyle = (0, $a2Yf5$babelruntimehelpersesmobjectSpread2)((0, $a2Yf5$babelruntimehelpersesmobjectSpread2)({}, style), positionStyle);
+                var mergedTabIndex = tabIndex || 0;
+                if (disabled || tabIndex === null) mergedTabIndex = null;
+                var ariaValueText;
+                if (ariaValueTextFormatter) ariaValueText = ariaValueTextFormatter(value);
+                return /*#__PURE__*/ (0, $a2Yf5$react).createElement("div", (0, $a2Yf5$babelruntimehelpersesmextends)({
+                    ref: this.setHandleRef,
+                    tabIndex: mergedTabIndex
+                }, restProps, {
+                    className: className,
+                    style: elStyle,
+                    onBlur: this.handleBlur,
+                    onKeyDown: this.handleKeyDown,
+                    onMouseDown: this.handleMouseDown // aria attribute
+                    ,
+                    role: "slider",
+                    "aria-valuemin": min,
+                    "aria-valuemax": max,
+                    "aria-valuenow": value,
+                    "aria-disabled": !!disabled,
+                    "aria-label": ariaLabel,
+                    "aria-labelledby": ariaLabelledBy,
+                    "aria-valuetext": ariaValueText
+                }));
+            }
+        }
+    ]);
+    return Handle;
+}((0, $a2Yf5$react).Component);
+
+
+
+
+
+function $afb7b5cb9bff7c9c$export$597415897f3287c9(e, handles) {
+    try {
+        return Object.keys(handles).some(function(key) {
+            return e.target === (0, $a2Yf5$findDOMNode)(handles[key]);
+        });
+    } catch (error) {
+        return false;
+    }
+}
+function $afb7b5cb9bff7c9c$export$f4657b4dc4cc2ea4(value, _ref) {
+    var min = _ref.min, max = _ref.max;
+    return value < min || value > max;
+}
+function $afb7b5cb9bff7c9c$export$eaf0efc71c45a02(e) {
+    return e.touches.length > 1 || e.type.toLowerCase() === "touchend" && e.touches.length > 0;
+}
+function $afb7b5cb9bff7c9c$export$e3e031d5dec39373(val, _ref2) {
+    var marks = _ref2.marks, step = _ref2.step, min = _ref2.min, max = _ref2.max;
+    var points = Object.keys(marks).map(parseFloat);
+    if (step !== null) {
+        var baseNum = Math.pow(10, $afb7b5cb9bff7c9c$export$e0c74b50bbd10f68(step));
+        var maxSteps = Math.floor((max * baseNum - min * baseNum) / (step * baseNum));
+        var steps = Math.min((val - min) / step, maxSteps);
+        var closestStep = Math.round(steps) * step + min;
+        points.push(closestStep);
+    }
+    var diffs = points.map(function(point) {
+        return Math.abs(val - point);
+    });
+    return points[diffs.indexOf(Math.min.apply(Math, (0, $a2Yf5$babelruntimehelpersesmtoConsumableArray)(diffs)))];
+}
+function $afb7b5cb9bff7c9c$export$e0c74b50bbd10f68(step) {
+    var stepString = step.toString();
+    var precision = 0;
+    if (stepString.indexOf(".") >= 0) precision = stepString.length - stepString.indexOf(".") - 1;
+    return precision;
+}
+function $afb7b5cb9bff7c9c$export$642213d516a9b928(vertical, e) {
+    return vertical ? e.clientY : e.pageX;
+}
+function $afb7b5cb9bff7c9c$export$7e1d3da113d10e8e(vertical, e) {
+    return vertical ? e.touches[0].clientY : e.touches[0].pageX;
+}
+function $afb7b5cb9bff7c9c$export$ec6357f54996b379(vertical, handle) {
+    var coords = handle.getBoundingClientRect();
+    return vertical ? coords.top + coords.height * 0.5 : window.pageXOffset + coords.left + coords.width * 0.5;
+}
+function $afb7b5cb9bff7c9c$export$65e4339c6f9d8d24(val, _ref3) {
+    var max = _ref3.max, min = _ref3.min;
+    if (val <= min) return min;
+    if (val >= max) return max;
+    return val;
+}
+function $afb7b5cb9bff7c9c$export$5bea24a9dfe5ab1a(val, props) {
+    var step = props.step;
+    var closestPoint = isFinite($afb7b5cb9bff7c9c$export$e3e031d5dec39373(val, props)) ? $afb7b5cb9bff7c9c$export$e3e031d5dec39373(val, props) : 0; // eslint-disable-line
+    return step === null ? closestPoint : parseFloat(closestPoint.toFixed($afb7b5cb9bff7c9c$export$e0c74b50bbd10f68(step)));
+}
+function $afb7b5cb9bff7c9c$export$3f9ffdaf2961f43f(e) {
+    e.stopPropagation();
+    e.preventDefault();
+}
+function $afb7b5cb9bff7c9c$export$e5722e0a8bbb32d9(func, value, props) {
+    var operations = {
+        increase: function increase(a, b) {
+            return a + b;
+        },
+        decrease: function decrease(a, b) {
+            return a - b;
+        }
+    };
+    var indexToGet = operations[func](Object.keys(props.marks).indexOf(JSON.stringify(value)), 1);
+    var keyToGet = Object.keys(props.marks)[indexToGet];
+    if (props.step) return operations[func](value, props.step);
+    if (!!Object.keys(props.marks).length && !!props.marks[keyToGet]) return props.marks[keyToGet];
+    return value;
+}
+function $afb7b5cb9bff7c9c$export$3bef836a1fb84ee6(e, vertical, reverse) {
+    var increase = "increase";
+    var decrease = "decrease";
+    var method = increase;
+    switch(e.keyCode){
+        case (0, $a2Yf5$rcutilesKeyCode).UP:
+            method = vertical && reverse ? decrease : increase;
+            break;
+        case (0, $a2Yf5$rcutilesKeyCode).RIGHT:
+            method = !vertical && reverse ? decrease : increase;
+            break;
+        case (0, $a2Yf5$rcutilesKeyCode).DOWN:
+            method = vertical && reverse ? increase : decrease;
+            break;
+        case (0, $a2Yf5$rcutilesKeyCode).LEFT:
+            method = !vertical && reverse ? increase : decrease;
+            break;
+        case (0, $a2Yf5$rcutilesKeyCode).END:
+            return function(value, props) {
+                return props.max;
+            };
+        case (0, $a2Yf5$rcutilesKeyCode).HOME:
+            return function(value, props) {
+                return props.min;
+            };
+        case (0, $a2Yf5$rcutilesKeyCode).PAGE_UP:
+            return function(value, props) {
+                return value + props.step * 2;
+            };
+        case (0, $a2Yf5$rcutilesKeyCode).PAGE_DOWN:
+            return function(value, props) {
+                return value - props.step * 2;
+            };
+        default:
+            return undefined;
+    }
+    return function(value, props) {
+        return $afb7b5cb9bff7c9c$export$e5722e0a8bbb32d9(method, value, props);
+    };
+}
+
+
+/* eslint-disable @typescript-eslint/no-explicit-any */ function $98355d89af53d794$var$noop() {}
+function $98355d89af53d794$export$2e2bcd8739ae039(Component) {
+    var _a; // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    return _a = /*#__PURE__*/ function(_Component) {
+        (0, $a2Yf5$babelruntimehelpersesminherits)(ComponentEnhancer, _Component);
+        var _super = (0, $a2Yf5$babelruntimehelpersesmcreateSuper)(ComponentEnhancer);
+        function ComponentEnhancer(props) {
+            var _this;
+            (0, $a2Yf5$babelruntimehelpersesmclassCallCheck)(this, ComponentEnhancer);
+            _this = _super.call(this, props);
+            _this.onDown = function(e, position) {
+                var p = position;
+                var _this$props = _this.props, draggableTrack = _this$props.draggableTrack, isVertical = _this$props.vertical;
+                var bounds = _this.state.bounds;
+                var value = draggableTrack && _this.positionGetValue ? _this.positionGetValue(p) || [] : [];
+                var inPoint = $afb7b5cb9bff7c9c$export$597415897f3287c9(e, _this.handlesRefs);
+                _this.dragTrack = draggableTrack && bounds.length >= 2 && !inPoint && !value.map(function(n, i) {
+                    var v = !i ? n >= bounds[i] : true;
+                    return i === value.length - 1 ? n <= bounds[i] : v;
+                }).some(function(c) {
+                    return !c;
+                });
+                if (_this.dragTrack) {
+                    _this.dragOffset = p;
+                    _this.startBounds = (0, $a2Yf5$babelruntimehelpersesmtoConsumableArray)(bounds);
+                } else {
+                    if (!inPoint) _this.dragOffset = 0;
+                    else {
+                        var handlePosition = $afb7b5cb9bff7c9c$export$ec6357f54996b379(isVertical, e.target);
+                        _this.dragOffset = p - handlePosition;
+                        p = handlePosition;
+                    }
+                    _this.onStart(p);
+                }
+            };
+            _this.onMouseDown = function(e) {
+                if (e.button !== 0) return;
+                _this.removeDocumentEvents();
+                var isVertical = _this.props.vertical;
+                var position = $afb7b5cb9bff7c9c$export$642213d516a9b928(isVertical, e);
+                _this.onDown(e, position);
+                _this.addDocumentMouseEvents();
+            };
+            _this.onTouchStart = function(e) {
+                if ($afb7b5cb9bff7c9c$export$eaf0efc71c45a02(e)) return;
+                var isVertical = _this.props.vertical;
+                var position = $afb7b5cb9bff7c9c$export$7e1d3da113d10e8e(isVertical, e);
+                _this.onDown(e, position);
+                _this.addDocumentTouchEvents();
+                $afb7b5cb9bff7c9c$export$3f9ffdaf2961f43f(e);
+            };
+            _this.onFocus = function(e) {
+                var _this$props2 = _this.props, onFocus = _this$props2.onFocus, vertical = _this$props2.vertical;
+                if ($afb7b5cb9bff7c9c$export$597415897f3287c9(e, _this.handlesRefs) && !_this.dragTrack) {
+                    var handlePosition = $afb7b5cb9bff7c9c$export$ec6357f54996b379(vertical, e.target);
+                    _this.dragOffset = 0;
+                    _this.onStart(handlePosition);
+                    $afb7b5cb9bff7c9c$export$3f9ffdaf2961f43f(e);
+                    if (onFocus) onFocus(e);
+                }
+            };
+            _this.onBlur = function(e) {
+                var onBlur = _this.props.onBlur;
+                if (!_this.dragTrack) _this.onEnd();
+                if (onBlur) onBlur(e);
+            };
+            _this.onMouseUp = function() {
+                if (_this.handlesRefs[_this.prevMovedHandleIndex]) _this.handlesRefs[_this.prevMovedHandleIndex].clickFocus();
+            };
+            _this.onMouseMove = function(e) {
+                if (!_this.sliderRef) {
+                    _this.onEnd();
+                    return;
+                }
+                var position = $afb7b5cb9bff7c9c$export$642213d516a9b928(_this.props.vertical, e);
+                _this.onMove(e, position - _this.dragOffset, _this.dragTrack, _this.startBounds);
+            };
+            _this.onTouchMove = function(e) {
+                if ($afb7b5cb9bff7c9c$export$eaf0efc71c45a02(e) || !_this.sliderRef) {
+                    _this.onEnd();
+                    return;
+                }
+                var position = $afb7b5cb9bff7c9c$export$7e1d3da113d10e8e(_this.props.vertical, e);
+                _this.onMove(e, position - _this.dragOffset, _this.dragTrack, _this.startBounds);
+            };
+            _this.onKeyDown = function(e) {
+                if (_this.sliderRef && $afb7b5cb9bff7c9c$export$597415897f3287c9(e, _this.handlesRefs)) _this.onKeyboard(e);
+            };
+            _this.onClickMarkLabel = function(e, value) {
+                e.stopPropagation();
+                _this.onChange({
+                    value: value
+                }); // eslint-disable-next-line react/no-unused-state
+                _this.setState({
+                    value: value
+                }, function() {
+                    return _this.onEnd(true);
+                });
+            };
+            _this.saveSlider = function(slider) {
+                _this.sliderRef = slider;
+            };
+            var step = props.step, max = props.max, min = props.min;
+            var isPointDiffEven = isFinite(max - min) ? (max - min) % step === 0 : true; // eslint-disable-line
+            (0, $a2Yf5$rcutileswarning)(step && Math.floor(step) === step ? isPointDiffEven : true, "Slider[max] - Slider[min] (".concat(max - min, ") should be a multiple of Slider[step] (").concat(step, ")"));
+            _this.handlesRefs = {};
+            return _this;
+        }
+        (0, $a2Yf5$babelruntimehelpersesmcreateClass)(ComponentEnhancer, [
+            {
+                key: "componentDidMount",
+                value: function componentDidMount() {
+                    // Snapshot testing cannot handle refs, so be sure to null-check this.
+                    this.document = this.sliderRef && this.sliderRef.ownerDocument;
+                    var _this$props3 = this.props, autoFocus = _this$props3.autoFocus, disabled = _this$props3.disabled;
+                    if (autoFocus && !disabled) this.focus();
+                }
+            },
+            {
+                key: "componentWillUnmount",
+                value: function componentWillUnmount() {
+                    if ((0, $a2Yf5$babelruntimehelpersesmget)((0, $a2Yf5$babelruntimehelpersesmgetPrototypeOf)(ComponentEnhancer.prototype), "componentWillUnmount", this)) (0, $a2Yf5$babelruntimehelpersesmget)((0, $a2Yf5$babelruntimehelpersesmgetPrototypeOf)(ComponentEnhancer.prototype), "componentWillUnmount", this).call(this);
+                    this.removeDocumentEvents();
+                }
+            },
+            {
+                key: "getSliderStart",
+                value: function getSliderStart() {
+                    var slider = this.sliderRef;
+                    var _this$props4 = this.props, vertical = _this$props4.vertical, reverse = _this$props4.reverse;
+                    var rect = slider.getBoundingClientRect();
+                    if (vertical) return reverse ? rect.bottom : rect.top;
+                    return window.pageXOffset + (reverse ? rect.right : rect.left);
+                }
+            },
+            {
+                key: "getSliderLength",
+                value: function getSliderLength() {
+                    var slider = this.sliderRef;
+                    if (!slider) return 0;
+                    var coords = slider.getBoundingClientRect();
+                    return this.props.vertical ? coords.height : coords.width;
+                }
+            },
+            {
+                key: "addDocumentTouchEvents",
+                value: function addDocumentTouchEvents() {
+                    // just work for Chrome iOS Safari and Android Browser
+                    this.onTouchMoveListener = (0, $a2Yf5$rcutilesDomaddEventListener)(this.document, "touchmove", this.onTouchMove);
+                    this.onTouchUpListener = (0, $a2Yf5$rcutilesDomaddEventListener)(this.document, "touchend", this.onEnd);
+                }
+            },
+            {
+                key: "addDocumentMouseEvents",
+                value: function addDocumentMouseEvents() {
+                    this.onMouseMoveListener = (0, $a2Yf5$rcutilesDomaddEventListener)(this.document, "mousemove", this.onMouseMove);
+                    this.onMouseUpListener = (0, $a2Yf5$rcutilesDomaddEventListener)(this.document, "mouseup", this.onEnd);
+                }
+            },
+            {
+                key: "removeDocumentEvents",
+                value: function removeDocumentEvents() {
+                    /* eslint-disable @typescript-eslint/no-unused-expressions */ this.onTouchMoveListener && this.onTouchMoveListener.remove();
+                    this.onTouchUpListener && this.onTouchUpListener.remove();
+                    this.onMouseMoveListener && this.onMouseMoveListener.remove();
+                    this.onMouseUpListener && this.onMouseUpListener.remove();
+                /* eslint-enable no-unused-expressions */ }
+            },
+            {
+                key: "focus",
+                value: function focus() {
+                    var _this$handlesRefs$;
+                    if (this.props.disabled) return;
+                    (_this$handlesRefs$ = this.handlesRefs[0]) === null || _this$handlesRefs$ === void 0 || _this$handlesRefs$.focus();
+                }
+            },
+            {
+                key: "blur",
+                value: function blur() {
+                    var _this2 = this;
+                    if (this.props.disabled) return;
+                    Object.keys(this.handlesRefs).forEach(function(key) {
+                        var _this2$handlesRefs$ke, _this2$handlesRefs$ke2;
+                        (_this2$handlesRefs$ke = _this2.handlesRefs[key]) === null || _this2$handlesRefs$ke === void 0 || (_this2$handlesRefs$ke2 = _this2$handlesRefs$ke.blur) === null || _this2$handlesRefs$ke2 === void 0 || _this2$handlesRefs$ke2.call(_this2$handlesRefs$ke);
+                    });
+                }
+            },
+            {
+                key: "calcValue",
+                value: function calcValue(offset) {
+                    var _this$props5 = this.props, vertical = _this$props5.vertical, min = _this$props5.min, max = _this$props5.max;
+                    var ratio = Math.abs(Math.max(offset, 0) / this.getSliderLength());
+                    var value = vertical ? (1 - ratio) * (max - min) + min : ratio * (max - min) + min;
+                    return value;
+                }
+            },
+            {
+                key: "calcValueByPos",
+                value: function calcValueByPos(position) {
+                    var sign = this.props.reverse ? -1 : 1;
+                    var pixelOffset = sign * (position - this.getSliderStart());
+                    var nextValue = this.trimAlignValue(this.calcValue(pixelOffset));
+                    return nextValue;
+                }
+            },
+            {
+                key: "calcOffset",
+                value: function calcOffset(value) {
+                    var _this$props6 = this.props, min = _this$props6.min, max = _this$props6.max;
+                    var ratio = (value - min) / (max - min);
+                    return Math.max(0, ratio * 100);
+                }
+            },
+            {
+                key: "saveHandle",
+                value: function saveHandle(index, handle) {
+                    this.handlesRefs[index] = handle;
+                }
+            },
+            {
+                key: "render",
+                value: function render() {
+                    var _classNames;
+                    var _this$props7 = this.props, prefixCls = _this$props7.prefixCls, className = _this$props7.className, marks = _this$props7.marks, dots = _this$props7.dots, step = _this$props7.step, included = _this$props7.included, disabled = _this$props7.disabled, vertical = _this$props7.vertical, reverse = _this$props7.reverse, min = _this$props7.min, max = _this$props7.max, children = _this$props7.children, maximumTrackStyle = _this$props7.maximumTrackStyle, style = _this$props7.style, railStyle = _this$props7.railStyle, dotStyle = _this$props7.dotStyle, activeDotStyle = _this$props7.activeDotStyle;
+                    var _get$call = (0, $a2Yf5$babelruntimehelpersesmget)((0, $a2Yf5$babelruntimehelpersesmgetPrototypeOf)(ComponentEnhancer.prototype), "render", this).call(this), tracks = _get$call.tracks, handles = _get$call.handles;
+                    var sliderClassName = (0, $a2Yf5$classnames)(prefixCls, (_classNames = {}, (0, $a2Yf5$babelruntimehelpersesmdefineProperty)(_classNames, "".concat(prefixCls, "-with-marks"), Object.keys(marks).length), (0, $a2Yf5$babelruntimehelpersesmdefineProperty)(_classNames, "".concat(prefixCls, "-disabled"), disabled), (0, $a2Yf5$babelruntimehelpersesmdefineProperty)(_classNames, "".concat(prefixCls, "-vertical"), vertical), (0, $a2Yf5$babelruntimehelpersesmdefineProperty)(_classNames, className, className), _classNames));
+                    return /*#__PURE__*/ (0, $a2Yf5$react).createElement("div", {
+                        ref: this.saveSlider,
+                        className: sliderClassName,
+                        onTouchStart: disabled ? $98355d89af53d794$var$noop : this.onTouchStart,
+                        onMouseDown: disabled ? $98355d89af53d794$var$noop : this.onMouseDown,
+                        onMouseUp: disabled ? $98355d89af53d794$var$noop : this.onMouseUp,
+                        onKeyDown: disabled ? $98355d89af53d794$var$noop : this.onKeyDown,
+                        onFocus: disabled ? $98355d89af53d794$var$noop : this.onFocus,
+                        onBlur: disabled ? $98355d89af53d794$var$noop : this.onBlur,
+                        style: style
+                    }, /*#__PURE__*/ (0, $a2Yf5$react).createElement("div", {
+                        className: "".concat(prefixCls, "-rail"),
+                        style: (0, $a2Yf5$babelruntimehelpersesmobjectSpread2)((0, $a2Yf5$babelruntimehelpersesmobjectSpread2)({}, maximumTrackStyle), railStyle)
+                    }), tracks, /*#__PURE__*/ (0, $a2Yf5$react).createElement((0, $8c13983e77ba506c$export$2e2bcd8739ae039), {
+                        prefixCls: prefixCls,
+                        vertical: vertical,
+                        reverse: reverse,
+                        marks: marks,
+                        dots: dots,
+                        step: step,
+                        included: included,
+                        lowerBound: this.getLowerBound(),
+                        upperBound: this.getUpperBound(),
+                        max: max,
+                        min: min,
+                        dotStyle: dotStyle,
+                        activeDotStyle: activeDotStyle
+                    }), handles, /*#__PURE__*/ (0, $a2Yf5$react).createElement((0, $434855d4eadbe8c2$export$2e2bcd8739ae039), {
+                        className: "".concat(prefixCls, "-mark"),
+                        onClickLabel: disabled ? $98355d89af53d794$var$noop : this.onClickMarkLabel,
+                        vertical: vertical,
+                        marks: marks,
+                        included: included,
+                        lowerBound: this.getLowerBound(),
+                        upperBound: this.getUpperBound(),
+                        max: max,
+                        min: min,
+                        reverse: reverse
+                    }), children);
+                }
+            }
+        ]);
+        return ComponentEnhancer;
+    }(Component), _a.displayName = "ComponentEnhancer(".concat(Component.displayName, ")"), _a.defaultProps = (0, $a2Yf5$babelruntimehelpersesmobjectSpread2)((0, $a2Yf5$babelruntimehelpersesmobjectSpread2)({}, Component.defaultProps), {}, {
+        prefixCls: "rc-slider",
+        className: "",
+        min: 0,
+        max: 100,
+        step: 1,
+        marks: {},
+        handle: function handle(props) {
+            var index = props.index, restProps = (0, $a2Yf5$babelruntimehelpersesmobjectWithoutProperties)(props, [
+                "index"
+            ]);
+            delete restProps.dragging;
+            if (restProps.value === null) return null;
+            return /*#__PURE__*/ (0, $a2Yf5$react).createElement((0, $02d8f4533571f053$export$2e2bcd8739ae039), (0, $a2Yf5$babelruntimehelpersesmextends)({}, restProps, {
+                key: index
+            }));
+        },
+        onBeforeChange: $98355d89af53d794$var$noop,
+        onChange: $98355d89af53d794$var$noop,
+        onAfterChange: $98355d89af53d794$var$noop,
+        included: true,
+        disabled: false,
+        dots: false,
+        vertical: false,
+        reverse: false,
+        trackStyle: [
+            {}
+        ],
+        handleStyle: [
+            {}
+        ],
+        railStyle: {},
+        dotStyle: {},
+        activeDotStyle: {}
+    }), _a;
+}
+
+
+
+var $3dc8da5f55b48257$var$Slider = /*#__PURE__*/ function(_React$Component) {
+    (0, $a2Yf5$babelruntimehelpersesminherits)(Slider, _React$Component);
+    var _super = (0, $a2Yf5$babelruntimehelpersesmcreateSuper)(Slider);
+    /* eslint-enable */ function Slider(props) {
+        var _this;
+        (0, $a2Yf5$babelruntimehelpersesmclassCallCheck)(this, Slider);
+        _this = _super.call(this, props);
+        _this.positionGetValue = function(position) {
+            return [];
+        };
+        _this.onEnd = function(force) {
+            var dragging = _this.state.dragging;
+            _this.removeDocumentEvents();
+            if (dragging || force) _this.props.onAfterChange(_this.getValue());
+            _this.setState({
+                dragging: false
+            });
+        };
+        var defaultValue = props.defaultValue !== undefined ? props.defaultValue : props.min;
+        var value = props.value !== undefined ? props.value : defaultValue;
+        _this.state = {
+            value: _this.trimAlignValue(value),
+            dragging: false
+        };
+        (0, $a2Yf5$rcutileswarning)(!("minimumTrackStyle" in props), "minimumTrackStyle will be deprecated, please use trackStyle instead.");
+        (0, $a2Yf5$rcutileswarning)(!("maximumTrackStyle" in props), "maximumTrackStyle will be deprecated, please use railStyle instead.");
+        return _this;
+    }
+    /**
+   * [Legacy] Used for inherit other component.
+   * It's a bad code style which should be refactor.
+   */ /* eslint-disable @typescript-eslint/no-unused-vars, class-methods-use-this */ (0, $a2Yf5$babelruntimehelpersesmcreateClass)(Slider, [
+        {
+            key: "calcValueByPos",
+            value: function calcValueByPos(value) {
+                return 0;
+            }
+        },
+        {
+            key: "calcOffset",
+            value: function calcOffset(value) {
+                return 0;
+            }
+        },
+        {
+            key: "saveHandle",
+            value: function saveHandle(index, h) {}
+        },
+        {
+            key: "removeDocumentEvents",
+            value: function removeDocumentEvents() {}
+        },
+        {
+            key: "componentDidUpdate",
+            value: function componentDidUpdate(prevProps, prevState) {
+                var _this$props = this.props, min = _this$props.min, max = _this$props.max, value = _this$props.value, onChange = _this$props.onChange;
+                if (!("min" in this.props || "max" in this.props)) return;
+                var theValue = value !== undefined ? value : prevState.value;
+                var nextValue = this.trimAlignValue(theValue, this.props);
+                if (nextValue === prevState.value) return;
+                 // eslint-disable-next-line
+                this.setState({
+                    value: nextValue
+                });
+                if (!(min === prevProps.min && max === prevProps.max) && $afb7b5cb9bff7c9c$export$f4657b4dc4cc2ea4(theValue, this.props)) onChange(nextValue);
+            }
+        },
+        {
+            key: "onChange",
+            value: function onChange(state) {
+                var props = this.props;
+                var isNotControlled = !("value" in props);
+                var nextState = state.value > this.props.max ? (0, $a2Yf5$babelruntimehelpersesmobjectSpread2)((0, $a2Yf5$babelruntimehelpersesmobjectSpread2)({}, state), {}, {
+                    value: this.props.max
+                }) : state;
+                if (isNotControlled) this.setState(nextState);
+                var changedValue = nextState.value;
+                props.onChange(changedValue);
+            }
+        },
+        {
+            key: "onStart",
+            value: function onStart(position) {
+                this.setState({
+                    dragging: true
+                });
+                var props = this.props;
+                var prevValue = this.getValue();
+                props.onBeforeChange(prevValue);
+                var value = this.calcValueByPos(position);
+                this.startValue = value;
+                this.startPosition = position;
+                if (value === prevValue) return;
+                this.prevMovedHandleIndex = 0;
+                this.onChange({
+                    value: value
+                });
+            }
+        },
+        {
+            key: "onMove",
+            value: function onMove(e, position) {
+                $afb7b5cb9bff7c9c$export$3f9ffdaf2961f43f(e);
+                var oldValue = this.state.value;
+                var value = this.calcValueByPos(position);
+                if (value === oldValue) return;
+                this.onChange({
+                    value: value
+                });
+            }
+        },
+        {
+            key: "onKeyboard",
+            value: function onKeyboard(e) {
+                var _this$props2 = this.props, reverse = _this$props2.reverse, vertical = _this$props2.vertical;
+                var valueMutator = $afb7b5cb9bff7c9c$export$3bef836a1fb84ee6(e, vertical, reverse);
+                if (valueMutator) {
+                    $afb7b5cb9bff7c9c$export$3f9ffdaf2961f43f(e);
+                    var state = this.state;
+                    var oldValue = state.value;
+                    var mutatedValue = valueMutator(oldValue, this.props);
+                    var value = this.trimAlignValue(mutatedValue);
+                    if (value === oldValue) return;
+                    this.onChange({
+                        value: value
+                    });
+                    this.props.onAfterChange(value);
+                    this.onEnd();
+                }
+            }
+        },
+        {
+            key: "getValue",
+            value: function getValue() {
+                return this.state.value;
+            }
+        },
+        {
+            key: "getLowerBound",
+            value: function getLowerBound() {
+                var minPoint = this.props.startPoint || this.props.min;
+                return this.state.value > minPoint ? minPoint : this.state.value;
+            }
+        },
+        {
+            key: "getUpperBound",
+            value: function getUpperBound() {
+                if (this.state.value < this.props.startPoint) return this.props.startPoint;
+                return this.state.value;
+            }
+        },
+        {
+            key: "trimAlignValue",
+            value: function trimAlignValue(v) {
+                var nextProps = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+                if (v === null) return null;
+                var mergedProps = (0, $a2Yf5$babelruntimehelpersesmobjectSpread2)((0, $a2Yf5$babelruntimehelpersesmobjectSpread2)({}, this.props), nextProps);
+                var val = $afb7b5cb9bff7c9c$export$65e4339c6f9d8d24(v, mergedProps);
+                return $afb7b5cb9bff7c9c$export$5bea24a9dfe5ab1a(val, mergedProps);
+            }
+        },
+        {
+            key: "render",
+            value: function render() {
+                var _this2 = this;
+                var _this$props3 = this.props, prefixCls = _this$props3.prefixCls, vertical = _this$props3.vertical, included = _this$props3.included, disabled = _this$props3.disabled, minimumTrackStyle = _this$props3.minimumTrackStyle, trackStyle = _this$props3.trackStyle, handleStyle = _this$props3.handleStyle, tabIndex = _this$props3.tabIndex, ariaLabelForHandle = _this$props3.ariaLabelForHandle, ariaLabelledByForHandle = _this$props3.ariaLabelledByForHandle, ariaValueTextFormatterForHandle = _this$props3.ariaValueTextFormatterForHandle, min = _this$props3.min, max = _this$props3.max, startPoint = _this$props3.startPoint, reverse = _this$props3.reverse, handleGenerator = _this$props3.handle;
+                var _this$state = this.state, value = _this$state.value, dragging = _this$state.dragging;
+                var offset = this.calcOffset(value);
+                var handle = handleGenerator({
+                    className: "".concat(prefixCls, "-handle"),
+                    prefixCls: prefixCls,
+                    vertical: vertical,
+                    offset: offset,
+                    value: value,
+                    dragging: dragging,
+                    disabled: disabled,
+                    min: min,
+                    max: max,
+                    reverse: reverse,
+                    index: 0,
+                    tabIndex: tabIndex,
+                    ariaLabel: ariaLabelForHandle,
+                    ariaLabelledBy: ariaLabelledByForHandle,
+                    ariaValueTextFormatter: ariaValueTextFormatterForHandle,
+                    style: handleStyle[0] || handleStyle,
+                    ref: function ref(h) {
+                        return _this2.saveHandle(0, h);
+                    }
+                });
+                var trackOffset = startPoint !== undefined ? this.calcOffset(startPoint) : 0;
+                var mergedTrackStyle = trackStyle[0] || trackStyle;
+                var track = /*#__PURE__*/ (0, $a2Yf5$react).createElement((0, $756f770978e0c648$export$2e2bcd8739ae039), {
+                    className: "".concat(prefixCls, "-track"),
+                    vertical: vertical,
+                    included: included,
+                    offset: trackOffset,
+                    reverse: reverse,
+                    length: offset - trackOffset,
+                    style: (0, $a2Yf5$babelruntimehelpersesmobjectSpread2)((0, $a2Yf5$babelruntimehelpersesmobjectSpread2)({}, minimumTrackStyle), mergedTrackStyle)
+                });
+                return {
+                    tracks: track,
+                    handles: handle
+                };
+            }
+        }
+    ]);
+    return Slider;
+}((0, $a2Yf5$react).Component);
+var $3dc8da5f55b48257$export$2e2bcd8739ae039 = (0, $98355d89af53d794$export$2e2bcd8739ae039)($3dc8da5f55b48257$var$Slider);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var $1192a2f648c1dd60$var$_trimAlignValue = function trimAlignValue(_ref) {
+    var value = _ref.value, handle = _ref.handle, bounds = _ref.bounds, props = _ref.props;
+    var allowCross = props.allowCross, pushable = props.pushable;
+    var thershold = Number(pushable);
+    var valInRange = $afb7b5cb9bff7c9c$export$65e4339c6f9d8d24(value, props);
+    var valNotConflict = valInRange;
+    if (!allowCross && handle != null && bounds !== undefined) {
+        if (handle > 0 && valInRange <= bounds[handle - 1] + thershold) valNotConflict = bounds[handle - 1] + thershold;
+        if (handle < bounds.length - 1 && valInRange >= bounds[handle + 1] - thershold) valNotConflict = bounds[handle + 1] - thershold;
+    }
+    return $afb7b5cb9bff7c9c$export$5bea24a9dfe5ab1a(valNotConflict, props);
+};
+var $1192a2f648c1dd60$var$Range = /*#__PURE__*/ function(_React$Component) {
+    (0, $a2Yf5$babelruntimehelpersesminherits)(Range, _React$Component);
+    var _super = (0, $a2Yf5$babelruntimehelpersesmcreateSuper)(Range);
+    function Range(props) {
+        var _this;
+        (0, $a2Yf5$babelruntimehelpersesmclassCallCheck)(this, Range);
+        _this = _super.call(this, props);
+        _this.positionGetValue = function(position) {
+            var bounds = _this.getValue();
+            var value = _this.calcValueByPos(position);
+            var closestBound = _this.getClosestBound(value);
+            var index = _this.getBoundNeedMoving(value, closestBound);
+            var prevValue = bounds[index];
+            if (value === prevValue) return null;
+            var nextBounds = (0, $a2Yf5$babelruntimehelpersesmtoConsumableArray)(bounds);
+            nextBounds[index] = value;
+            return nextBounds;
+        };
+        _this.onEnd = function(force) {
+            var handle = _this.state.handle;
+            _this.removeDocumentEvents();
+            if (!handle) _this.dragTrack = false;
+            if (handle !== null || force) _this.props.onAfterChange(_this.getValue());
+            _this.setState({
+                handle: null
+            });
+        };
+        var count = props.count, min = props.min, max = props.max;
+        var initialValue = Array.apply(void 0, (0, $a2Yf5$babelruntimehelpersesmtoConsumableArray)(Array(count + 1))).map(function() {
+            return min;
+        });
+        var defaultValue = "defaultValue" in props ? props.defaultValue : initialValue;
+        var value = props.value !== undefined ? props.value : defaultValue;
+        var bounds = value.map(function(v, i) {
+            return $1192a2f648c1dd60$var$_trimAlignValue({
+                value: v,
+                handle: i,
+                props: props
+            });
+        });
+        var recent = bounds[0] === max ? 0 : bounds.length - 1;
+        _this.state = {
+            handle: null,
+            recent: recent,
+            bounds: bounds
+        };
+        return _this;
+    }
+    /**
+   * [Legacy] Used for inherit other component.
+   * It's a bad code style which should be refactor.
+   */ /* eslint-disable @typescript-eslint/no-unused-vars, class-methods-use-this */ (0, $a2Yf5$babelruntimehelpersesmcreateClass)(Range, [
+        {
+            key: "calcValueByPos",
+            value: function calcValueByPos(value) {
+                return 0;
+            }
+        },
+        {
+            key: "getSliderLength",
+            value: function getSliderLength() {
+                return 0;
+            }
+        },
+        {
+            key: "calcOffset",
+            value: function calcOffset(value) {
+                return 0;
+            }
+        },
+        {
+            key: "saveHandle",
+            value: function saveHandle(index, h) {}
+        },
+        {
+            key: "removeDocumentEvents",
+            value: function removeDocumentEvents() {}
+        },
+        {
+            key: "componentDidUpdate",
+            value: function componentDidUpdate(prevProps, prevState) {
+                var _this2 = this;
+                var _this$props = this.props, onChange = _this$props.onChange, value = _this$props.value, min = _this$props.min, max = _this$props.max;
+                if (!("min" in this.props || "max" in this.props)) return;
+                if (min === prevProps.min && max === prevProps.max) return;
+                var currentValue = value || prevState.bounds;
+                if (currentValue.some(function(v) {
+                    return $afb7b5cb9bff7c9c$export$f4657b4dc4cc2ea4(v, _this2.props);
+                })) {
+                    var newValues = currentValue.map(function(v) {
+                        return $afb7b5cb9bff7c9c$export$65e4339c6f9d8d24(v, _this2.props);
+                    });
+                    onChange(newValues);
+                }
+            }
+        },
+        {
+            key: "onChange",
+            value: function onChange(state) {
+                var props = this.props;
+                var isNotControlled = !("value" in props);
+                if (isNotControlled) this.setState(state);
+                else {
+                    var controlledState = {};
+                    [
+                        "handle",
+                        "recent"
+                    ].forEach(function(item) {
+                        if (state[item] !== undefined) controlledState[item] = state[item];
+                    });
+                    if (Object.keys(controlledState).length) this.setState(controlledState);
+                }
+                var data = (0, $a2Yf5$babelruntimehelpersesmobjectSpread2)((0, $a2Yf5$babelruntimehelpersesmobjectSpread2)({}, this.state), state);
+                var changedValue = data.bounds;
+                props.onChange(changedValue);
+            }
+        },
+        {
+            key: "onStart",
+            value: function onStart(position) {
+                var props = this.props, state = this.state;
+                var bounds = this.getValue();
+                props.onBeforeChange(bounds);
+                var value = this.calcValueByPos(position);
+                this.startValue = value;
+                this.startPosition = position;
+                var closestBound = this.getClosestBound(value);
+                this.prevMovedHandleIndex = this.getBoundNeedMoving(value, closestBound);
+                this.setState({
+                    handle: this.prevMovedHandleIndex,
+                    recent: this.prevMovedHandleIndex
+                });
+                var prevValue = bounds[this.prevMovedHandleIndex];
+                if (value === prevValue) return;
+                var nextBounds = (0, $a2Yf5$babelruntimehelpersesmtoConsumableArray)(state.bounds);
+                nextBounds[this.prevMovedHandleIndex] = value;
+                this.onChange({
+                    bounds: nextBounds
+                });
+            }
+        },
+        {
+            key: "onMove",
+            value: function onMove(e, position, dragTrack, startBounds) {
+                $afb7b5cb9bff7c9c$export$3f9ffdaf2961f43f(e);
+                var state = this.state, props = this.props;
+                var maxValue = props.max || 100;
+                var minValue = props.min || 0;
+                if (dragTrack) {
+                    var pos = props.vertical ? -position : position;
+                    pos = props.reverse ? -pos : pos;
+                    var max = maxValue - Math.max.apply(Math, (0, $a2Yf5$babelruntimehelpersesmtoConsumableArray)(startBounds));
+                    var min = minValue - Math.min.apply(Math, (0, $a2Yf5$babelruntimehelpersesmtoConsumableArray)(startBounds));
+                    var ratio = Math.min(Math.max(pos / (this.getSliderLength() / (maxValue - minValue)), min), max);
+                    var nextBounds = startBounds.map(function(v) {
+                        return Math.floor(Math.max(Math.min(v + ratio, maxValue), minValue));
+                    });
+                    if (state.bounds.map(function(c, i) {
+                        return c === nextBounds[i];
+                    }).some(function(c) {
+                        return !c;
+                    })) this.onChange({
+                        bounds: nextBounds
+                    });
+                    return;
+                }
+                var value = this.calcValueByPos(position);
+                var oldValue = state.bounds[state.handle];
+                if (value === oldValue) return;
+                this.moveTo(value);
+            }
+        },
+        {
+            key: "onKeyboard",
+            value: function onKeyboard(e) {
+                var _this$props2 = this.props, reverse = _this$props2.reverse, vertical = _this$props2.vertical;
+                var valueMutator = $afb7b5cb9bff7c9c$export$3bef836a1fb84ee6(e, vertical, reverse);
+                if (valueMutator) {
+                    $afb7b5cb9bff7c9c$export$3f9ffdaf2961f43f(e);
+                    var state = this.state, props = this.props;
+                    var bounds = state.bounds, handle = state.handle;
+                    var oldValue = bounds[handle === null ? state.recent : handle];
+                    var mutatedValue = valueMutator(oldValue, props);
+                    var value = $1192a2f648c1dd60$var$_trimAlignValue({
+                        value: mutatedValue,
+                        handle: handle,
+                        bounds: state.bounds,
+                        props: props
+                    });
+                    if (value === oldValue) return;
+                    var isFromKeyboardEvent = true;
+                    this.moveTo(value, isFromKeyboardEvent);
+                }
+            }
+        },
+        {
+            key: "getValue",
+            value: function getValue() {
+                return this.state.bounds;
+            }
+        },
+        {
+            key: "getClosestBound",
+            value: function getClosestBound(value) {
+                var bounds = this.state.bounds;
+                var closestBound = 0;
+                for(var i = 1; i < bounds.length - 1; i += 1)if (value >= bounds[i]) closestBound = i;
+                if (Math.abs(bounds[closestBound + 1] - value) < Math.abs(bounds[closestBound] - value)) closestBound += 1;
+                return closestBound;
+            }
+        },
+        {
+            key: "getBoundNeedMoving",
+            value: function getBoundNeedMoving(value, closestBound) {
+                var _this$state = this.state, bounds = _this$state.bounds, recent = _this$state.recent;
+                var boundNeedMoving = closestBound;
+                var isAtTheSamePoint = bounds[closestBound + 1] === bounds[closestBound];
+                if (isAtTheSamePoint && bounds[recent] === bounds[closestBound]) boundNeedMoving = recent;
+                if (isAtTheSamePoint && value !== bounds[closestBound + 1]) boundNeedMoving = value < bounds[closestBound + 1] ? closestBound : closestBound + 1;
+                return boundNeedMoving;
+            }
+        },
+        {
+            key: "getLowerBound",
+            value: function getLowerBound() {
+                return this.state.bounds[0];
+            }
+        },
+        {
+            key: "getUpperBound",
+            value: function getUpperBound() {
+                var bounds = this.state.bounds;
+                return bounds[bounds.length - 1];
+            }
+        },
+        {
+            key: "getPoints",
+            value: function getPoints() {
+                var _this$props3 = this.props, marks = _this$props3.marks, step = _this$props3.step, min = _this$props3.min, max = _this$props3.max;
+                var cache = this.internalPointsCache;
+                if (!cache || cache.marks !== marks || cache.step !== step) {
+                    var pointsObject = (0, $a2Yf5$babelruntimehelpersesmobjectSpread2)({}, marks);
+                    if (step !== null) for(var point = min; point <= max; point += step)pointsObject[point] = point;
+                    var points = Object.keys(pointsObject).map(parseFloat);
+                    points.sort(function(a, b) {
+                        return a - b;
+                    });
+                    this.internalPointsCache = {
+                        marks: marks,
+                        step: step,
+                        points: points
+                    };
+                }
+                return this.internalPointsCache.points;
+            }
+        },
+        {
+            key: "moveTo",
+            value: function moveTo(value, isFromKeyboardEvent) {
+                var _this3 = this;
+                var state = this.state, props = this.props;
+                var nextBounds = (0, $a2Yf5$babelruntimehelpersesmtoConsumableArray)(state.bounds);
+                var handle = state.handle === null ? state.recent : state.handle;
+                nextBounds[handle] = value;
+                var nextHandle = handle;
+                if (props.pushable !== false) this.pushSurroundingHandles(nextBounds, nextHandle);
+                else if (props.allowCross) {
+                    nextBounds.sort(function(a, b) {
+                        return a - b;
+                    });
+                    nextHandle = nextBounds.indexOf(value);
+                }
+                this.onChange({
+                    recent: nextHandle,
+                    handle: nextHandle,
+                    bounds: nextBounds
+                });
+                if (isFromKeyboardEvent) {
+                    // known problem: because setState is async,
+                    // so trigger focus will invoke handler's onEnd and another handler's onStart too early,
+                    // cause onBeforeChange and onAfterChange receive wrong value.
+                    // here use setState callback to hack，but not elegant
+                    this.props.onAfterChange(nextBounds);
+                    this.setState({}, function() {
+                        _this3.handlesRefs[nextHandle].focus();
+                    });
+                    this.onEnd();
+                }
+            }
+        },
+        {
+            key: "pushSurroundingHandles",
+            value: function pushSurroundingHandles(bounds, handle) {
+                var value = bounds[handle];
+                var pushable = this.props.pushable;
+                var threshold = Number(pushable);
+                var direction = 0;
+                if (bounds[handle + 1] - value < threshold) direction = 1; // push to right
+                if (value - bounds[handle - 1] < threshold) direction = -1; // push to left
+                if (direction === 0) return;
+                var nextHandle = handle + direction;
+                var diffToNext = direction * (bounds[nextHandle] - value);
+                if (!this.pushHandle(bounds, nextHandle, direction, threshold - diffToNext)) // revert to original value if pushing is impossible
+                // eslint-disable-next-line no-param-reassign
+                bounds[handle] = bounds[nextHandle] - direction * threshold;
+            }
+        },
+        {
+            key: "pushHandle",
+            value: function pushHandle(bounds, handle, direction, amount) {
+                var originalValue = bounds[handle];
+                var currentValue = bounds[handle];
+                while(direction * (currentValue - originalValue) < amount){
+                    if (!this.pushHandleOnePoint(bounds, handle, direction)) {
+                        // can't push handle enough to create the needed `amount` gap, so we
+                        // revert its position to the original value
+                        // eslint-disable-next-line no-param-reassign
+                        bounds[handle] = originalValue;
+                        return false;
+                    }
+                    currentValue = bounds[handle];
+                } // the handle was pushed enough to create the needed `amount` gap
+                return true;
+            }
+        },
+        {
+            key: "pushHandleOnePoint",
+            value: function pushHandleOnePoint(bounds, handle, direction) {
+                var points = this.getPoints();
+                var pointIndex = points.indexOf(bounds[handle]);
+                var nextPointIndex = pointIndex + direction;
+                if (nextPointIndex >= points.length || nextPointIndex < 0) // reached the minimum or maximum available point, can't push anymore
+                return false;
+                var nextHandle = handle + direction;
+                var nextValue = points[nextPointIndex];
+                var pushable = this.props.pushable;
+                var threshold = Number(pushable);
+                var diffToNext = direction * (bounds[nextHandle] - nextValue);
+                if (!this.pushHandle(bounds, nextHandle, direction, threshold - diffToNext)) // couldn't push next handle, so we won't push this one either
+                return false;
+                 // push the handle
+                // eslint-disable-next-line no-param-reassign
+                bounds[handle] = nextValue;
+                return true;
+            }
+        },
+        {
+            key: "trimAlignValue",
+            value: function trimAlignValue(value) {
+                var _this$state2 = this.state, handle = _this$state2.handle, bounds = _this$state2.bounds;
+                return $1192a2f648c1dd60$var$_trimAlignValue({
+                    value: value,
+                    handle: handle,
+                    bounds: bounds,
+                    props: this.props
+                });
+            }
+        },
+        {
+            key: "render",
+            value: function render() {
+                var _this4 = this;
+                var _this$state3 = this.state, handle = _this$state3.handle, bounds = _this$state3.bounds;
+                var _this$props4 = this.props, prefixCls = _this$props4.prefixCls, vertical = _this$props4.vertical, included = _this$props4.included, disabled = _this$props4.disabled, min = _this$props4.min, max = _this$props4.max, reverse = _this$props4.reverse, handleGenerator = _this$props4.handle, trackStyle = _this$props4.trackStyle, handleStyle = _this$props4.handleStyle, tabIndex = _this$props4.tabIndex, ariaLabelGroupForHandles = _this$props4.ariaLabelGroupForHandles, ariaLabelledByGroupForHandles = _this$props4.ariaLabelledByGroupForHandles, ariaValueTextFormatterGroupForHandles = _this$props4.ariaValueTextFormatterGroupForHandles;
+                var offsets = bounds.map(function(v) {
+                    return _this4.calcOffset(v);
+                });
+                var handleClassName = "".concat(prefixCls, "-handle");
+                var handles = bounds.map(function(v, i) {
+                    var _classNames;
+                    var mergedTabIndex = tabIndex[i] || 0;
+                    if (disabled || tabIndex[i] === null) mergedTabIndex = null;
+                    var dragging = handle === i;
+                    return handleGenerator({
+                        className: (0, $a2Yf5$classnames)((_classNames = {}, (0, $a2Yf5$babelruntimehelpersesmdefineProperty)(_classNames, handleClassName, true), (0, $a2Yf5$babelruntimehelpersesmdefineProperty)(_classNames, "".concat(handleClassName, "-").concat(i + 1), true), (0, $a2Yf5$babelruntimehelpersesmdefineProperty)(_classNames, "".concat(handleClassName, "-dragging"), dragging), _classNames)),
+                        prefixCls: prefixCls,
+                        vertical: vertical,
+                        dragging: dragging,
+                        offset: offsets[i],
+                        value: v,
+                        index: i,
+                        tabIndex: mergedTabIndex,
+                        min: min,
+                        max: max,
+                        reverse: reverse,
+                        disabled: disabled,
+                        style: handleStyle[i],
+                        ref: function ref(h) {
+                            return _this4.saveHandle(i, h);
+                        },
+                        ariaLabel: ariaLabelGroupForHandles[i],
+                        ariaLabelledBy: ariaLabelledByGroupForHandles[i],
+                        ariaValueTextFormatter: ariaValueTextFormatterGroupForHandles[i]
+                    });
+                });
+                var tracks = bounds.slice(0, -1).map(function(_, index) {
+                    var _classNames2;
+                    var i = index + 1;
+                    var trackClassName = (0, $a2Yf5$classnames)((_classNames2 = {}, (0, $a2Yf5$babelruntimehelpersesmdefineProperty)(_classNames2, "".concat(prefixCls, "-track"), true), (0, $a2Yf5$babelruntimehelpersesmdefineProperty)(_classNames2, "".concat(prefixCls, "-track-").concat(i), true), _classNames2));
+                    return /*#__PURE__*/ (0, $a2Yf5$react).createElement((0, $756f770978e0c648$export$2e2bcd8739ae039), {
+                        className: trackClassName,
+                        vertical: vertical,
+                        reverse: reverse,
+                        included: included,
+                        offset: offsets[i - 1],
+                        length: offsets[i] - offsets[i - 1],
+                        style: trackStyle[index],
+                        key: i
+                    });
+                });
+                return {
+                    tracks: tracks,
+                    handles: handles
+                };
+            }
+        }
+    ], [
+        {
+            key: "getDerivedStateFromProps",
+            value: function getDerivedStateFromProps(props, state) {
+                if (!("value" in props || "min" in props || "max" in props)) return null;
+                var value = props.value || state.bounds;
+                var nextBounds = value.map(function(v, i) {
+                    return $1192a2f648c1dd60$var$_trimAlignValue({
+                        value: v,
+                        handle: i,
+                        bounds: state.bounds,
+                        props: props
+                    });
+                });
+                if (state.bounds.length === nextBounds.length) {
+                    if (nextBounds.every(function(v, i) {
+                        return v === state.bounds[i];
+                    })) return null;
+                } else nextBounds = value.map(function(v, i) {
+                    return $1192a2f648c1dd60$var$_trimAlignValue({
+                        value: v,
+                        handle: i,
+                        props: props
+                    });
+                });
+                return (0, $a2Yf5$babelruntimehelpersesmobjectSpread2)((0, $a2Yf5$babelruntimehelpersesmobjectSpread2)({}, state), {}, {
+                    bounds: nextBounds
+                });
+            }
+        }
+    ]);
+    return Range;
+}((0, $a2Yf5$react).Component);
+/* eslint-enable */ $1192a2f648c1dd60$var$Range.displayName = "Range";
+$1192a2f648c1dd60$var$Range.defaultProps = {
+    count: 1,
+    allowCross: true,
+    pushable: false,
+    draggableTrack: false,
+    tabIndex: [],
+    ariaLabelGroupForHandles: [],
+    ariaLabelledByGroupForHandles: [],
+    ariaValueTextFormatterGroupForHandles: []
+};
+var $1192a2f648c1dd60$export$2e2bcd8739ae039 = (0, $98355d89af53d794$export$2e2bcd8739ae039)($1192a2f648c1dd60$var$Range);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var $2e7919118d2d1727$var$SliderTooltip = /*#__PURE__*/ $a2Yf5$forwardRef(function(props, ref) {
+    var visible = props.visible, overlay = props.overlay;
+    var innerRef = $a2Yf5$useRef(null);
+    var tooltipRef = (0, $a2Yf5$composeRef)(ref, innerRef);
+    var rafRef = $a2Yf5$useRef(null);
+    function cancelKeepAlign() {
+        (0, $a2Yf5$rcutilesraf).cancel(rafRef.current);
+    }
+    function keepAlign() {
+        rafRef.current = (0, $a2Yf5$rcutilesraf)(function() {
+            var _innerRef$current;
+            (_innerRef$current = innerRef.current) === null || _innerRef$current === void 0 || _innerRef$current.forcePopupAlign();
+        });
+    }
     $a2Yf5$useEffect(function() {
-        if (autoFocus) handlesRef.current.focus(0);
-    }, []); // =========================== Context ============================
-    var context = $a2Yf5$useMemo(function() {
-        return {
-            min: mergedMin,
-            max: mergedMax,
-            direction: direction,
-            disabled: disabled,
-            step: mergedStep,
-            included: included,
-            includedStart: includedStart,
-            includedEnd: includedEnd,
-            range: range,
-            tabIndex: tabIndex,
-            ariaLabelForHandle: ariaLabelForHandle,
-            ariaLabelledByForHandle: ariaLabelledByForHandle,
-            ariaValueTextFormatterForHandle: ariaValueTextFormatterForHandle
-        };
+        if (visible) keepAlign();
+        else cancelKeepAlign();
+        return cancelKeepAlign;
     }, [
-        mergedMin,
-        mergedMax,
-        direction,
-        disabled,
-        mergedStep,
-        included,
-        includedStart,
-        includedEnd,
-        range,
-        tabIndex,
-        ariaLabelForHandle,
-        ariaLabelledByForHandle,
-        ariaValueTextFormatterForHandle
-    ]); // ============================ Render ============================
-    return /*#__PURE__*/ $a2Yf5$createElement((0, $082fec70572b288f$export$2e2bcd8739ae039).Provider, {
-        value: context
-    }, /*#__PURE__*/ $a2Yf5$createElement("div", {
-        ref: containerRef,
-        className: (0, $a2Yf5$classnames)(prefixCls, className, (_classNames = {}, (0, $a2Yf5$babelruntimehelpersesmdefineProperty)(_classNames, "".concat(prefixCls, "-disabled"), disabled), (0, $a2Yf5$babelruntimehelpersesmdefineProperty)(_classNames, "".concat(prefixCls, "-vertical"), vertical), (0, $a2Yf5$babelruntimehelpersesmdefineProperty)(_classNames, "".concat(prefixCls, "-horizontal"), !vertical), (0, $a2Yf5$babelruntimehelpersesmdefineProperty)(_classNames, "".concat(prefixCls, "-with-marks"), markList.length), _classNames)),
-        style: style,
-        onMouseDown: onSliderMouseDown
-    }, /*#__PURE__*/ $a2Yf5$createElement("div", {
-        className: "".concat(prefixCls, "-rail"),
-        style: railStyle
-    }), /*#__PURE__*/ $a2Yf5$createElement((0, $3e5c9f910f0cbf24$export$2e2bcd8739ae039), {
-        prefixCls: prefixCls,
-        style: trackStyle,
-        values: sortedCacheValues,
-        startPoint: startPoint,
-        onStartMove: mergedDraggableTrack ? onStartMove : null
-    }), /*#__PURE__*/ $a2Yf5$createElement((0, $3d4984a439cd435a$export$2e2bcd8739ae039), {
-        prefixCls: prefixCls,
-        marks: markList,
-        dots: dots,
-        style: dotStyle,
-        activeStyle: activeDotStyle
-    }), /*#__PURE__*/ $a2Yf5$createElement((0, $adc2257fd6b9b4f9$export$2e2bcd8739ae039), {
-        ref: handlesRef,
-        prefixCls: prefixCls,
-        style: handleStyle,
-        values: cacheValues,
-        draggingIndex: draggingIndex,
-        onStartMove: onStartMove,
-        onOffsetChange: onHandleOffsetChange,
-        onFocus: onFocus,
-        onBlur: onBlur,
-        handleRender: handleRender
-    }), /*#__PURE__*/ $a2Yf5$createElement((0, $b28fef505ed44895$export$2e2bcd8739ae039), {
-        prefixCls: prefixCls,
-        marks: markList,
-        onClick: changeToCloseValue
-    })));
+        visible,
+        overlay
+    ]);
+    return /*#__PURE__*/ $a2Yf5$createElement((0, $a2Yf5$rctooltip), (0, $a2Yf5$babelruntimehelpersesmextends)({
+        ref: tooltipRef
+    }, props));
 });
-var $3dc8da5f55b48257$export$2e2bcd8739ae039 = $3dc8da5f55b48257$var$Slider;
+var $2e7919118d2d1727$export$2e2bcd8739ae039 = $2e7919118d2d1727$var$SliderTooltip;
 
 
-var $d020fc884ac3e39d$export$2e2bcd8739ae039 = (0, $3dc8da5f55b48257$export$2e2bcd8739ae039);
+
+function $b09e6d777197c9da$export$2e2bcd8739ae039(Component) {
+    var _a; // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    return _a = /*#__PURE__*/ function(_React$Component) {
+        (0, $a2Yf5$babelruntimehelpersesminherits)(ComponentWrapper, _React$Component);
+        var _super = (0, $a2Yf5$babelruntimehelpersesmcreateSuper)(ComponentWrapper);
+        function ComponentWrapper() {
+            var _this;
+            (0, $a2Yf5$babelruntimehelpersesmclassCallCheck)(this, ComponentWrapper);
+            _this = _super.apply(this, arguments);
+            _this.state = {
+                visibles: {}
+            };
+            _this.handleTooltipVisibleChange = function(index, visible) {
+                _this.setState(function(prevState) {
+                    return {
+                        visibles: (0, $a2Yf5$babelruntimehelpersesmobjectSpread2)((0, $a2Yf5$babelruntimehelpersesmobjectSpread2)({}, prevState.visibles), {}, (0, $a2Yf5$babelruntimehelpersesmdefineProperty)({}, index, visible))
+                    };
+                });
+            };
+            _this.handleWithTooltip = function(_ref) {
+                var value = _ref.value, dragging = _ref.dragging, index = _ref.index, disabled = _ref.disabled, restProps = (0, $a2Yf5$babelruntimehelpersesmobjectWithoutProperties)(_ref, [
+                    "value",
+                    "dragging",
+                    "index",
+                    "disabled"
+                ]);
+                var _this$props = _this.props, tipFormatter = _this$props.tipFormatter, tipProps = _this$props.tipProps, handleStyle = _this$props.handleStyle, getTooltipContainer = _this$props.getTooltipContainer;
+                var _tipProps$prefixCls = tipProps.prefixCls, prefixCls = _tipProps$prefixCls === void 0 ? "rc-slider-tooltip" : _tipProps$prefixCls, _tipProps$overlay = tipProps.overlay, overlay = _tipProps$overlay === void 0 ? tipFormatter(value) : _tipProps$overlay, _tipProps$placement = tipProps.placement, placement = _tipProps$placement === void 0 ? "top" : _tipProps$placement, _tipProps$visible = tipProps.visible, visible = _tipProps$visible === void 0 ? false : _tipProps$visible, restTooltipProps = (0, $a2Yf5$babelruntimehelpersesmobjectWithoutProperties)(tipProps, [
+                    "prefixCls",
+                    "overlay",
+                    "placement",
+                    "visible"
+                ]);
+                var handleStyleWithIndex;
+                if (Array.isArray(handleStyle)) handleStyleWithIndex = handleStyle[index] || handleStyle[0];
+                else handleStyleWithIndex = handleStyle;
+                return /*#__PURE__*/ (0, $a2Yf5$react).createElement((0, $2e7919118d2d1727$export$2e2bcd8739ae039), (0, $a2Yf5$babelruntimehelpersesmextends)({}, restTooltipProps, {
+                    getTooltipContainer: getTooltipContainer,
+                    prefixCls: prefixCls,
+                    overlay: overlay,
+                    placement: placement,
+                    visible: !disabled && (_this.state.visibles[index] || dragging) || visible,
+                    key: index
+                }), /*#__PURE__*/ (0, $a2Yf5$react).createElement((0, $02d8f4533571f053$export$2e2bcd8739ae039), (0, $a2Yf5$babelruntimehelpersesmextends)({}, restProps, {
+                    style: (0, $a2Yf5$babelruntimehelpersesmobjectSpread2)({}, handleStyleWithIndex),
+                    value: value,
+                    onMouseEnter: function onMouseEnter() {
+                        return _this.handleTooltipVisibleChange(index, true);
+                    },
+                    onMouseLeave: function onMouseLeave() {
+                        return _this.handleTooltipVisibleChange(index, false);
+                    }
+                })));
+            };
+            return _this;
+        }
+        (0, $a2Yf5$babelruntimehelpersesmcreateClass)(ComponentWrapper, [
+            {
+                key: "render",
+                value: function render() {
+                    return /*#__PURE__*/ (0, $a2Yf5$react).createElement(Component, (0, $a2Yf5$babelruntimehelpersesmextends)({}, this.props, {
+                        handle: this.handleWithTooltip
+                    }));
+                }
+            }
+        ]);
+        return ComponentWrapper;
+    }((0, $a2Yf5$react).Component), _a.defaultProps = {
+        tipFormatter: function tipFormatter(value) {
+            return value;
+        },
+        handleStyle: [
+            {}
+        ],
+        tipProps: {},
+        getTooltipContainer: function getTooltipContainer(node) {
+            return node.parentNode;
+        }
+    }, _a;
+}
+
+
+
+var $d020fc884ac3e39d$var$InternalSlider = (0, $3dc8da5f55b48257$export$2e2bcd8739ae039);
+$d020fc884ac3e39d$var$InternalSlider.Range = (0, $1192a2f648c1dd60$export$2e2bcd8739ae039);
+$d020fc884ac3e39d$var$InternalSlider.Handle = (0, $02d8f4533571f053$export$2e2bcd8739ae039);
+$d020fc884ac3e39d$var$InternalSlider.createSliderWithTooltip = (0, $b09e6d777197c9da$export$2e2bcd8739ae039);
+var $d020fc884ac3e39d$export$2e2bcd8739ae039 = $d020fc884ac3e39d$var$InternalSlider;
 
 
 var $1101abde3daa7520$exports = {};

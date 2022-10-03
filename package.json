@@ -44,7 +44,7 @@
     "fbjs": "^3.0.4",
     "insert-css": "^2.0.0",
     "prop-types": "^15.5.8",
-    "rc-slider": "^10.0.1"
+    "rc-slider": "9.7.5"
   },
   "devDependencies": {
     "enzyme": "^2.4.1",
