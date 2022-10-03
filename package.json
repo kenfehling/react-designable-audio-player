@@ -8,7 +8,8 @@
     "main": {
       "source": "src/index.js",
       "isLibrary": true,
-      "outputFormat": "esmodule"
+      "outputFormat": "esmodule",
+      "includeNodeModules": ["fbjs", "insert-css", "rc-slider"]
     }
   },
   "scripts": {
@@ -40,8 +41,6 @@
     "hoc"
   ],
   "dependencies": {
-    "babel-preset-esnext": "^1.1.3",
-    "babel-runtime": "^6.23.0",
     "fbjs": "^3.0.4",
     "insert-css": "^2.0.0",
     "prop-types": "^15.5.8",
