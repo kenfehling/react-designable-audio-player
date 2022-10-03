@@ -3,8 +3,14 @@
   "version": "0.1.1",
   "description": "An audio player library for React that lets you use your own UI component",
   "source": "src/index.js",
-  "main": "dist/main.js",
-  "module": "dist/module.js",
+  "main": "dist/main.mjs",
+  "targets": {
+    "main": {
+      "source": "src/index.js",
+      "isLibrary": true,
+      "outputFormat": "esmodule"
+    }
+  },
   "scripts": {
     "clean": "rimraf lib",
     "lint": "eslint src tests",

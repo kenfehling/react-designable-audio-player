@@ -1,8 +1,8 @@
-import $jf1kJ$react, {createElement as $jf1kJ$createElement, Component as $jf1kJ$Component} from "react";
-import $jf1kJ$proptypes from "prop-types";
-import {canUseDOM as $jf1kJ$canUseDOM} from "fbjs/lib/ExecutionEnvironment";
-import $jf1kJ$rcslider from "rc-slider";
-import $jf1kJ$insertcss from "insert-css";
+import $5OpyM$react, {createElement as $5OpyM$createElement, Component as $5OpyM$Component} from "react";
+import $5OpyM$proptypes from "prop-types";
+import {canUseDOM as $5OpyM$canUseDOM} from "fbjs/lib/ExecutionEnvironment";
+import $5OpyM$rcslider from "rc-slider";
+import $5OpyM$insertcss from "insert-css";
 
 
 
@@ -11,7 +11,7 @@ import $jf1kJ$insertcss from "insert-css";
 
 
 const $0dd82c10f9603d2e$var$noop = ()=>{};
-const $0dd82c10f9603d2e$var$audio = (0, $jf1kJ$canUseDOM) ? new Audio() : null;
+const $0dd82c10f9603d2e$var$audio = (0, $5OpyM$canUseDOM) ? new Audio() : null;
 let $0dd82c10f9603d2e$var$tracks;
 let $0dd82c10f9603d2e$var$currentTrackIndex = 0;
 let $0dd82c10f9603d2e$var$timer;
@@ -73,7 +73,7 @@ function $0dd82c10f9603d2e$var$stopTimer() {
         $0dd82c10f9603d2e$var$timer = null;
     }
 }
-const $0dd82c10f9603d2e$export$5106570dc4737ef5 = (0, $jf1kJ$canUseDOM) ? (newTracks)=>{
+const $0dd82c10f9603d2e$export$5106570dc4737ef5 = (0, $5OpyM$canUseDOM) ? (newTracks)=>{
     if ($0dd82c10f9603d2e$var$tracks === undefined || $0dd82c10f9603d2e$var$tracks.length === 0) $0dd82c10f9603d2e$var$audio.src = newTracks[0].file;
     $0dd82c10f9603d2e$var$tracks = newTracks.map((t, i)=>({
             ...t,
@@ -81,7 +81,7 @@ const $0dd82c10f9603d2e$export$5106570dc4737ef5 = (0, $jf1kJ$canUseDOM) ? (newTr
         }));
     $0dd82c10f9603d2e$var$updateListeners($0dd82c10f9603d2e$export$367277103c25ce5d.TRACKS_ADDED);
 } : $0dd82c10f9603d2e$var$noop;
-const $0dd82c10f9603d2e$export$899fbdb5fa08b653 = (0, $jf1kJ$canUseDOM) ? ()=>{
+const $0dd82c10f9603d2e$export$899fbdb5fa08b653 = (0, $5OpyM$canUseDOM) ? ()=>{
     if ($0dd82c10f9603d2e$var$isPlaying()) {
         $0dd82c10f9603d2e$var$audio.pause();
         $0dd82c10f9603d2e$var$stopTimer();
@@ -92,33 +92,33 @@ const $0dd82c10f9603d2e$export$899fbdb5fa08b653 = (0, $jf1kJ$canUseDOM) ? ()=>{
         $0dd82c10f9603d2e$var$timer = setInterval(()=>$0dd82c10f9603d2e$var$updateListeners($0dd82c10f9603d2e$export$367277103c25ce5d.TICK), 1000);
     }
 } : $0dd82c10f9603d2e$var$noop;
-const $0dd82c10f9603d2e$export$fa6813432f753b0d = (0, $jf1kJ$canUseDOM) ? ()=>{
+const $0dd82c10f9603d2e$export$fa6813432f753b0d = (0, $5OpyM$canUseDOM) ? ()=>{
     $0dd82c10f9603d2e$var$audio.pause();
     $0dd82c10f9603d2e$var$audio.currentTime = 0;
     $0dd82c10f9603d2e$var$stopTimer();
     $0dd82c10f9603d2e$var$updateListeners($0dd82c10f9603d2e$export$367277103c25ce5d.STOP);
 } : $0dd82c10f9603d2e$var$noop;
-const $0dd82c10f9603d2e$export$990806b8ad8af834 = (0, $jf1kJ$canUseDOM) ? (seconds)=>{
+const $0dd82c10f9603d2e$export$990806b8ad8af834 = (0, $5OpyM$canUseDOM) ? (seconds)=>{
     $0dd82c10f9603d2e$var$audio.currentTime = seconds;
     $0dd82c10f9603d2e$var$updateListeners($0dd82c10f9603d2e$export$367277103c25ce5d.SEEK);
 } : $0dd82c10f9603d2e$var$noop;
-const $0dd82c10f9603d2e$export$48cfd1e771a65c4f = (0, $jf1kJ$canUseDOM) ? ()=>{
+const $0dd82c10f9603d2e$export$48cfd1e771a65c4f = (0, $5OpyM$canUseDOM) ? ()=>{
     $0dd82c10f9603d2e$var$currentTrackIndex = $0dd82c10f9603d2e$var$currentTrackIndex + 1 >= $0dd82c10f9603d2e$var$tracks.length ? 0 : $0dd82c10f9603d2e$var$currentTrackIndex + 1;
     $0dd82c10f9603d2e$var$switchTrack();
 } : $0dd82c10f9603d2e$var$noop;
-const $0dd82c10f9603d2e$export$232faf9add678146 = (0, $jf1kJ$canUseDOM) ? ()=>{
+const $0dd82c10f9603d2e$export$232faf9add678146 = (0, $5OpyM$canUseDOM) ? ()=>{
     $0dd82c10f9603d2e$var$currentTrackIndex = $0dd82c10f9603d2e$var$currentTrackIndex - 1 < 0 ? $0dd82c10f9603d2e$var$tracks.length - 1 : $0dd82c10f9603d2e$var$currentTrackIndex - 1;
     $0dd82c10f9603d2e$var$switchTrack();
 } : $0dd82c10f9603d2e$var$noop;
-const $0dd82c10f9603d2e$export$e64e955830870e84 = (0, $jf1kJ$canUseDOM) ? (number)=>{
+const $0dd82c10f9603d2e$export$e64e955830870e84 = (0, $5OpyM$canUseDOM) ? (number)=>{
     $0dd82c10f9603d2e$var$currentTrackIndex = number - 1;
     $0dd82c10f9603d2e$var$switchTrack();
 } : $0dd82c10f9603d2e$var$noop;
-const $0dd82c10f9603d2e$export$2735a780d8a99a8c = (0, $jf1kJ$canUseDOM) ? (number)=>{
+const $0dd82c10f9603d2e$export$2735a780d8a99a8c = (0, $5OpyM$canUseDOM) ? (number)=>{
     $0dd82c10f9603d2e$export$e64e955830870e84(number);
     if (!$0dd82c10f9603d2e$var$isPlaying()) $0dd82c10f9603d2e$export$899fbdb5fa08b653();
 } : $0dd82c10f9603d2e$var$noop;
-const $0dd82c10f9603d2e$export$9a5e51d3b9fed543 = (0, $jf1kJ$canUseDOM) ? ()=>{
+const $0dd82c10f9603d2e$export$9a5e51d3b9fed543 = (0, $5OpyM$canUseDOM) ? ()=>{
     $0dd82c10f9603d2e$var$audio.autoplay = true;
 } : $0dd82c10f9603d2e$var$noop;
 function $0dd82c10f9603d2e$export$f03a6b845d3fb58b(callback) {
@@ -131,7 +131,7 @@ function $0dd82c10f9603d2e$export$b03e9483f936dccb(id) {
 function $0dd82c10f9603d2e$export$72be9cc1d9b9a9ef() {
     return $0dd82c10f9603d2e$var$listeners;
 }
-if (0, $jf1kJ$canUseDOM) {
+if (0, $5OpyM$canUseDOM) {
     $0dd82c10f9603d2e$var$audio.addEventListener("play", ()=>$0dd82c10f9603d2e$var$updateListeners($0dd82c10f9603d2e$export$367277103c25ce5d.PLAY));
     $0dd82c10f9603d2e$var$audio.addEventListener("durationchange", ()=>$0dd82c10f9603d2e$var$updateListeners($0dd82c10f9603d2e$export$367277103c25ce5d.LOAD));
     $0dd82c10f9603d2e$var$audio.addEventListener("ended", ()=>{
@@ -142,7 +142,7 @@ if (0, $jf1kJ$canUseDOM) {
 
 
 function $cea81b3248d66e10$export$c0b03e78d1b6fede(WrappedComponent, tracks, { autoplay: autoplay = false  } = {}) {
-    class Connect extends (0, $jf1kJ$Component) {
+    class Connect extends (0, $5OpyM$Component) {
         constructor(props){
             super(props);
             this.state = {
@@ -181,7 +181,7 @@ function $cea81b3248d66e10$export$c0b03e78d1b6fede(WrappedComponent, tracks, { a
                 timeElapsed: this.state.timeElapsed,
                 timeRemaining: this.state.timeRemaining
             };
-            return /*#__PURE__*/ (0, $jf1kJ$createElement)(WrappedComponent, {
+            return /*#__PURE__*/ (0, $5OpyM$createElement)(WrappedComponent, {
                 ...this.props,
                 ...props
             });
@@ -198,14 +198,14 @@ const $cea81b3248d66e10$var$getMarqueeStyle = (duration)=>({
         ...$cea81b3248d66e10$var$baseStyle,
         animation: `${$cea81b3248d66e10$var$marqueeAnimationName} ${duration}s infinite linear`
     });
-class $cea81b3248d66e10$var$TM extends (0, $jf1kJ$Component) {
+class $cea81b3248d66e10$var$TM extends (0, $5OpyM$Component) {
     constructor(props){
         super(props);
         this.state = {
             on: true,
             currentTrack: null
         };
-        if (0, $jf1kJ$canUseDOM) (0, $jf1kJ$insertcss)(`
+        if (0, $5OpyM$canUseDOM) (0, $5OpyM$insertcss)(`
         @import url('rc-slider/assets/index.css');
         @keyframes ${$cea81b3248d66e10$var$marqueeAnimationName} {
         0% {-webkit-transform:translate(0, 0)}
@@ -225,30 +225,30 @@ class $cea81b3248d66e10$var$TM extends (0, $jf1kJ$Component) {
         const { className: className , textFn: textFn , duration: duration  } = this.props;
         const { currentTrack: currentTrack  } = this.state;
         const { number: number , artist: artist , title: title  } = currentTrack || {};
-        return /*#__PURE__*/ (0, $jf1kJ$react).createElement("div", {
+        return /*#__PURE__*/ (0, $5OpyM$react).createElement("div", {
             className: className
-        }, /*#__PURE__*/ (0, $jf1kJ$react).createElement("div", {
+        }, /*#__PURE__*/ (0, $5OpyM$react).createElement("div", {
             style: {
                 overflow: "hidden",
                 whiteSpace: "nowrap"
             }
-        }, /*#__PURE__*/ (0, $jf1kJ$react).createElement("div", {
+        }, /*#__PURE__*/ (0, $5OpyM$react).createElement("div", {
             style: this.state.on ? $cea81b3248d66e10$var$getMarqueeStyle(duration || 10) : $cea81b3248d66e10$var$baseStyle
         }, currentTrack ? textFn ? textFn(currentTrack) : `${number}. ${artist} - ${title}` : "")));
     }
 }
 $cea81b3248d66e10$var$TM.propTypes = {
-    className: (0, $jf1kJ$proptypes).string,
-    textFn: (0, $jf1kJ$proptypes).func,
-    duration: (0, $jf1kJ$proptypes).number
+    className: (0, $5OpyM$proptypes).string,
+    textFn: (0, $5OpyM$proptypes).func,
+    duration: (0, $5OpyM$proptypes).number
 };
 const $cea81b3248d66e10$export$b59c99f47fcbedf1 = $cea81b3248d66e10$var$TM;
-/* TimeSlider component */ class $cea81b3248d66e10$var$DefaultSliderHandle extends (0, $jf1kJ$Component) {
+/* TimeSlider component */ class $cea81b3248d66e10$var$DefaultSliderHandle extends (0, $5OpyM$Component) {
     render() {
-        return /*#__PURE__*/ (0, $jf1kJ$react).createElement("div", null);
+        return /*#__PURE__*/ (0, $5OpyM$react).createElement("div", null);
     }
 }
-class $cea81b3248d66e10$var$TS extends (0, $jf1kJ$Component) {
+class $cea81b3248d66e10$var$TS extends (0, $5OpyM$Component) {
     constructor(props){
         super(props);
         this.state = {
@@ -271,23 +271,23 @@ class $cea81b3248d66e10$var$TS extends (0, $jf1kJ$Component) {
     render() {
         const { className: className , ...props } = this.props;
         const { secondsElapsed: secondsElapsed , secondsRemaining: secondsRemaining  } = this.state;
-        return /*#__PURE__*/ (0, $jf1kJ$react).createElement("div", {
+        return /*#__PURE__*/ (0, $5OpyM$react).createElement("div", {
             className: className
-        }, /*#__PURE__*/ (0, $jf1kJ$react).createElement((0, $jf1kJ$rcslider), {
+        }, /*#__PURE__*/ (0, $5OpyM$react).createElement((0, $5OpyM$rcslider), {
             onChange: (0, $0dd82c10f9603d2e$export$990806b8ad8af834),
             value: secondsElapsed,
             min: 0,
             max: secondsElapsed + secondsRemaining,
-            handle: this.props.handle || /*#__PURE__*/ (0, $jf1kJ$react).createElement($cea81b3248d66e10$var$DefaultSliderHandle, null),
+            handle: this.props.handle || /*#__PURE__*/ (0, $5OpyM$react).createElement($cea81b3248d66e10$var$DefaultSliderHandle, null),
             ...props
         }));
     }
 }
 $cea81b3248d66e10$var$TS.propTypes = {
-    className: (0, $jf1kJ$proptypes).string
+    className: (0, $5OpyM$proptypes).string
 };
 const $cea81b3248d66e10$export$e296a477a1bc715a = $cea81b3248d66e10$var$TS;
-/* Playlist component */ class $cea81b3248d66e10$var$PL extends (0, $jf1kJ$Component) {
+/* Playlist component */ class $cea81b3248d66e10$var$PL extends (0, $5OpyM$Component) {
     constructor(props){
         super(props);
         this.state = {
@@ -318,9 +318,9 @@ const $cea81b3248d66e10$export$e296a477a1bc715a = $cea81b3248d66e10$var$TS;
             textOverflow: "ellipsis",
             overflow: "hidden"
         };
-        return /*#__PURE__*/ (0, $jf1kJ$react).createElement("div", {
+        return /*#__PURE__*/ (0, $5OpyM$react).createElement("div", {
             className: className
-        }, tracks.map((track, i)=>/*#__PURE__*/ (0, $jf1kJ$react).createElement("div", {
+        }, tracks.map((track, i)=>/*#__PURE__*/ (0, $5OpyM$react).createElement("div", {
                 key: i,
                 className: number === i + 1 ? itemClassName + " " + currentItemClassName : itemClassName,
                 style: itemStyle,
@@ -329,10 +329,10 @@ const $cea81b3248d66e10$export$e296a477a1bc715a = $cea81b3248d66e10$var$TS;
     }
 }
 $cea81b3248d66e10$var$PL.propTypes = {
-    className: (0, $jf1kJ$proptypes).string,
-    itemClassName: (0, $jf1kJ$proptypes).string,
-    currentItemClassName: (0, $jf1kJ$proptypes).string,
-    itemComponent: (0, $jf1kJ$proptypes).func
+    className: (0, $5OpyM$proptypes).string,
+    itemClassName: (0, $5OpyM$proptypes).string,
+    currentItemClassName: (0, $5OpyM$proptypes).string,
+    itemComponent: (0, $5OpyM$proptypes).func
 };
 const $cea81b3248d66e10$export$a10c242a3195e585 = $cea81b3248d66e10$var$PL;
 
@@ -340,4 +340,4 @@ const $cea81b3248d66e10$export$a10c242a3195e585 = $cea81b3248d66e10$var$PL;
 
 
 export {$cea81b3248d66e10$export$c0b03e78d1b6fede as connectAudioPlayer, $cea81b3248d66e10$export$b59c99f47fcbedf1 as TitleMarquee, $cea81b3248d66e10$export$e296a477a1bc715a as TimeSlider, $cea81b3248d66e10$export$a10c242a3195e585 as Playlist};
-//# sourceMappingURL=index.js.map
+//# sourceMappingURL=main.mjs.map
