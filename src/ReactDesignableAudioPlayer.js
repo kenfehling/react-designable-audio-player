@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import {canUseDOM} from 'fbjs/lib/ExecutionEnvironment'
 import Slider from 'rc-slider'
 import insertCss from 'insert-css'
-import 'rc-slider/assets/index.css'
 import {
   play, stop, seek, next, prev, goto, gotoAndPlay, addTracks, turnOnAutoplay,
   addListener, removeListener, UpdateTypes
@@ -83,8 +82,9 @@ class TM extends Component {
       currentTrack: null
     }
     if (canUseDOM) {
-      insertCss(
-        `@keyframes ${marqueeAnimationName} {
+      insertCss(`
+        @import url('rc-slider/assets/index.css');
+        @keyframes ${marqueeAnimationName} {
         0% {-webkit-transform:translate(0, 0)}
         100% {-webkit-transform:translate(-100%, 0)}
        }`

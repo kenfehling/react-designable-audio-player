@@ -3,8 +3,6 @@ import $jf1kJ$proptypes from "prop-types";
 import {canUseDOM as $jf1kJ$canUseDOM} from "fbjs/lib/ExecutionEnvironment";
 import $jf1kJ$rcslider from "rc-slider";
 import $jf1kJ$insertcss from "insert-css";
-import "rc-slider/assets/index.css";
-
 
 
 
@@ -207,7 +205,9 @@ class $cea81b3248d66e10$var$TM extends (0, $jf1kJ$Component) {
             on: true,
             currentTrack: null
         };
-        if (0, $jf1kJ$canUseDOM) (0, $jf1kJ$insertcss)(`@keyframes ${$cea81b3248d66e10$var$marqueeAnimationName} {
+        if (0, $jf1kJ$canUseDOM) (0, $jf1kJ$insertcss)(`
+        @import url('rc-slider/assets/index.css');
+        @keyframes ${$cea81b3248d66e10$var$marqueeAnimationName} {
         0% {-webkit-transform:translate(0, 0)}
         100% {-webkit-transform:translate(-100%, 0)}
        }`);
