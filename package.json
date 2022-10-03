@@ -4,6 +4,7 @@
   "description": "An audio player library for React that lets you use your own UI component",
   "source": "src/index.js",
   "module": "lib/index.js",
+  "type": "module",
   "scripts": {
     "clean": "rimraf lib",
     "lint": "eslint src tests",
